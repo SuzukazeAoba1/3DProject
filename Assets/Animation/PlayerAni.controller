@@ -89,6 +89,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: DoubleJumping
     m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: Speed
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 9057452961680762319}
   m_Solo: 0
@@ -166,6 +169,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: DoubleJumping
     m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: Speed
+    m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6554150848777780808}
   m_Solo: 0
@@ -190,6 +196,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: Jumping
+    m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: Speed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 9057452961680762319}
@@ -326,6 +335,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: Jumping
     m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: Speed
+    m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6554150848777780808}
   m_Solo: 0
