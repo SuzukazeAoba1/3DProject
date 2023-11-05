@@ -77,8 +77,9 @@ public class PlayerController : MonoBehaviour
     {
 
         //플레이어의 방향과 입력이 일치하면 속도 증가,
-        //일치하지 않으면 입력 방향으로 회전
+        //일치하지 않으면 입력 방향으로 회전,
         //입력하지 않으면 속도 감소
+        //착지 대시용 콜라이더 필요
 
         bool move = false;
 
@@ -158,22 +159,27 @@ public class PlayerController : MonoBehaviour
 
                 transform.rotation = Quaternion.Euler(0.0f, degree, 0.0f);
 
-                if (immovable == false)
+                if (landing == true && immovable == false)
                 {
                     currentSpeed += currentAccel * Time.deltaTime;
                 }
             }
         }
-        
-        if (move == false)
+
+        if (landing == true)
         {
-            currentSpeed -= currentBraking * Time.deltaTime; 
+            if (move == false || currentSpeed > currentMaxSpeed)
+            {
+                currentSpeed -= currentBraking * Time.deltaTime;
+            }
         }
 
-        if (currentSpeed >= currentMaxSpeed) 
-            currentSpeed = currentMaxSpeed;
-        if (currentSpeed <= 0) 
-            currentSpeed = 0;
+        if (currentSpeed >= baseMaxSpeed + boosterMaxSpeed)
+        {
+            currentSpeed = baseMaxSpeed + boosterMaxSpeed;
+        }
+
+        if (currentSpeed <= 0) currentSpeed = 0;
 
         AnimatorSet();
     }
