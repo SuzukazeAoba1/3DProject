@@ -52,16 +52,16 @@ MonoBehaviour:
   currentSpeed: 0
   currentMaxSpeed: 0
   currentAccel: 0
-  currentBraking: 10
+  currentBraking: 20
   baseMaxSpeed: 15
   baseAccel: 8
-  baseRotSpeed: 90
-  baseJumpPower: 400
+  baseRotSpeed: 150
+  baseJumpPower: 600
   boosterbuf: 0
   boosterSkill: 0
   boosterGauge: 0
-  boosterAddAccel: 20
-  boosterMaxSpeed: 15
+  boosterAddAccel: 15
+  boosterMaxSpeed: 10
   awakenGauge: 0
   landing: 0
   singleJump: 0
