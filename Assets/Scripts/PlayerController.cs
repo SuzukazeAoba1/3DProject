@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public float baseJumpPower;
 
     public bool boosterbuf;
+    public bool boosterOnPad;
     public bool boosterSkill;
     public float boosterGauge;
     public float boosterAddAccel;
@@ -44,6 +45,12 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         PlayerControl();
+
+        if (boosterOnPad && !freezing)
+        {
+            Booster();
+        }
+
         transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
     }
 
@@ -81,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Booster"))
         {
-
+            HandleBoosterCollision();
         }
 
     }
@@ -261,6 +268,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void HandleBoosterCollision()
+    {
+        boosterOnPad = true;
+        StartCoroutine(ReleaseBooster(1.5f));
+    }
+
 
     private void KnockBackCollision()
     {
@@ -277,6 +290,21 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(dealy);
         freezing = false;
+    }
+
+    private void Booster()
+    {
+        Vector2 playerDirection = transform.forward;
+        inputDir += playerDirection;
+
+        currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
+        currentSpeed = currentMaxSpeed;
+    }
+
+    private IEnumerator ReleaseBooster(float dealy)
+    {
+        yield return new WaitForSeconds(dealy);
+        boosterOnPad = false;
     }
 
 }
