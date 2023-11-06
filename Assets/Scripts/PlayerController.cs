@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public float baseJumpPower;
 
     public bool boosterbuf;
+    public bool boosterOnPad;
     public bool boosterSkill;
     public float boosterGauge;
     public float boosterAddAccel;
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public bool freezing;       //모든 키 입력 불가
     public bool immovable;      //회전 가능
     public bool keyReverse;
-    
+
 
     private void Start()
     {
@@ -44,6 +45,12 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         PlayerControl();
+        
+        if (boosterOnPad && !freezing)
+        {
+            Booster();
+        }
+
         transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
     }
 
@@ -81,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Booster"))
         {
-
+            HandleBoosterCollision();
         }
 
     }
@@ -184,7 +191,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-
+                                                                                                                                                                                                                                                                                                
         if (landing == true)
         {
             if (move == false || currentSpeed > currentMaxSpeed)
@@ -242,10 +249,31 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(ReleaseFreeze(1.0f));
     }
 
+    private void HandleBoosterCollision()
+    {
+        boosterOnPad = true;
+        StartCoroutine(ReleaseBooster(1.5f));
+    }
+
+    private void Booster()
+    {
+        Vector2 playerDirection = transform.forward;
+        inputDir += playerDirection;
+
+        currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
+        currentSpeed = currentMaxSpeed;
+    }
+
     private IEnumerator ReleaseFreeze(float dealy)
     {
         yield return new WaitForSeconds(dealy);
         freezing = false;
+    }
+
+    private IEnumerator ReleaseBooster(float dealy)
+    {
+        yield return new WaitForSeconds(dealy);
+        boosterOnPad = false;
     }
 
 }
