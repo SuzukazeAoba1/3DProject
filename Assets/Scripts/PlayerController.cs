@@ -270,8 +270,7 @@ public class PlayerController : MonoBehaviour
             inputDegree = Mathf.Round(inputDegree);
 
             float directionCheck = (360.0f + inputDegree - playerDegree) % 360.0f;
-            Debug.Log(directionCheck);
-
+ 
             if (directionCheck < 170.0f)
             {
                 transform.rotation = Quaternion.Euler(0.0f, playerDegree + baseRotSpeed * Time.deltaTime, 0.0f);
