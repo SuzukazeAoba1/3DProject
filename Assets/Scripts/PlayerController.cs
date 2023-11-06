@@ -31,9 +31,9 @@ public class PlayerController : MonoBehaviour
     public bool doubleJump;
     public bool superJump;
 
-    public bool freezing;       //모든 키 입력 불가
-    public bool immovable;      //회전만 가능
-    public bool braking;        //점프만 가능 (가다 멈추기)
+    public bool freezing;       //모든 키 입력 불가 상태
+    public bool immovable;      //키 입력 불가 상태, 회전만 가능
+    public bool braking;        //키 입력 불가 상태, 점프만 가능 (가다 멈추기)
     public bool keyReverse;     //방향 키 입력 반전
 
     public float freezingTimer;
@@ -163,34 +163,9 @@ public class PlayerController : MonoBehaviour
             PlayerJump();
         }
 
-        if (keyReverse == true)
-        {
-            inputDir = -inputDir;
-        }
-
+        PlayerKeyReverse();
         PlayerRotate();
-
-        if (landing == true)
-        {
-            if (inputDir == Vector2.zero)
-            {
-                if (braking == false && currentSpeed > 8.0f)
-                {
-                    braking = true;
-                    brakingTimer = 0.6f;
-                }
-                else
-                {
-                    currentSpeed -= currentBraking * Time.deltaTime;
-                }
-            }
-            else if (immovable == false)
-            {
-                currentSpeed += currentAccel * Time.deltaTime;
-            }
-        }
-
-        SpeedCheck();
+        PlayerAddSpeed();
         AnimatorSet();
     }
 
@@ -259,6 +234,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void PlayerKeyReverse()
+    {
+        if (keyReverse == true)
+        {
+            inputDir = -inputDir;
+        }
+    }
+
     public void PlayerRotate()
     {
 
@@ -271,7 +254,11 @@ public class PlayerController : MonoBehaviour
 
             float directionCheck = (360.0f + inputDegree - playerDegree) % 360.0f;
  
-            if (directionCheck < 170.0f)
+            if(directionCheck < 1.0f || directionCheck > 359.0f)
+            {
+
+            }
+            else if (directionCheck < 170.0f)
             {
                 transform.rotation = Quaternion.Euler(0.0f, playerDegree + baseRotSpeed * Time.deltaTime, 0.0f);
             }
@@ -292,6 +279,30 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void PlayerAddSpeed()
+    {
+        if (landing == true)
+        {
+            if (inputDir == Vector2.zero)
+            {
+                if (braking == false && currentSpeed > 8.0f)
+                {
+                    braking = true;
+                    brakingTimer = 0.6f;
+                }
+                else
+                {
+                    currentSpeed -= currentBraking * Time.deltaTime;
+                }
+            }
+            else if (immovable == false)
+            {
+                currentSpeed += currentAccel * Time.deltaTime;
+            }
+        }
+        SpeedCheck();
     }
 
     public void SpeedCheck()
