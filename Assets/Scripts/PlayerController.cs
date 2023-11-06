@@ -32,8 +32,14 @@ public class PlayerController : MonoBehaviour
 
     public bool freezing;       //모든 키 입력 불가
     public bool immovable;      //회전만 가능
-    public bool keyReverse;
-    
+    public bool braking;        //점프만 가능 (가다 멈추기)
+    public bool keyReverse;     //방향 키 입력 반전
+
+    public float freezingTimer;
+    public float immovableTimer;
+    public float brakingTimer;
+    public float keyReverseTimer;
+
 
     private void Start()
     {
@@ -44,7 +50,55 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         PlayerControl();
+        StateTimerCheck();
         transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
+    }
+
+    private void StateTimerCheck()
+    {
+        if (freezing)
+        {
+            freezingTimer -= Time.deltaTime;
+
+            if (freezingTimer <= 0.0f)
+            {
+                freezingTimer = 0.0f;
+                freezing = false;
+            }
+        }
+
+        if (immovable)
+        {
+            immovableTimer -= Time.deltaTime;
+
+            if (immovableTimer <= 0.0f)
+            {
+                immovableTimer = 0.0f;
+                immovable = false;
+            }
+        }
+
+        if (braking)
+        {
+            brakingTimer -= Time.deltaTime;
+
+            if (brakingTimer <= 0.0f)
+            {
+                brakingTimer = 0.0f;
+                braking = false;
+            }
+        }
+
+        if (keyReverse)
+        {
+            keyReverseTimer -= Time.deltaTime;
+
+            if (keyReverseTimer <= 0.0f)
+            {
+                keyReverseTimer = 0.0f;
+                keyReverse = false;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -86,25 +140,18 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void BoosterOn()
-    {
-
-    }
-
-
     private void PlayerControl()
     {
 
-        //플레이어의 방향과 입력이 일치하면 속도 증가,
-        //일치하지 않으면 입력 방향으로 회전,
-        //입력하지 않으면 속도 감소
         //착지 대시용 콜라이더 필요
 
-        
         if (freezing == false)
         {
-            InputArrow();
-            PlayerBooster();
+            if (braking == false)
+            {
+                InputArrow();
+                PlayerBooster();
+            }
             PlayerJump();
         }
 
@@ -119,7 +166,15 @@ public class PlayerController : MonoBehaviour
         {
             if (inputDir == Vector2.zero)
             {
-                currentSpeed -= currentBraking * Time.deltaTime;
+                if (braking == false && currentSpeed > 8.0f)
+                {
+                    braking = true;
+                    brakingTimer = 0.6f;
+                }
+                else
+                {
+                    currentSpeed -= currentBraking * Time.deltaTime;
+                }
             }
             else if (immovable == false)
             {
@@ -207,16 +262,28 @@ public class PlayerController : MonoBehaviour
             inputDegree = Mathf.Round(inputDegree);
 
             float directionCheck = (360.0f + inputDegree - playerDegree) % 360.0f;
+            Debug.Log(directionCheck);
 
-            if(directionCheck < 179.0f)
+            if (directionCheck < 170.0f)
             {
                 transform.rotation = Quaternion.Euler(0.0f, playerDegree + baseRotSpeed * Time.deltaTime , 0.0f);
             }
-            else if(directionCheck > 181.0f)
+            else if(directionCheck > 190.0f)
             {
                 transform.rotation = Quaternion.Euler(0.0f, playerDegree - baseRotSpeed * Time.deltaTime, 0.0f);
             }
-
+            else
+            {
+                if (currentSpeed < 5.0f)
+                {
+                    currentSpeed = 0.0f; 
+                    transform.rotation = Quaternion.Euler(0.0f, playerDegree - baseRotSpeed * Time.deltaTime, 0.0f);
+                }
+                else
+                {
+                    inputDir = Vector2.zero; //정지
+                }
+            }
         }
     }
 
@@ -236,7 +303,7 @@ public class PlayerController : MonoBehaviour
     }
     public void AnimatorSet()
     {
-        animator.SetFloat("RunAniSpeed", (currentSpeed / 40.0f) + 0.4f);
+        animator.SetFloat("RunAniSpeed", (currentSpeed / 20.0f) + 0.5f);
         animator.SetFloat("Speed", currentSpeed);
         animator.SetBool("Landing", landing);
         animator.SetBool("Jumping", singleJump);
