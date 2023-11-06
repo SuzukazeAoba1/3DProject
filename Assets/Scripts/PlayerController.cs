@@ -33,31 +33,43 @@ public class PlayerController : MonoBehaviour
 
     public bool freezing;       //모든 키 입력 불가
     public bool immovable;      //회전만 가능
-    public bool braking;        //점프만 가능 (가다 멈추기)
+    public bool breaking;        //점프만 가능 (가다 멈추기)
     public bool keyReverse;     //방향 키 입력 반전
+    public bool stunning;
 
     public float freezingTimer;
+    private float freezingOriginTimer;
     public float immovableTimer;
-    public float brakingTimer;
+    private float immovableOriginTimer;
+    public float breakingTimer;
+    private float breakingOriginTimer;
     public float keyReverseTimer;
+    public float boosterTimer;
+    private float boosterOriginTimer;
+    public float stunTimer;
+    private float stunOriginTimer;
 
     private void Start()
     {
         animator = transform.Find("Player").gameObject.GetComponent<Animator>();
         rigid = GetComponent<Rigidbody>();
+
+        freezingOriginTimer = freezingTimer;
+        immovableOriginTimer = immovableTimer;
+        breakingOriginTimer = breakingTimer;
+        boosterOriginTimer = boosterTimer;
+        stunOriginTimer = stunTimer;
     }
 
     private void Update()
     {
         PlayerControl();
         StateTimerCheck();
-
-        /*
+        
         if (boosterOnPad && !freezing)
         {
             Booster();
         }
-        */
 
         transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
     }
@@ -70,8 +82,30 @@ public class PlayerController : MonoBehaviour
 
             if (freezingTimer <= 0.0f)
             {
-                freezingTimer = 0.0f;
+                freezingTimer = freezingOriginTimer;
                 freezing = false;
+            }
+        }
+
+        if (stunning)
+        {
+            stunTimer -= Time.deltaTime;
+
+            if (stunTimer <= 0.0f)
+            {
+                stunTimer = stunOriginTimer;
+                stunning = false;
+            }
+        }
+
+        if (boosterOnPad)
+        {
+            boosterTimer -= Time.deltaTime;
+
+            if (boosterTimer <= 0.0f)
+            {
+                boosterTimer = boosterOriginTimer;
+                boosterOnPad = false;
             }
         }
 
@@ -81,19 +115,19 @@ public class PlayerController : MonoBehaviour
 
             if (immovableTimer <= 0.0f)
             {
-                immovableTimer = 0.0f;
+                immovableTimer = immovableOriginTimer;
                 immovable = false;
             }
         }
 
-        if (braking)
+        if (breaking)
         {
-            brakingTimer -= Time.deltaTime;
+            breakingTimer -= Time.deltaTime;
 
-            if (brakingTimer <= 0.0f)
+            if (breakingTimer <= 0.0f)
             {
-                brakingTimer = 0.0f;
-                braking = false;
+                breakingTimer = breakingOriginTimer;
+                breaking = false;
             }
         }
 
@@ -153,14 +187,40 @@ public class PlayerController : MonoBehaviour
 
         //착지 대시용 콜라이더 필요
 
-        if (freezing == false)
+        if (freezing == false )
         {
-            if (braking == false)
+            if (breaking == false)
             {
-                InputArrow();
-                PlayerBooster();
+                if(!stunning)
+                {
+                    InputArrow();
+                    PlayerBooster();
+                }   
             }
             PlayerJump();
+        }
+
+        if (landing == true)
+        {
+            if (!stunning)
+            {
+                if (inputDir == Vector2.zero)
+                {
+                    if (breaking == false && currentSpeed > 8.0f)
+                    {
+                        breaking = true;
+                        breakingTimer = 0.6f;
+                    }
+                    else
+                    {
+                        currentSpeed -= currentBraking * Time.deltaTime;
+                    }
+                }
+                else if (immovable == false)
+                {
+                    currentSpeed += currentAccel * Time.deltaTime;
+                }
+            }
         }
 
         if (keyReverse == true)
@@ -169,26 +229,6 @@ public class PlayerController : MonoBehaviour
         }
 
         PlayerRotate();
-
-        if (landing == true)
-        {
-            if (inputDir == Vector2.zero)
-            {
-                if (braking == false && currentSpeed > 8.0f)
-                {
-                    braking = true;
-                    brakingTimer = 0.6f;
-                }
-                else
-                {
-                    currentSpeed -= currentBraking * Time.deltaTime;
-                }
-            }
-            else if (immovable == false)
-            {
-                currentSpeed += currentAccel * Time.deltaTime;
-            }
-        }
 
         SpeedCheck();
         AnimatorSet();
@@ -270,7 +310,6 @@ public class PlayerController : MonoBehaviour
             inputDegree = Mathf.Round(inputDegree);
 
             float directionCheck = (360.0f + inputDegree - playerDegree) % 360.0f;
-            Debug.Log(directionCheck);
 
             if (directionCheck < 170.0f)
             {
@@ -325,54 +364,39 @@ public class PlayerController : MonoBehaviour
         HurdleObstacle hurdleScript = hurdle.GetComponent<HurdleObstacle>();
         if (hurdleScript != null && Mathf.Abs(hurdleScript.transform.rotation.eulerAngles.x) <= 0f)
         {
-            Debug.Log(hurdleScript.isCollision);
+            stunning = true;
             Vector3 playerDirection = transform.forward;
 
-            freezing = true;
             currentSpeed = 0;
             rigid.AddForce(playerDirection * 4f, ForceMode.Impulse);
-
-            StartCoroutine(ReleaseFreeze(2.0f));
         }
     }
 
     private void HandleBoosterCollision()
     {
         boosterOnPad = true;
-        StartCoroutine(ReleaseBooster(1.5f));
     }
 
 
     private void KnockBackCollision()
     {
+        stunning = true;
         Vector3 playerDirection = -transform.forward;
-        Vector3 hightVector = new Vector3(0, 1, 0);
-
-        freezing = true;
+        Vector3 highVector = new Vector3(0, 1, 0);
+        rigid.AddForce((playerDirection + highVector) * 4.5f, ForceMode.Impulse);
+      
         currentSpeed = 0;
-        rigid.AddForce((playerDirection + hightVector) * 4.5f, ForceMode.Impulse);
-        StartCoroutine(ReleaseFreeze(1.0f));
     }
 
-    private IEnumerator ReleaseFreeze(float dealy)
-    {
-        yield return new WaitForSeconds(dealy);
-        freezing = false;
-    }
 
     private void Booster()
     {
         Vector2 playerDirection = transform.forward;
-        inputDir += playerDirection;
+        Debug.Log(playerDirection);
+        inputDir = playerDirection;
 
         currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
         currentSpeed = currentMaxSpeed;
-    }
-
-    private IEnumerator ReleaseBooster(float dealy)
-    {
-        yield return new WaitForSeconds(dealy);
-        boosterOnPad = false;
-    }
+    } 
 
 }
