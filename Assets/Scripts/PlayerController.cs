@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     public bool freezing;       //모든 키 입력 불가
     public bool immovable;      //회전만 가능
     public bool keyReverse;
-    
+
 
     private void Start()
     {
@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
         //입력하지 않으면 속도 감소
         //착지 대시용 콜라이더 필요
 
-        
+
         if (freezing == false)
         {
             InputArrow();
@@ -208,11 +208,11 @@ public class PlayerController : MonoBehaviour
 
             float directionCheck = (360.0f + inputDegree - playerDegree) % 360.0f;
 
-            if(directionCheck < 179.0f)
+            if (directionCheck < 179.0f)
             {
-                transform.rotation = Quaternion.Euler(0.0f, playerDegree + baseRotSpeed * Time.deltaTime , 0.0f);
+                transform.rotation = Quaternion.Euler(0.0f, playerDegree + baseRotSpeed * Time.deltaTime, 0.0f);
             }
-            else if(directionCheck > 181.0f)
+            else if (directionCheck > 181.0f)
             {
                 transform.rotation = Quaternion.Euler(0.0f, playerDegree - baseRotSpeed * Time.deltaTime, 0.0f);
             }
