@@ -397,7 +397,7 @@ public class PlayerController : MonoBehaviour
     private void KnockBackCollision()
     {
             Vector3 playerDirection = -transform.forward;
-            Vector3 highVector = new Vector3(0, 1, 0);
+            Vector3 highVector = new Vector3(0, 1.5f, 0);
             rigid.AddForce((playerDirection + highVector) * 4.5f, ForceMode.Impulse);
     }
 

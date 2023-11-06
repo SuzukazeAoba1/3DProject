@@ -856,7 +856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5074939005717487335, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
       propertyPath: stunTimer
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5074939005717487335, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
       propertyPath: baseMaxSpeed
@@ -868,11 +868,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5074939005717487335, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
       propertyPath: boosterTimer
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5074939005717487335, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
       propertyPath: freezingTimer
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5074939005717487335, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
       propertyPath: currentBraking
