@@ -52,15 +52,16 @@ MonoBehaviour:
   currentSpeed: 0
   currentMaxSpeed: 0
   currentAccel: 0
-  currentBraking: 20
-  baseMaxSpeed: 15
-  baseAccel: 8
-  baseRotSpeed: 150
+  currentBraking: 50
+  baseMaxSpeed: 10
+  baseAccel: 7
+  baseRotSpeed: 600
   baseJumpPower: 600
   boosterbuf: 0
+  boosterOnPad: 0
   boosterSkill: 0
   boosterGauge: 0
-  boosterAddAccel: 15
+  boosterAddAccel: 8
   boosterMaxSpeed: 10
   awakenGauge: 0
   landing: 0
@@ -69,7 +70,12 @@ MonoBehaviour:
   superJump: 0
   freezing: 0
   immovable: 0
+  braking: 0
   keyReverse: 0
+  freezingTimer: 0
+  immovableTimer: 0
+  brakingTimer: 0
+  keyReverseTimer: 0
 --- !u!136 &5074939005717487330
 CapsuleCollider:
   m_ObjectHideFlags: 0

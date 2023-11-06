@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
         PlayerControl();
         StateTimerCheck();
         
-        if (boosterOnPad && !freezing)
+        if (boosterOnPad && !stunning)
         {
             Booster();
         }
@@ -200,37 +200,9 @@ public class PlayerController : MonoBehaviour
             PlayerJump();
         }
 
-        if (landing == true)
-        {
-            if (!stunning)
-            {
-                if (inputDir == Vector2.zero)
-                {
-                    if (breaking == false && currentSpeed > 8.0f)
-                    {
-                        breaking = true;
-                        breakingTimer = 0.6f;
-                    }
-                    else
-                    {
-                        currentSpeed -= currentBraking * Time.deltaTime;
-                    }
-                }
-                else if (immovable == false)
-                {
-                    currentSpeed += currentAccel * Time.deltaTime;
-                }
-            }
-        }
-
-        if (keyReverse == true)
-        {
-            inputDir = -inputDir;
-        }
-
+        PlayerKeyReverse();
         PlayerRotate();
-
-        SpeedCheck();
+        PlayerAddSpeed();
         AnimatorSet();
     }
 
@@ -299,6 +271,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void PlayerKeyReverse()
+    {
+        if (keyReverse == true)
+        {
+            inputDir = -inputDir;
+        }
+    }
+
     public void PlayerRotate()
     {
 
@@ -310,8 +290,12 @@ public class PlayerController : MonoBehaviour
             inputDegree = Mathf.Round(inputDegree);
 
             float directionCheck = (360.0f + inputDegree - playerDegree) % 360.0f;
+ 
+            if(directionCheck < 1.0f || directionCheck > 359.0f)
+            {
 
-            if (directionCheck < 170.0f)
+            }
+            else if (directionCheck < 170.0f)
             {
                 transform.rotation = Quaternion.Euler(0.0f, playerDegree + baseRotSpeed * Time.deltaTime, 0.0f);
             }
@@ -332,6 +316,30 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void PlayerAddSpeed()
+    {
+        if (landing == true)
+        {
+            if (inputDir == Vector2.zero)
+            {
+                if (breaking == false && currentSpeed > 8.0f)
+                {
+                    breaking = true;
+                    breakingTimer = 0.6f;
+                }
+                else
+                {
+                    currentSpeed -= currentBraking * Time.deltaTime;
+                }
+            }
+            else if (immovable == false)
+            {
+                currentSpeed += currentAccel * Time.deltaTime;
+            }
+        }
+        SpeedCheck();
     }
 
     public void SpeedCheck()

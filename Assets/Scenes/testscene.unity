@@ -256,23 +256,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5074939005717487335, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
       propertyPath: baseAccel
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5074939005717487335, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
-      propertyPath: baseMaxSpeed
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5074939005717487335, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
-      propertyPath: baseRotSpeed
-      value: 600
-      objectReference: {fileID: 0}
-    - target: {fileID: 5074939005717487335, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
-      propertyPath: currentBraking
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5074939005717487335, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
       propertyPath: boosterAddAccel
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
