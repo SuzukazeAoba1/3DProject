@@ -20,37 +20,30 @@ public class BoosterPad : MonoBehaviour
         playerCtrl = player.GetComponent<PlayerController>();
     }
 
+    private void Update()
+    {
+        if(isCollison)
+        {
+            playerDirection = player.transform.forward;
+            playerRigid.AddForce(playerDirection * boosterSpeed, ForceMode.Impulse);
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //playerCtrl.Booster();
             isCollison = true;
+            StartCoroutine(ReleaseFreeze(2.0f));
         }
+
     }
 
-    private void OnCollisionExit(Collision collision)
+    private IEnumerator ReleaseFreeze(float dealy)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isCollison = false;
-        }
+        yield return new WaitForSeconds(dealy);
+        isCollison = false;
     }
+
+
 }
-
-
-/*
- *  
- * 
- * 
- * if(collision.gameObject.CompareTag("Player"))
-        {
-            playerDirection = collision.transform.forward;
-            Debug.Log(playerDirection);
-            
-            
-            playerRigid.velocity = Vector3.zero;
-            playerRigid.AddForce(playerDirection * boosterSpeed, ForceMode.Impulse);
-            isCollison = true;
-        }
- */
