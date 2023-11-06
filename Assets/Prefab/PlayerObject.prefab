@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1164418966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1164418967}
+  - component: {fileID: 1164418968}
+  m_Layer: 0
+  m_Name: LandingCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1164418967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164418966}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5074939005717487332}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1164418968
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164418966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: -0.7, z: 0}
 --- !u!1 &5074939005717487334
 GameObject:
   m_ObjectHideFlags: 0
@@ -32,6 +77,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1617504692451451873}
+  - {fileID: 1164418967}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3fe402591b77d40b56b411062deb97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 4174521706708746743}
   animator: {fileID: 0}
   inputDir: {x: 0, y: 0}
   currentSpeed: 0
@@ -54,28 +101,32 @@ MonoBehaviour:
   currentAccel: 0
   currentBraking: 50
   baseMaxSpeed: 10
-  baseAccel: 7
+  baseAccel: 10
   baseRotSpeed: 600
   baseJumpPower: 600
   boosterbuf: 0
   boosterOnPad: 0
   boosterSkill: 0
-  boosterGauge: 0
-  boosterAddAccel: 8
+  boosterAddAccel: 10
   boosterMaxSpeed: 10
+  boosterGauge: 0
   awakenGauge: 0
   landing: 0
+  fallCountTimer: 0
   singleJump: 0
   doubleJump: 0
   superJump: 0
   freezing: 0
   immovable: 0
-  braking: 0
+  breaking: 0
   keyReverse: 0
+  stunning: 0
   freezingTimer: 0
   immovableTimer: 0
-  brakingTimer: 0
+  breakingTimer: 0
   keyReverseTimer: 0
+  boosterTimer: 0
+  stunTimer: 0
 --- !u!136 &5074939005717487330
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -174,5 +225,10 @@ PrefabInstance:
 --- !u!4 &1617504692451451873 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5376089254297799353, guid: 575f64750d92aa34892e02a71a3cdf0c, type: 3}
+  m_PrefabInstance: {fileID: 6694938687193459032}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4174521706708746743 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7280018341050706095, guid: 575f64750d92aa34892e02a71a3cdf0c, type: 3}
   m_PrefabInstance: {fileID: 6694938687193459032}
   m_PrefabAsset: {fileID: 0}
