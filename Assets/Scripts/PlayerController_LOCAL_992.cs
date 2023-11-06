@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public float baseJumpPower;
 
     public bool boosterbuf;
+    public bool boosterOnPad;
     public bool boosterSkill;
     public float boosterGauge;
     public float boosterAddAccel;
@@ -31,9 +32,9 @@ public class PlayerController : MonoBehaviour
     public bool superJump;
 
     public bool freezing;       //모든 키 입력 불가
-    public bool immovable;      //회전만 가능
+    public bool immovable;      //회전 가능
     public bool keyReverse;
-    
+
 
     private void Start()
     {
@@ -44,6 +45,12 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         PlayerControl();
+        
+        if (boosterOnPad && !freezing)
+        {
+            Booster();
+        }
+
         transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
     }
 
@@ -81,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Booster"))
         {
-
+            HandleBoosterCollision();
         }
 
     }
@@ -100,131 +107,97 @@ public class PlayerController : MonoBehaviour
         //입력하지 않으면 속도 감소
         //착지 대시용 콜라이더 필요
 
-        
+        bool move = false;
+
+        inputDir = Vector2.zero;
+
         if (freezing == false)
         {
-            InputArrow();
-            PlayerBooster();
-            PlayerJump();
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                inputDir += Vector2.up;
+                move = true;
+            }
+
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                inputDir += Vector2.down;
+                move = true;
+            }
+
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                inputDir += Vector2.left;
+                move = true;
+            }
+
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                inputDir += Vector2.right;
+                move = true;
+            }
+
+
+            if (Input.GetKey(KeyCode.Z))
+            {
+                currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
+                currentAccel = baseAccel + boosterAddAccel;
+            }
+            else
+            {
+                currentMaxSpeed = baseMaxSpeed;
+                currentAccel = baseAccel;
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                if (singleJump == false)
+                {
+                    rigid.AddForce(Vector3.up * baseJumpPower);
+                    landing = false;
+                    singleJump = true;
+                }
+                else if (doubleJump == false)
+                {
+                    if (rigid.velocity.y < 0 )
+                    {
+                        rigid.velocity = new Vector3(rigid.velocity.x, 0, rigid.velocity.z);
+                    }
+                    else if (rigid.velocity.y > 3)
+                    {
+                        rigid.velocity = new Vector3(rigid.velocity.x, 3, rigid.velocity.z);
+                    }
+                    rigid.AddForce(Vector3.up * baseJumpPower * 0.5f);
+                    doubleJump = true;
+                }
+            }
+
+            if (move == true)
+            {
+                if (keyReverse)
+                {
+                    inputDir = -inputDir;
+                }
+
+                float degree = (450.01f - (Mathf.Atan2(inputDir.y, inputDir.x) * Mathf.Rad2Deg)) % 360.0f - 0.01f;
+                degree = Mathf.Round(degree);
+
+                transform.rotation = Quaternion.Euler(0.0f, degree, 0.0f);
+
+                if (landing == true && immovable == false)
+                {
+                    currentSpeed += currentAccel * Time.deltaTime;
+                }
+            }
         }
-
-        if (keyReverse == true)
-        {
-            inputDir = -inputDir;
-        }
-
-        PlayerRotate();
-
+                                                                                                                                                                                                                                                                                                
         if (landing == true)
         {
-            if (inputDir == Vector2.zero)
+            if (move == false || currentSpeed > currentMaxSpeed)
             {
                 currentSpeed -= currentBraking * Time.deltaTime;
             }
-            else if (immovable == false)
-            {
-                currentSpeed += currentAccel * Time.deltaTime;
-            }
-        }
-
-        SpeedCheck();
-        AnimatorSet();
-    }
-
-    public void InputArrow()
-    {
-        inputDir = Vector2.zero;
-
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            inputDir += Vector2.up;
-        }
-
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            inputDir += Vector2.down;
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            inputDir += Vector2.left;
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            inputDir += Vector2.right;
-        }
-    }
-
-    public void PlayerJump()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            if (singleJump == false)
-            {
-                rigid.AddForce(Vector3.up * baseJumpPower);
-                landing = false;
-                singleJump = true;
-            }
-            else if (doubleJump == false)
-            {
-                if (rigid.velocity.y < 0)
-                {
-                    rigid.velocity = new Vector3(rigid.velocity.x, 0, rigid.velocity.z);
-                }
-                else if (rigid.velocity.y > 3)
-                {
-                    rigid.velocity = new Vector3(rigid.velocity.x, 3, rigid.velocity.z);
-                }
-                rigid.AddForce(Vector3.up * baseJumpPower * 0.5f);
-                doubleJump = true;
-            }
-        }
-    }
-
-    public void PlayerBooster()
-    {
-        if (Input.GetKey(KeyCode.Z))
-        {
-            currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
-            currentAccel = baseAccel + boosterAddAccel;
-        }
-        else
-        {
-            currentMaxSpeed = baseMaxSpeed;
-            currentAccel = baseAccel;
-        }
-    }
-
-    public void PlayerRotate()
-    {
-
-        if (inputDir != Vector2.zero)
-        {
-
-            float playerDegree = transform.rotation.eulerAngles.y;
-            float inputDegree = (450.01f - (Mathf.Atan2(inputDir.y, inputDir.x) * Mathf.Rad2Deg)) % 360.0f - 0.01f;
-            inputDegree = Mathf.Round(inputDegree);
-
-            float directionCheck = (360.0f + inputDegree - playerDegree) % 360.0f;
-
-            if(directionCheck < 179.0f)
-            {
-                transform.rotation = Quaternion.Euler(0.0f, playerDegree + baseRotSpeed * Time.deltaTime , 0.0f);
-            }
-            else if(directionCheck > 181.0f)
-            {
-                transform.rotation = Quaternion.Euler(0.0f, playerDegree - baseRotSpeed * Time.deltaTime, 0.0f);
-            }
-
-        }
-    }
-
-    public void SpeedCheck()
-    {
-        if (currentSpeed > currentMaxSpeed)
-        {
-            currentSpeed -= currentBraking * Time.deltaTime;
         }
 
         if (currentSpeed >= baseMaxSpeed + boosterMaxSpeed)
@@ -233,7 +206,10 @@ public class PlayerController : MonoBehaviour
         }
 
         if (currentSpeed <= 0) currentSpeed = 0;
+
+        AnimatorSet();
     }
+
     public void AnimatorSet()
     {
         animator.SetFloat("RunAniSpeed", (currentSpeed / 40.0f) + 0.4f);
@@ -273,10 +249,31 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(ReleaseFreeze(1.0f));
     }
 
+    private void HandleBoosterCollision()
+    {
+        boosterOnPad = true;
+        StartCoroutine(ReleaseBooster(1.5f));
+    }
+
+    private void Booster()
+    {
+        Vector2 playerDirection = transform.forward;
+        inputDir += playerDirection;
+
+        currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
+        currentSpeed = currentMaxSpeed;
+    }
+
     private IEnumerator ReleaseFreeze(float dealy)
     {
         yield return new WaitForSeconds(dealy);
         freezing = false;
+    }
+
+    private IEnumerator ReleaseBooster(float dealy)
+    {
+        yield return new WaitForSeconds(dealy);
+        boosterOnPad = false;
     }
 
 }
