@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject player;
     public Animator animator;
     private Rigidbody rigid;
 
@@ -21,12 +22,14 @@ public class PlayerController : MonoBehaviour
     public bool boosterbuf;
     public bool boosterOnPad;
     public bool boosterSkill;
-    public float boosterGauge;
     public float boosterAddAccel;
     public float boosterMaxSpeed;
+    public float boosterGauge;
     public float awakenGauge;
 
     public bool landing;
+    public float fallCountTimer;
+
     public bool singleJump;
     public bool doubleJump;
     public bool superJump;
@@ -46,7 +49,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        animator = transform.Find("Player").gameObject.GetComponent<Animator>();
+        player = transform.Find("Player").gameObject;
+        animator = player.GetComponent<Animator>();
         rigid = GetComponent<Rigidbody>();
     }
 
@@ -63,8 +67,38 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
     }
 
+
+    private void PlayerControl()
+    {
+        if (stunning == false)
+        {
+            //착지 대시용 콜라이더 필요
+            if (freezing == false)
+            {
+                if (breaking == false)
+                {
+                    InputArrow();
+                    PlayerBooster();
+                }
+                PlayerJump();
+            }
+            PlayerRotate();
+            PlayerAddSpeed();
+        }
+        PlayerKeyReverse();
+        AnimatorSet();
+    }
+
+
+
     private void StateTimerCheck()
     {
+
+        if(landing == false)
+        {
+            fallCountTimer += Time.deltaTime;
+        }
+
         if (freezing)
         {
             freezingTimer -= Time.deltaTime;
@@ -199,26 +233,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void PlayerControl()
-    {
-        if (stunning == false)
-        {
-            //착지 대시용 콜라이더 필요
-            if (freezing == false )
-            {
-                if (breaking == false)
-                { 
-                   InputArrow();
-                   PlayerBooster();   
-                }
-                PlayerJump();
-            }
-                PlayerRotate();
-                PlayerAddSpeed();
-        }
-        PlayerKeyReverse();
-        AnimatorSet();
-    }
 
     public void InputArrow()
     {
@@ -333,7 +347,11 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerAddSpeed()
     {
-            if (landing == true)
+        if (landing == true)
+        {
+            fallCountTimer = 0.0f;
+
+            if (inputDir == Vector2.zero)
             {
                 if (inputDir == Vector2.zero)
                 {
@@ -352,7 +370,14 @@ public class PlayerController : MonoBehaviour
                     currentSpeed += currentAccel * Time.deltaTime;
                 }
             }
-            SpeedCheck();
+        else if (immovable == false)
+            {
+                currentSpeed += currentAccel * Time.deltaTime;
+            }
+        }
+
+        SpeedCheck();
+
     }
 
     public void SpeedCheck()
@@ -376,9 +401,8 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("Landing", landing);
         animator.SetBool("Jumping", singleJump);
         animator.SetBool("DoubleJumping", doubleJump);
+        animator.SetBool("Breaking", breaking);
     }
-
-
 
     private void HandleHurdleCollision(GameObject hurdle)
     {
