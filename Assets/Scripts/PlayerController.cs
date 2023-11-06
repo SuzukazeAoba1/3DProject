@@ -38,27 +38,16 @@ public class PlayerController : MonoBehaviour
     public bool stunning;
 
     public float freezingTimer;
-    private float freezingOriginTimer;
     public float immovableTimer;
-    private float immovableOriginTimer;
     public float breakingTimer;
-    private float breakingOriginTimer;
     public float keyReverseTimer;
     public float boosterTimer;
-    private float boosterOriginTimer;
     public float stunTimer;
-    private float stunOriginTimer;
 
     private void Start()
     {
         animator = transform.Find("Player").gameObject.GetComponent<Animator>();
         rigid = GetComponent<Rigidbody>();
-
-        freezingOriginTimer = freezingTimer;
-        immovableOriginTimer = immovableTimer;
-        breakingOriginTimer = breakingTimer;
-        boosterOriginTimer = boosterTimer;
-        stunOriginTimer = stunTimer;
     }
 
     private void Update()
@@ -82,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
             if (freezingTimer <= 0.0f)
             {
-                freezingTimer = freezingOriginTimer;
+                freezingTimer = 0.0f;
                 freezing = false;
             }
         }
@@ -93,7 +82,7 @@ public class PlayerController : MonoBehaviour
 
             if (stunTimer <= 0.0f)
             {
-                stunTimer = stunOriginTimer;
+                stunTimer = 0.0f;
                 stunning = false;
             }
         }
@@ -104,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
             if (boosterTimer <= 0.0f)
             {
-                boosterTimer = boosterOriginTimer;
+                boosterTimer = 0.0f;
                 boosterOnPad = false;
             }
         }
@@ -115,7 +104,7 @@ public class PlayerController : MonoBehaviour
 
             if (immovableTimer <= 0.0f)
             {
-                immovableTimer = immovableOriginTimer;
+                immovableTimer = 0.0f;
                 immovable = false;
             }
         }
@@ -126,7 +115,7 @@ public class PlayerController : MonoBehaviour
 
             if (breakingTimer <= 0.0f)
             {
-                breakingTimer = breakingOriginTimer;
+                breakingTimer = 0.0f;
                 breaking = false;
             }
         }
@@ -167,42 +156,67 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Hurdle"))
         {
-            HandleHurdleCollision(other.gameObject);
+            while (true)
+            {
+                if (!stunning)
+                {
+                    stunning = true;
+                    stunTimer = 2.0f;
+
+                    currentSpeed = 0;
+                }
+                else
+                {
+                    HandleHurdleCollision(other.gameObject);
+                    return;
+                }
+            }
         }
 
         if (other.gameObject.CompareTag("KnockBack"))
         {
-            KnockBackCollision();
+            while (true)
+            {
+                if (!stunning)
+                {
+                    stunning = true;
+                    stunTimer = 2.0f;
+
+                    currentSpeed = 0;
+                }
+                else
+                {
+                    KnockBackCollision();
+                    return;
+                }
+            }
         }
 
         if (other.gameObject.CompareTag("Booster"))
         {
-            HandleBoosterCollision();
+            Booster();
         }
 
     }
 
     private void PlayerControl()
     {
-
-        //착지 대시용 콜라이더 필요
-
-        if (freezing == false )
+        if (stunning == false)
         {
-            if (breaking == false)
+            //착지 대시용 콜라이더 필요
+            if (freezing == false )
             {
-                if(!stunning)
-                {
-                    InputArrow();
-                    PlayerBooster();
-                }   
+                if (breaking == false)
+                { 
+                   InputArrow();
+                   PlayerBooster();   
+                }
+                PlayerJump();
             }
-            PlayerJump();
+                PlayerRotate();
+                PlayerAddSpeed();
         }
-
         PlayerKeyReverse();
-        PlayerRotate();
-        PlayerAddSpeed();
         AnimatorSet();
     }
 
@@ -281,7 +295,6 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerRotate()
     {
-
         if (inputDir != Vector2.zero)
         {
 
@@ -320,26 +333,26 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerAddSpeed()
     {
-        if (landing == true)
-        {
-            if (inputDir == Vector2.zero)
+            if (landing == true)
             {
-                if (breaking == false && currentSpeed > 8.0f)
+                if (inputDir == Vector2.zero)
                 {
-                    breaking = true;
-                    breakingTimer = 0.6f;
+                    if (breaking == false && currentSpeed > 8.0f)
+                    {
+                        breaking = true;
+                        breakingTimer = 0.6f;
+                    }
+                    else
+                    {
+                        currentSpeed -= currentBraking * Time.deltaTime;
+                    }
                 }
-                else
+                else if (immovable == false)
                 {
-                    currentSpeed -= currentBraking * Time.deltaTime;
+                    currentSpeed += currentAccel * Time.deltaTime;
                 }
             }
-            else if (immovable == false)
-            {
-                currentSpeed += currentAccel * Time.deltaTime;
-            }
-        }
-        SpeedCheck();
+            SpeedCheck();
     }
 
     public void SpeedCheck()
@@ -369,42 +382,41 @@ public class PlayerController : MonoBehaviour
 
     private void HandleHurdleCollision(GameObject hurdle)
     {
-        HurdleObstacle hurdleScript = hurdle.GetComponent<HurdleObstacle>();
-        if (hurdleScript != null && Mathf.Abs(hurdleScript.transform.rotation.eulerAngles.x) <= 0f)
-        {
-            stunning = true;
-            Vector3 playerDirection = transform.forward;
+            HurdleObstacle hurdleScript = hurdle.GetComponent<HurdleObstacle>();
+            if (hurdleScript != null && Mathf.Abs(hurdleScript.transform.rotation.eulerAngles.x) <= 0f)
+            {
+                Vector3 playerDirection = transform.forward;
 
-            currentSpeed = 0;
-            rigid.AddForce(playerDirection * 4f, ForceMode.Impulse);
-        }
-    }
+                currentSpeed = 0;
+                rigid.AddForce(playerDirection * 4f, ForceMode.Impulse);
 
-    private void HandleBoosterCollision()
-    {
-        boosterOnPad = true;
+            }
     }
 
 
     private void KnockBackCollision()
     {
-        stunning = true;
-        Vector3 playerDirection = -transform.forward;
-        Vector3 highVector = new Vector3(0, 1, 0);
-        rigid.AddForce((playerDirection + highVector) * 4.5f, ForceMode.Impulse);
-      
-        currentSpeed = 0;
+            Vector3 playerDirection = -transform.forward;
+            Vector3 highVector = new Vector3(0, 1, 0);
+            rigid.AddForce((playerDirection + highVector) * 4.5f, ForceMode.Impulse);
     }
 
 
     private void Booster()
     {
-        Vector2 playerDirection = transform.forward;
-        Debug.Log(playerDirection);
-        inputDir = playerDirection;
+        if (!boosterOnPad)
+        {
+            boosterOnPad = true;
+            boosterTimer = 2.0f;
 
-        currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
-        currentSpeed = currentMaxSpeed;
+        }
+        else
+        {
+            Vector2 playerDirection = transform.forward;
+            inputDir = playerDirection;
+
+            currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
+            currentSpeed = currentMaxSpeed;
+        }
     } 
-
 }
