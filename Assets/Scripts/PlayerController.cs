@@ -67,6 +67,25 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("Landing", landing);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Hurdle"))
+        {
+            HandleHurdleCollision(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("KnockBack"))
+        {
+            KnockBackCollision();
+        }
+
+        if (other.gameObject.CompareTag("Booster"))
+        {
+
+        }
+
+    }
+
     private void BoosterOn()
     {
 
@@ -222,6 +241,42 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("Landing", landing);
         animator.SetBool("Jumping", singleJump);
         animator.SetBool("DoubleJumping", doubleJump);
+    }
+
+
+
+    private void HandleHurdleCollision(GameObject hurdle)
+    {
+        HurdleObstacle hurdleScript = hurdle.GetComponent<HurdleObstacle>();
+        if (hurdleScript != null && Mathf.Abs(hurdleScript.transform.rotation.eulerAngles.x) <= 0f)
+        {
+            Debug.Log(hurdleScript.isCollision);
+            Vector3 playerDirection = transform.forward;
+
+            freezing = true;
+            currentSpeed = 0;
+            rigid.AddForce(playerDirection * 4f, ForceMode.Impulse);
+
+            StartCoroutine(ReleaseFreeze(2.0f));
+        }
+    }
+
+
+    private void KnockBackCollision()
+    {
+        Vector3 playerDirection = -transform.forward;
+        Vector3 hightVector = new Vector3(0, 1, 0);
+
+        freezing = true;
+        currentSpeed = 0;
+        rigid.AddForce((playerDirection + hightVector) * 4.5f, ForceMode.Impulse);
+        StartCoroutine(ReleaseFreeze(1.0f));
+    }
+
+    private IEnumerator ReleaseFreeze(float dealy)
+    {
+        yield return new WaitForSeconds(dealy);
+        freezing = false;
     }
 
 }
