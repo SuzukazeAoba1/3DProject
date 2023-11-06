@@ -67,28 +67,28 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
     }
 
+
     private void PlayerControl()
     {
-
-        //착지 대시용 콜라이더 필요
-        if (freezing == false)
+        if (stunning == false)
         {
-            if (breaking == false)
+            //착지 대시용 콜라이더 필요
+            if (freezing == false)
             {
-                if (!stunning)
+                if (breaking == false)
                 {
                     InputArrow();
                     PlayerBooster();
                 }
+                PlayerJump();
             }
-            PlayerJump();
+            PlayerRotate();
+            PlayerAddSpeed();
         }
-
         PlayerKeyReverse();
-        PlayerRotate();
-        PlayerAddSpeed();
         AnimatorSet();
     }
+
 
 
     private void StateTimerCheck()
@@ -233,27 +233,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
-    private void PlayerControl()
-    {
-        if (stunning == false)
-        {
-            //착지 대시용 콜라이더 필요
-            if (freezing == false )
-            {
-                if (breaking == false)
-                { 
-                   InputArrow();
-                   PlayerBooster();   
-                }
-                PlayerJump();
-            }
-                PlayerRotate();
-                PlayerAddSpeed();
-        }
-        PlayerKeyReverse();
-        AnimatorSet();
-    }
 
     public void InputArrow()
     {
