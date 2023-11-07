@@ -226,6 +226,7 @@ public class PlayerController : MonoBehaviour
                     stunTimer = 2.0f;
 
                     currentSpeed = 0;
+                    animator.SetTrigger("FrontFlip");
                 }
                 else
                 {
@@ -245,6 +246,7 @@ public class PlayerController : MonoBehaviour
                     stunTimer = 2.0f;
 
                     currentSpeed = 0;
+                    animator.SetTrigger("BackFlip");
                 }
                 else
                 {
@@ -429,6 +431,9 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("Jumping", singleJump);
         animator.SetBool("DoubleJumping", doubleJump);
         animator.SetBool("Breaking", breaking);
+
+        if(boosterTimer > 0.0f) animator.SetBool("Booster", true);
+        else                    animator.SetBool("Booster", false);
     }
 
     private void HandleHurdleCollision(GameObject hurdle)
