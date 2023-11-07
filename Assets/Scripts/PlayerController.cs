@@ -34,11 +34,11 @@ public class PlayerController : MonoBehaviour
     public bool doubleJump;
     public bool superJump;
 
-    public bool stunning;
-    public bool freezing;       //모든 키 입력 불가
-    public bool immovable;      //회전만 가능
-    public bool breaking;        //점프만 가능 (가다 멈추기)
-    public bool keyReverse;     //방향 키 입력 반전
+    private bool stunning;
+    private bool freezing;       //모든 키 입력 불가
+    private bool immovable;      //회전만 가능
+    private bool breaking;        //점프만 가능 (가다 멈추기)
+    private bool keyReverse;     //방향 키 입력 반전
     
     public float freezingTimer;
     public float immovableTimer;
@@ -198,7 +198,7 @@ public class PlayerController : MonoBehaviour
                     stunTimer = 2.0f;
 
                     currentSpeed = 0;
-                    animator.SetTrigger("FrontFlip");
+                    animator.SetTrigger("Tripped");
                 }
                 else
                 {

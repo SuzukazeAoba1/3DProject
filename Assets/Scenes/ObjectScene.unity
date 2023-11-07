@@ -471,7 +471,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1165742299}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -484,7 +484,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 0dc3135a2900af14a8a86db0916f9d42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -849,38 +849,6 @@ PrefabInstance:
     - target: {fileID: 5074939005717487334, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
       propertyPath: m_Name
       value: PlayerObject
-      objectReference: {fileID: 0}
-    - target: {fileID: 5074939005717487335, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
-      propertyPath: baseAccel
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5074939005717487335, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
-      propertyPath: stunTimer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5074939005717487335, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
-      propertyPath: baseMaxSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5074939005717487335, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
-      propertyPath: baseRotSpeed
-      value: 600
-      objectReference: {fileID: 0}
-    - target: {fileID: 5074939005717487335, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
-      propertyPath: boosterTimer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5074939005717487335, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
-      propertyPath: freezingTimer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5074939005717487335, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
-      propertyPath: currentBraking
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5074939005717487335, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
-      propertyPath: boosterAddAccel
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b1b31464142fee4cb954e9a5cd50514, type: 3}
