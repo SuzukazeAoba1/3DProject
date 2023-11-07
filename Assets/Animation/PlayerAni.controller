@@ -194,9 +194,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.2999997
-  m_TransitionOffset: 0.0004150918
-  m_ExitTime: 0.8554923
+  m_TransitionDuration: 0.29999983
+  m_TransitionOffset: 0
+  m_ExitTime: 0.99
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -211,7 +211,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: FrontFlip
+    m_ConditionEvent: Tripped
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2310408631724137835}
@@ -336,7 +336,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: FrontFlip
+  - m_Name: Tripped
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -455,8 +455,8 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FrontFlip
-  m_Speed: 1
+  m_Name: Tripped
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -2034411443038180412}
@@ -469,7 +469,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: fc6741c57b2ef4f4e84941ebcdb6ed62, type: 2}
+  m_Motion: {fileID: 7400000, guid: 809841575f21b884c9a982ee63a53b02, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
