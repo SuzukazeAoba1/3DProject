@@ -265,6 +265,22 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (other.gameObject.CompareTag("Paralysis"))
+        {
+            while (true)
+            {
+                if (!paralysis)
+                {
+                    paralysis = true;
+                    paralysisTimer = 2.0f;
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
+
     }
 
 
