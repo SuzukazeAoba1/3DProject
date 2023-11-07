@@ -5,8 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject player;
-    public Animator animator;
+    public GameObject smoke;
+
     private Rigidbody rigid;
+    private Animator animator;
+    private ParticleSystem particle;
 
     public Vector2 inputDir;
     public float currentSpeed;
@@ -30,9 +33,9 @@ public class PlayerController : MonoBehaviour
     public bool landing;
     public float fallCountTimer;
 
-    public bool singleJump;
-    public bool doubleJump;
-    public bool superJump;
+    private bool singleJump;
+    private bool doubleJump;
+    private bool superJump;
 
     private bool stunning;
     private bool freezing;       //모든 키 입력 불가
@@ -49,9 +52,9 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        player = transform.Find("Player").gameObject;
-        animator = player.GetComponent<Animator>();
         rigid = GetComponent<Rigidbody>();
+        animator = player.gameObject.GetComponent<Animator>();
+        particle = smoke.gameObject.GetComponent<ParticleSystem>();
     }
 
     private void Update()
@@ -199,6 +202,7 @@ public class PlayerController : MonoBehaviour
 
                     currentSpeed = 0;
                     animator.SetTrigger("Tripped");
+                    StartCoroutine(PlaySmoke(0.1f));
                 }
                 else
                 {
@@ -219,6 +223,7 @@ public class PlayerController : MonoBehaviour
 
                     currentSpeed = 0;
                     animator.SetTrigger("BackFlip");
+                    StartCoroutine(PlaySmoke(0.8f));
                 }
                 else
                 {
@@ -236,7 +241,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public void InputArrow()
+    private void InputArrow()
     {
         inputDir = Vector2.zero;
 
@@ -261,7 +266,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void PlayerJump()
+    private void PlayerJump()
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -287,7 +292,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void PlayerBooster()
+    private void PlayerBooster()
     {
         if (Input.GetKey(KeyCode.Z))
         {
@@ -301,7 +306,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void PlayerKeyReverse()
+    private void PlayerKeyReverse()
     {
         if (keyReverse == true)
         {
@@ -309,7 +314,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void PlayerRotate()
+    private void PlayerRotate()
     {
         if (inputDir != Vector2.zero)
         {
@@ -347,7 +352,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void PlayerAddSpeed()
+    private void PlayerAddSpeed()
     {
         if (landing == true)
         {
@@ -355,34 +360,29 @@ public class PlayerController : MonoBehaviour
 
             if (inputDir == Vector2.zero)
             {
-                if (inputDir == Vector2.zero)
+                if (breaking == false && currentSpeed > 8.0f)
                 {
-                    if (breaking == false && currentSpeed > 8.0f)
-                    {
-                        breaking = true;
-                        breakingTimer = 0.6f;
-                    }
-                    else
-                    {
-                        currentSpeed -= currentBraking * Time.deltaTime;
-                    }
+                    breaking = true;
+                    breakingTimer = 0.6f;
+                    StartCoroutine(PlaySmoke(0.2f));
                 }
-                else if (immovable == false)
+                else
                 {
-                    currentSpeed += currentAccel * Time.deltaTime;
+                    currentSpeed -= currentBraking * Time.deltaTime;
                 }
             }
-        else if (immovable == false)
+            else if (immovable == false)
             {
                 currentSpeed += currentAccel * Time.deltaTime;
             }
+
         }
 
         SpeedCheck();
 
     }
 
-    public void SpeedCheck()
+    private void SpeedCheck()
     {
         if (currentSpeed > currentMaxSpeed)
         {
@@ -396,7 +396,7 @@ public class PlayerController : MonoBehaviour
 
         if (currentSpeed <= 0) currentSpeed = 0;
     }
-    public void AnimatorSet()
+    private void AnimatorSet()
     {
         animator.SetFloat("RunAniSpeed", (currentSpeed / 20.0f) + 0.5f);
         animator.SetFloat("Speed", currentSpeed);
@@ -407,6 +407,13 @@ public class PlayerController : MonoBehaviour
 
         if(boosterTimer > 0.0f) animator.SetBool("Booster", true);
         else                    animator.SetBool("Booster", false);
+    }
+    private IEnumerator PlaySmoke(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        GameObject buf = Instantiate(smoke);
+        buf.transform.position = transform.position;
+        buf.SetActive(true);
     }
 
     private void HandleHurdleCollision(GameObject hurdle)
