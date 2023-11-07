@@ -6,12 +6,14 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject player;
     public GameObject smoke;
+    public LandingCheck landingColider;
 
     private Rigidbody rigid;
     private Animator animator;
     private ParticleSystem particle;
+   
 
-    public Vector2 inputDir;
+    private Vector2 inputDir;
     public float currentSpeed;
     public float currentMaxSpeed;
     public float currentAccel;
@@ -30,7 +32,7 @@ public class PlayerController : MonoBehaviour
     public float boosterGauge;
     public float awakenGauge;
 
-    public bool landing;
+    public bool landing;        //¹Ù´Ú¿¡ ´ê¾ÒÀ» °æ¿ì
     public float fallCountTimer;
 
     private bool singleJump;
@@ -381,7 +383,6 @@ public class PlayerController : MonoBehaviour
         SpeedCheck();
 
     }
-
     private void SpeedCheck()
     {
         if (currentSpeed > currentMaxSpeed)
@@ -401,20 +402,24 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("RunAniSpeed", (currentSpeed / 20.0f) + 0.5f);
         animator.SetFloat("Speed", currentSpeed);
         animator.SetBool("Landing", landing);
+        animator.SetBool("Landing2", landingColider.GetBool());
         animator.SetBool("Jumping", singleJump);
         animator.SetBool("DoubleJumping", doubleJump);
         animator.SetBool("Breaking", breaking);
-
+        
         if(boosterTimer > 0.0f) animator.SetBool("Booster", true);
         else                    animator.SetBool("Booster", false);
+
+        
     }
     private IEnumerator PlaySmoke(float sec)
     {
         yield return new WaitForSeconds(sec);
         GameObject buf = Instantiate(smoke);
-        buf.transform.position = transform.position;
+        buf.transform.position = transform.position + transform.forward * (currentSpeed / 10.0f);
         buf.SetActive(true);
     }
+
 
     private void HandleHurdleCollision(GameObject hurdle)
     {
