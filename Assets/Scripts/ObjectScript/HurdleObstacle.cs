@@ -38,11 +38,6 @@ public class HurdleObstacle : MonoBehaviour
             {
                 targetRotation = transform.rotation * Quaternion.Euler(rotateValue, 0, 0);
             }
-            else if (playerDirection == Vector3.back)
-            {
-                targetRotation = transform.rotation * Quaternion.Euler(-rotateValue, 0, 0);
-                Debug.Log(-rotateValue);
-            }
 
             StartCoroutine(ResetRotation(delayTime));
         }
