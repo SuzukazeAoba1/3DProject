@@ -32,7 +32,7 @@ public class HurdleObstacle : MonoBehaviour
             isCollision = true;
 
             playerDirection = other.transform.forward;
-            Debug.Log(playerDirection);
+            //Debug.Log(playerDirection);
 
             if (playerDirection == Vector3.forward || playerDirection == Vector3.left || playerDirection == Vector3.right)
             {

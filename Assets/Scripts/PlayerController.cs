@@ -34,12 +34,12 @@ public class PlayerController : MonoBehaviour
     public bool doubleJump;
     public bool superJump;
 
+    public bool stunning;
     public bool freezing;       //모든 키 입력 불가
     public bool immovable;      //회전만 가능
     public bool breaking;        //점프만 가능 (가다 멈추기)
     public bool keyReverse;     //방향 키 입력 반전
-    public bool stunning;
-
+    
     public float freezingTimer;
     public float immovableTimer;
     public float breakingTimer;
@@ -198,6 +198,7 @@ public class PlayerController : MonoBehaviour
                     stunTimer = 2.0f;
 
                     currentSpeed = 0;
+                    animator.SetTrigger("FrontFlip");
                 }
                 else
                 {
@@ -217,6 +218,7 @@ public class PlayerController : MonoBehaviour
                     stunTimer = 2.0f;
 
                     currentSpeed = 0;
+                    animator.SetTrigger("BackFlip");
                 }
                 else
                 {
@@ -402,6 +404,9 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("Jumping", singleJump);
         animator.SetBool("DoubleJumping", doubleJump);
         animator.SetBool("Breaking", breaking);
+
+        if(boosterTimer > 0.0f) animator.SetBool("Booster", true);
+        else                    animator.SetBool("Booster", false);
     }
 
     private void HandleHurdleCollision(GameObject hurdle)
