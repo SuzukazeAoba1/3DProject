@@ -420,9 +420,9 @@ public class PlayerController : MonoBehaviour
 
     private void KnockBackCollision()
     {
-            Vector3 playerDirection = -transform.forward;
-            Vector3 highVector = new Vector3(0, 1.5f, 0);
-            rigid.AddForce((playerDirection + highVector) * 4.5f, ForceMode.Impulse);
+        Vector3 playerDirection = -transform.forward;
+        Vector3 highVector = new Vector3(0, 1.5f, 0);
+        rigid.AddForce((playerDirection + highVector) * 4.5f, ForceMode.Impulse);
     }
 
 
