@@ -411,23 +411,24 @@ public class PlayerController : MonoBehaviour
 
     private void HandleHurdleCollision(GameObject hurdle)
     {
-            HurdleObstacle hurdleScript = hurdle.GetComponent<HurdleObstacle>();
-            if (hurdleScript != null && Mathf.Abs(hurdleScript.transform.rotation.eulerAngles.x) <= 0f)
-            {
-                Vector3 playerDirection = transform.forward;
+        HurdleObstacle hurdleScript = hurdle.GetComponent<HurdleObstacle>();
+        if (hurdleScript != null && Mathf.Abs(hurdleScript.transform.rotation.eulerAngles.x) <= 0f)
+        {
+            Vector3 playerDirection = transform.forward;
 
-                currentSpeed = 0;
-                rigid.AddForce(playerDirection * 4f, ForceMode.Impulse);
+            currentSpeed = 0;
+            rigid.velocity = playerDirection * 5f;
 
-            }
+        }
     }
 
 
     private void KnockBackCollision()
     {
-            Vector3 playerDirection = -transform.forward;
-            Vector3 highVector = new Vector3(0, 1, 0);
-            rigid.AddForce((playerDirection + highVector) * 4.5f, ForceMode.Impulse);
+            Vector3 playerDirection = -transform.forward.normalized;
+            Vector3 highVector = new Vector3(0, 1.5f, 0);
+            currentSpeed = 0;
+            rigid.velocity = (playerDirection + highVector) * 4.5f;
     }
 
 
