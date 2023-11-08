@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject player;
+    public GameObject booster;
     public GameObject smoke;
     public LandingCheck landingColider;
 
@@ -24,9 +25,8 @@ public class PlayerController : MonoBehaviour
     public float baseRotSpeed;
     public float baseJumpPower;
 
-    public bool boosterbuf;
-    public bool boosterOnPad;
-    public bool boosterSkill;
+    private bool boosterOnKey;
+    private bool boosterOnPad;
     public float boosterAddAccel;
     public float boosterMaxSpeed;
     public float boosterGauge;
@@ -225,7 +225,7 @@ public class PlayerController : MonoBehaviour
 
                     currentSpeed = 0;
                     animator.SetTrigger("BackFlip");
-                    StartCoroutine(PlaySmoke(0.8f));
+                    StartCoroutine(PlaySmoke(0.7f));
                 }
                 else
                 {
@@ -298,11 +298,13 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Z))
         {
+            boosterOnKey = true;
             currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
             currentAccel = baseAccel + boosterAddAccel;
         }
         else
         {
+            boosterOnKey = false;
             currentMaxSpeed = baseMaxSpeed;
             currentAccel = baseAccel;
         }
@@ -410,6 +412,14 @@ public class PlayerController : MonoBehaviour
         if(boosterTimer > 0.0f) animator.SetBool("Booster", true);
         else                    animator.SetBool("Booster", false);
 
+        if((boosterOnKey == true || boosterOnPad == true) && landing)
+        {
+            booster.SetActive(true);
+        }
+        else
+        {
+            booster.SetActive(false);
+        }
         
     }
     private IEnumerator PlaySmoke(float sec)
@@ -419,7 +429,6 @@ public class PlayerController : MonoBehaviour
         buf.transform.position = transform.position + transform.forward * (currentSpeed / 10.0f);
         buf.SetActive(true);
     }
-
 
     private void HandleHurdleCollision(GameObject hurdle)
     {
@@ -433,7 +442,6 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-
 
     private void KnockBackCollision()
     {
