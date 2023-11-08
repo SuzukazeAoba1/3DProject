@@ -543,15 +543,11 @@ public class PlayerController : MonoBehaviour
 
     private void HandleHurdleCollision(GameObject hurdle)
     {
-        HurdleObstacle hurdleScript = hurdle.GetComponent<HurdleObstacle>();
-        if (hurdleScript != null && Mathf.Abs(hurdleScript.transform.rotation.eulerAngles.x) <= 0f)
-        {
-            Vector3 playerDirection = transform.forward;
+        Vector3 playerDirection = transform.forward;
 
-            currentSpeed = 0;
-            rigid.velocity = playerDirection * 6f;
+        currentSpeed = 0;
+        rigid.velocity = playerDirection * 5f;
 
-        }
     }
     private void KnockBackCollision()
     {

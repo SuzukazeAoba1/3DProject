@@ -32,12 +32,15 @@ public class HurdleObstacle : MonoBehaviour
             isCollision = true;
 
             playerDirection = other.transform.forward;
-            //Debug.Log(playerDirection);
+            Debug.Log(playerDirection);
 
-            if (playerDirection == Vector3.forward || playerDirection == Vector3.left || playerDirection == Vector3.right)
+            if (playerDirection.z > 0)
             {
                 targetRotation = transform.rotation * Quaternion.Euler(rotateValue, 0, 0);
-
+            }
+            else
+            {
+                targetRotation = transform.rotation * Quaternion.Euler(-rotateValue, 0, 0);
             }
             StartCoroutine(ResetRotation(delayTime));
         }
