@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     private Rigidbody rigid;
 
+    public bool living;
+
     public Vector2 inputDir;
     public float currentSpeed;
     public float currentMaxSpeed;
@@ -25,6 +27,8 @@ public class PlayerController : MonoBehaviour
     public float boosterAddAccel;
     public float boosterMaxSpeed;
     public float boosterGauge;
+    public float boosterMaxGauge;
+    public float drainedGauge;
     public float awakenGauge;
 
     public bool landing;
@@ -41,7 +45,9 @@ public class PlayerController : MonoBehaviour
     public bool stunning;
     public bool paralysis;
     public bool knockback;
-    public bool living;
+    public bool landingTime;
+    public bool landingBooster;
+    public bool draining;
 
     public float freezingTimer;
     public float immovableTimer;
@@ -50,6 +56,8 @@ public class PlayerController : MonoBehaviour
     public float paralysisTimer;
     public float stunTimer;
     public float boosterTimer;
+    public float landingTimer;
+    public float drainingTimer;
 
     private void Start()
     {
@@ -57,6 +65,7 @@ public class PlayerController : MonoBehaviour
         animator = player.GetComponent<Animator>();
         rigid = GetComponent<Rigidbody>();
         living = true;
+        boosterMaxGauge = boosterGauge;
     }
 
     private void Update()
@@ -65,6 +74,7 @@ public class PlayerController : MonoBehaviour
         {
             PlayerControl();
             StateTimerCheck();
+            LandingBooster();
 
             if (boosterOnPad && !stunning)
             {
@@ -86,20 +96,24 @@ public class PlayerController : MonoBehaviour
         if (stunning == false)
         {
             if(paralysis == false)
-            { 
-            //착지 대시용 콜라이더 필요
-                if (freezing == false)
+            {
+                if (draining == false)
                 {
-                    if (breaking == false)
+                    //착지 대시용 콜라이더 필요
+                    if (freezing == false)
                     {
-                        InputArrow();
-                        PlayerBooster();
+                        if (breaking == false)
+                        {
+                            InputArrow();
+                            PlayerBooster();
+                        }
+                        PlayerJump();
                     }
-                    PlayerJump();
+                    PlayerRotate();
+                    PlayerAddSpeed();
+                    PlayerKeyReverse();
                 }
-                PlayerRotate();
-                PlayerAddSpeed();
-                PlayerKeyReverse();
+                PlayerBoosterGauge();
             }
         }
         AnimatorSet();
@@ -192,6 +206,28 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (landingTime)
+        {
+            landingTimer -= Time.deltaTime;
+
+            if (landingTimer <= 0.0f)
+            {
+                landingTimer = 0.0f;
+                landingTime = false;
+            }
+        }
+
+        if (draining)
+        {
+            drainingTimer -= Time.deltaTime;
+
+            if (drainingTimer <= 0.0f)
+            {
+                drainingTimer = 0.0f;
+                draining = false;
+            }
+        }
+
     }
 
     private void FixedUpdate()
@@ -206,21 +242,22 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
-            if (knockback && Input.GetKey(KeyCode.Z))
-            {
-                boosterTimer = 2.0f;
-                stunning = false;
-                boosterOnPad = true;
-            }
-
             landing = true;
             singleJump = false;
             doubleJump = false;
             knockback = false;
 
+            if(landingBooster)
+            {
+                stunning = false;
+                boosterOnPad = true;
+                boosterTimer = 2.0f;
+            }
+
         }
         animator.SetBool("Landing", landing);
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -254,7 +291,7 @@ public class PlayerController : MonoBehaviour
                     stunTimer = 2.0f;
 
                     currentSpeed = 0;
-                    animator.SetTrigger("BackFlip");
+                    //animator.SetTrigger("BackFlip");
                 }
                 else
                 {
@@ -463,7 +500,7 @@ public class PlayerController : MonoBehaviour
             Vector3 playerDirection = transform.forward;
 
             currentSpeed = 0;
-            rigid.velocity = playerDirection * 5f;
+            rigid.velocity = playerDirection * 6f;
 
         }
     }
@@ -489,6 +526,11 @@ public class PlayerController : MonoBehaviour
         currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
         currentSpeed = currentMaxSpeed;
 
+        if(landingBooster)
+        {
+            landingBooster = false;
+        }
+
     }
 
     public void Controlparalysis()
@@ -499,4 +541,47 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void LandingBooster()
+    {
+        if (landingTime)
+        {
+           if(Input.GetKeyDown(KeyCode.Z))
+            {
+                knockback = false;
+                landingBooster = true;
+            }
+        }
+    }
+
+    public void PlayerBoosterGauge()
+    {
+        if (currentMaxSpeed >= 20 && currentSpeed >0 && !boosterOnPad)
+        {
+            boosterGauge -= Time.deltaTime;
+            if (boosterGauge <= 0)
+            {
+                boosterGauge = 0;
+
+                if(!draining)
+                {
+                    drainedGauge += Time.deltaTime;
+                }
+                if (drainedGauge >= 2.0f)
+                {
+                    drainedGauge = 1.0f;
+                    currentSpeed = 0f;
+                    draining = true;
+                    drainingTimer = 2.0f;
+                }
+            }
+        }
+        else
+        {
+            boosterGauge += Time.deltaTime;
+            if (boosterGauge >= boosterMaxGauge)
+            {
+                boosterGauge = boosterMaxGauge;
+            }
+        }
+    }
 }
