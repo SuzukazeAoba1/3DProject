@@ -48,10 +48,11 @@ public class PlayerController : MonoBehaviour
     public bool keyReverse;     //방향 키 입력 반전
     public bool stunning;
     public bool paralysis;
+    public bool draining;
+
     public bool knockback;
     public bool landingTime;
     public bool landingBooster;
-    public bool draining;
 
     public float freezingTimer;
     public float immovableTimer;
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         living = true;
-        boosterMaxGauge = boosterGauge;
+        boosterGauge = boosterMaxGauge;
         animator = player.gameObject.GetComponent<Animator>();
         particle = smoke.gameObject.GetComponent<ParticleSystem>();
     }
@@ -584,9 +585,9 @@ public class PlayerController : MonoBehaviour
                 {
                     drainedGauge += Time.deltaTime;
                 }
-                if (drainedGauge >= 2.0f)
+                if (drainedGauge >= 1.0f)
                 {
-                    drainedGauge = 1.0f;
+                    drainedGauge = 0.0f;
                     currentSpeed = 0f;
                     draining = true;
                     drainingTimer = 2.0f;

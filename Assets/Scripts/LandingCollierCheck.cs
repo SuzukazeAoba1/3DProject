@@ -5,12 +5,14 @@ using UnityEngine;
 public class LandingCollierCheck : MonoBehaviour
 {
     public GameObject player;
-    private bool landingBooster;
-    private bool playerKnockBack;
+    public bool topCheck;
+    public bool landingBooster;
+    public bool playerKnockBack;
     public float landingBoosterTimer;
     // Start is called before the first frame update
     private void Start()
     {
+        topCheck = false;
         landingBooster = false;
     }
 
@@ -18,13 +20,16 @@ public class LandingCollierCheck : MonoBehaviour
     {
         playerKnockBack = player.GetComponent<PlayerController>().knockback;
 
-        if (landingBooster && playerKnockBack && player.transform.position.y > 1.0f)
+        if(playerKnockBack && player.transform.position.y > 1)
         {
-            Debug.Log("이것부터 안되는거니?");
+            topCheck = true;
+        }
 
+        if (landingBooster && topCheck)
+        {
             player.GetComponent<PlayerController>().landingTime = true;
             player.GetComponent<PlayerController>().landingTimer = 0.5f;
-            landingBooster = false;
+            topCheck = false;
         }
     }
 
@@ -33,6 +38,14 @@ public class LandingCollierCheck : MonoBehaviour
         if(other.tag == "Ground")
         {
             landingBooster = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Ground")
+        {
+            landingBooster = false;
         }
     }
 }

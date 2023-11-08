@@ -21,7 +21,7 @@ public class LandingCheck : MonoBehaviour
             landing = false;
         }
     }
-    
+
     public bool GetBool()
     {
         return landing;
