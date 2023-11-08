@@ -37,8 +37,8 @@ public class HurdleObstacle : MonoBehaviour
             if (playerDirection == Vector3.forward || playerDirection == Vector3.left || playerDirection == Vector3.right)
             {
                 targetRotation = transform.rotation * Quaternion.Euler(rotateValue, 0, 0);
-            }
 
+            }
             StartCoroutine(ResetRotation(delayTime));
         }
     }
