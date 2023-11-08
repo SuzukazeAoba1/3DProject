@@ -491,7 +491,6 @@ public class PlayerController : MonoBehaviour
         if(boosterTimer > 0.0f) animator.SetBool("Booster", true);
         else                    animator.SetBool("Booster", false);
 
-<<<<<<< HEAD
         if((boosterOnKey == true || boosterOnPad == true) && landing)
         {
             booster.SetActive(true);
@@ -501,8 +500,6 @@ public class PlayerController : MonoBehaviour
             booster.SetActive(false);
         }
         
-=======
->>>>>>> d1da382e4ac71fdef315b71811cc55846e034380
     }
 
     private IEnumerator PlaySmoke(float sec)
@@ -525,10 +522,6 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> d1da382e4ac71fdef315b71811cc55846e034380
     private void KnockBackCollision()
     {
         knockback = true;

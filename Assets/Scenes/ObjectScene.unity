@@ -452,7 +452,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 3316041777651704375, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -517,12 +516,10 @@ PrefabInstance:
       propertyPath: booster
       value: 
       objectReference: {fileID: 1061662569}
-=======
     - target: {fileID: 7198699275401627236, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
       propertyPath: boosterMaxGauge
       value: 10
       objectReference: {fileID: 0}
->>>>>>> d1da382e4ac71fdef315b71811cc55846e034380
     - target: {fileID: 7198699275401627237, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
       propertyPath: m_Name
       value: PlayerObject
