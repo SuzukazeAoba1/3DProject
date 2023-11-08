@@ -27,8 +27,7 @@ public class LandingCollierCheck : MonoBehaviour
 
         if (landingBooster && topCheck)
         {
-            player.GetComponent<PlayerController>().landingTime = true;
-            player.GetComponent<PlayerController>().landingTimer = 0.5f;
+            player.GetComponent<PlayerController>().landingCheck = true;
             topCheck = false;
         }
     }

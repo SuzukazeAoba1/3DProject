@@ -51,8 +51,8 @@ public class PlayerController : MonoBehaviour
     public bool draining;
 
     public bool knockback;
-    public bool landingTime;
     public bool landingBooster;
+    public bool landingCheck;
 
     public float freezingTimer;
     public float immovableTimer;
@@ -211,17 +211,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (landingTime)
-        {
-            landingTimer -= Time.deltaTime;
-
-            if (landingTimer <= 0.0f)
-            {
-                landingTimer = 0.0f;
-                landingTime = false;
-            }
-        }
-
         if (draining)
         {
             drainingTimer -= Time.deltaTime;
@@ -251,8 +240,9 @@ public class PlayerController : MonoBehaviour
             singleJump = false;
             doubleJump = false;
             knockback = false;
+            landingCheck = false;
 
-            if(landingBooster)
+            if (landingBooster)
             {
                 stunning = false;
                 boosterOnPad = true;
@@ -298,7 +288,7 @@ public class PlayerController : MonoBehaviour
 
                     currentSpeed = 0;
 
-                    animator.SetTrigger("BackFlip");
+                    //animator.SetTrigger("BackFlip");
                     StartCoroutine(PlaySmoke(0.8f));
                 }
                 else
@@ -562,14 +552,14 @@ public class PlayerController : MonoBehaviour
 
     public void LandingBooster()
     {
-        if (landingTime)
+        if(landingCheck)
         {
-           if(Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.Z))
             {
                 knockback = false;
                 landingBooster = true;
             }
-        }
+        }        
     }
 
     public void PlayerBoosterGauge()
