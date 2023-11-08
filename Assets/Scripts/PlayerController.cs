@@ -61,7 +61,6 @@ public class PlayerController : MonoBehaviour
     public float paralysisTimer;
     public float stunTimer;
     public float boosterTimer;
-    public float landingTimer;
     public float drainingTimer;
 
     private void Start()
@@ -288,7 +287,7 @@ public class PlayerController : MonoBehaviour
 
                     currentSpeed = 0;
 
-                    //animator.SetTrigger("BackFlip");
+                    animator.SetTrigger("BackFlip");
                     StartCoroutine(PlaySmoke(0.8f));
                 }
                 else
@@ -564,29 +563,38 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerBoosterGauge()
     {
-        if (currentMaxSpeed >= 20 && currentSpeed >0 && !boosterOnPad)
+        if (drainedGauge >= 2.0f && landing)
+        {
+            drainedGauge = 0.0f;
+            currentSpeed = 0f;
+            draining = true;
+            drainingTimer = 2.0f;
+        }
+
+        if (currentMaxSpeed >= 20 && currentSpeed > 0 && !boosterOnPad)
         {
             boosterGauge -= Time.deltaTime;
             if (boosterGauge <= 0)
             {
                 boosterGauge = 0;
 
-                if(!draining)
+                if (!draining)
                 {
-                    drainedGauge += Time.deltaTime;
+                    drainedGauge += (Time.deltaTime * 2);
                 }
-                if (drainedGauge >= 1.0f)
-                {
-                    drainedGauge = 0.0f;
-                    currentSpeed = 0f;
-                    draining = true;
-                    drainingTimer = 2.0f;
-                }
+            }
+        }
+        else if (drainedGauge > 0)
+        {
+            drainedGauge -= Time.deltaTime;
+            if (drainedGauge <= 0)
+            {
+                drainedGauge = 0;
             }
         }
         else
         {
-            boosterGauge += Time.deltaTime;
+            boosterGauge += (Time.deltaTime / 5) ;
             if (boosterGauge >= boosterMaxGauge)
             {
                 boosterGauge = boosterMaxGauge;
