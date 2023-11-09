@@ -9,6 +9,7 @@ TagManager:
   - KnockBack
   - Hurdle
   - Para
+  - Wall
   layers:
   - Default
   - TransparentFX

@@ -1,58 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class MovingPad : MonoBehaviour
 {
-    private Transform myTransform;
+    private bool landing;
+    private Vector3 previousPosition;
 
-    private Vector3 originPosition;
-    private Vector3 movingPosition;
+    public bool movingX;
+    public bool movingY;
+    public bool movingZ;
 
     public float direction;
-    public float tolerance;
-    public float movingSpeed;
-    public bool going;
-    public bool coming;
+    public float time;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        originPosition = transform.position;
-        movingPosition = transform.position;
-        movingPosition.x = transform.position.x + direction;
-
-        going = true;
-        coming = false;
+        previousPosition = transform.position;
+        if (movingX) transform.DOLocalMoveX(direction, time).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+        else if(movingY) transform.DOLocalMoveY(direction, time).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+        else if (movingZ) transform.DOLocalMoveZ(direction, time).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
     }
 
     // Update is called once per frame
-    void Update()
+    private void OnCollisionStay(Collision collision)
     {
-        Moving();
-    }
-
-    void Moving()
-    {
-        if(going)
+        if(collision.gameObject.tag == "Player")
         {
-            if (Mathf.Abs(transform.position.x - movingPosition.x) <= tolerance)
-            {
-                going = false;
-                coming = true;
-            }
+            landing = collision.gameObject.GetComponent<PlayerController>().landing;
 
-            else transform.position = Vector3.Lerp(transform.position, movingPosition, movingSpeed);
-        }
-        else if(coming)
-        {
-            if (Mathf.Abs(transform.position.x - originPosition.x) <= tolerance)
+            if(landing)
             {
-                going = true;
-                coming = false;
-            }
+                if(movingX)
+                {
+                    collision.gameObject.transform.position += new Vector3(1, 0, 0);
+                }
+          
+                else if(movingY) collision.gameObject.transform.position = transform.position;
 
-            else transform.position = Vector3.Lerp(transform.position, originPosition, movingSpeed);
+                else if(movingZ) collision.gameObject.transform.position = transform.position;
+            }
         }
     }
+
 }
