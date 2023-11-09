@@ -32,7 +32,6 @@ public class HurdleObstacle : MonoBehaviour
             isCollision = true;
 
             playerDirection = other.transform.forward;
-            Debug.Log(playerDirection);
 
             if (playerDirection.z > 0)
             {

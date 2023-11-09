@@ -182,6 +182,7 @@ public partial class PlayerController : MonoBehaviour
         {
             if(knockback)
             {
+                StartCoroutine(PlaySmoke(0f));
                 knockback = false;
                 if(!landingBooster)
                 {
@@ -198,6 +199,7 @@ public partial class PlayerController : MonoBehaviour
 
             if (landingBooster)
             {
+                StartCoroutine(PlaySmoke(0f));
                 landingBooster = false;
                 boosterOnPad = true;
                 boosterTimer = 2.0f;
@@ -235,7 +237,6 @@ public partial class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("KnockBack"))
         {
             //animator.SetTrigger("BackFlip");
-            StartCoroutine(PlaySmoke(0.7f));
             KnockBackCollision();
                 
         }
