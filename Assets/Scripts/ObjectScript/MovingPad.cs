@@ -5,64 +5,51 @@ using DG.Tweening;
 
 public class MovingPad : MonoBehaviour
 {
-    private bool landing;
-    private Rigidbody playerRigid;
-
-    private Vector3 previousPosition;
-    private Vector3 currentPosition;
-    private Vector3 moveDireciton;
-
     public bool movingX;
     public bool movingY;
     public bool movingZ;
 
     public float direction;
     public float time;
-
-    private void Awake()
-    {
-        currentPosition = transform.position;
-    }
-
-    // Start is called before the first frame update
     void Start()
     {
-        if (movingX) transform.DOLocalMoveX(direction, time).SetLoops(-1, LoopType.Yoyo).
-                SetEase(Ease.InOutSine).OnUpdate(() => moveDireciton = tempPosition());
-        else if (movingY) transform.DOLocalMoveY(direction, time).SetLoops(-1, LoopType.Yoyo).
-                 SetEase(Ease.InOutSine).OnUpdate(() => previousPosition = transform.position);
-        else if (movingZ) transform.DOLocalMoveZ(direction, time).SetLoops(-1, LoopType.Yoyo).
-                SetEase(Ease.InOutSine).OnUpdate(() => previousPosition = transform.position);
-    }
-
-    // Update is called once per frame
-    private void OnCollisionStay(Collision collision)
-    {
-        if(collision.gameObject.tag == "Player")
+        if (movingX)
         {
-            landing = collision.gameObject.GetComponent<PlayerController>().landing;
-            playerRigid = collision.gameObject.GetComponent<Rigidbody>();
-
-            if(landing)
-            {
-                if(movingX)
-                {
-                    playerRigid.MovePosition(collision.gameObject.transform.position + moveDireciton);
-                }
-          
-                else if(movingY) collision.gameObject.transform.position = transform.position;
-
-                else if(movingZ) collision.gameObject.transform.position = transform.position;
-            }
+            transform.DOLocalMoveX(direction, time)
+                .SetLoops(-1, LoopType.Yoyo)
+                .SetEase(Ease.InOutSine);
+        }
+        else if (movingY)
+        {
+            transform.DOLocalMoveY(direction, time)
+                .SetLoops(-1, LoopType.Yoyo)
+                .SetEase(Ease.InOutSine);
+        }
+        else if (movingZ)
+        {
+            transform.DOLocalMoveZ(direction, time)
+                .SetLoops(-1, LoopType.Yoyo)
+                .SetEase(Ease.InOutSine);
         }
     }
 
-    public Vector3 tempPosition()
+    private void OnCollisionEnter(Collision collision)
     {
-        previousPosition = currentPosition;
-        currentPosition = transform.position;
+        Vector3 contactNormal = collision.contacts[0].normal;
 
-        return currentPosition - previousPosition;
+        if (collision.gameObject.tag == "Player" && contactNormal == Vector3.down)
+        {
+            collision.transform.parent = transform;
+
+        }
     }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.transform.parent = null;
+
+        }
+    }
 }
