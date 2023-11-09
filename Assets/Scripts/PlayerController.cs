@@ -96,39 +96,43 @@ public partial class PlayerController : MonoBehaviour
 
     private void PlayerControl()
     {
-        if (stunning == false)
+
+        if (!stunning && !paralysis && !knockback && !draining && !freezing && !breaking && !keyReverse)
         {
-            if(paralysis == false)
-            {
-                if(knockback == false)
-                {
-                    if (draining == false)
-                    {
-                        if (freezing == false)
-                        {
-                            if (breaking == false)
-                            {
-                                if (keyReverse)
-                                {
-                                    InputReserveArrow();
-                                }
-                                else
-                                {
-                                    InputArrow();
-                                }
-                                PlayerBooster();
-                                LandingBooster();
-                            }
-                            PlayerJump();
-                        }
-                        PlayerRotate();
-                        PlayerAddSpeed();
-                    }
-                    PlayerBoosterGauge();
-                }
-            }
+            if (!keyReverse)
+                InputArrow();
+            else
+                InputReserveArrow(); 
         }
+
+        if (!stunning && !paralysis && !knockback && !draining && !freezing && !breaking)
+        {
+            PlayerBooster();
+        }
+
+        if (!stunning && !paralysis && !knockback && !draining && !freezing)
+        {
+            PlayerJump();
+        }
+
+        if (!stunning && !paralysis && !knockback && !draining)
+        {
+            PlayerRotate();
+            PlayerAddSpeed();
+        }
+
+        if (!stunning && !paralysis && !knockback)
+        {
+            PlayerBoosterGauge();
+        }
+
+        if (!stunning && !paralysis)
+        {
+            LandingBooster();
+        }
+
         AnimatorSet();
+
     }
 
 
