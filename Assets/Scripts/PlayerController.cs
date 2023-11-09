@@ -26,8 +26,8 @@ public class PlayerController : MonoBehaviour
     public float baseRotSpeed;
     public float baseJumpPower;
 
-    private bool boosterOnKey;
-    private bool boosterOnPad;
+    public bool boosterOnKey;
+    public bool boosterOnPad;
     public float boosterAddAccel;
     public float boosterMaxSpeed;
     public float boosterGauge;
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
             StateTimerCheck();
             LandingBooster();
 
-            if (boosterOnPad && !stunning)
+            if (boosterOnPad && !stunning && !knockback& !paralysis)
             {
                 Booster();
             }
@@ -101,23 +101,32 @@ public class PlayerController : MonoBehaviour
         {
             if(paralysis == false)
             {
-                if (draining == false)
+                if(knockback == false)
                 {
-                    //착지 대시용 콜라이더 필요
-                    if (freezing == false)
+                    if (draining == false)
                     {
-                        if (breaking == false)
+                        //착지 대시용 콜라이더 필요
+                        if (freezing == false)
                         {
-                            InputArrow();
-                            PlayerBooster();
+                            if (breaking == false)
+                            {
+                                if (keyReverse)
+                                {
+                                    InputReserveArrow();
+                                }
+                                else
+                                {
+                                    InputArrow();
+                                }
+                                PlayerBooster();
+                            }
+                            PlayerJump();
                         }
-                        PlayerJump();
+                        PlayerRotate();
+                        PlayerAddSpeed();
                     }
-                    PlayerRotate();
-                    PlayerAddSpeed();
-                    PlayerKeyReverse();
+                    PlayerBoosterGauge();
                 }
-                PlayerBoosterGauge();
             }
         }
         AnimatorSet();
@@ -235,15 +244,25 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
+            if(knockback)
+            {
+                knockback = false;
+                if(!landingBooster)
+                {
+                    stunning = true;
+                    stunTimer = 2.0f;
+                    currentSpeed = 0;
+                }
+            }
+ 
             landing = true;
             singleJump = false;
             doubleJump = false;
-            knockback = false;
             landingCheck = false;
 
             if (landingBooster)
             {
-                stunning = false;
+                landingBooster = false;
                 boosterOnPad = true;
                 boosterTimer = 2.0f;
             }
@@ -263,6 +282,7 @@ public class PlayerController : MonoBehaviour
                 {
                     stunning = true;
                     stunTimer = 2.0f;
+                    BoosterOff();
 
                     currentSpeed = 0;
                     animator.SetTrigger("Tripped");
@@ -278,24 +298,10 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("KnockBack"))
         {
-            while (true)
-            {
-                if (!stunning)
-                {
-                    stunning = true;
-                    stunTimer = 2.0f;
-
-                    currentSpeed = 0;
-
-                    animator.SetTrigger("BackFlip");
-                    StartCoroutine(PlaySmoke(0.7f));
-                }
-                else
-                {
-                    KnockBackCollision();
-                    return;
-                }
-            }
+            //animator.SetTrigger("BackFlip");
+            StartCoroutine(PlaySmoke(0.7f));
+            KnockBackCollision();
+                
         }
 
         if (other.gameObject.CompareTag("Booster"))
@@ -337,10 +343,35 @@ public class PlayerController : MonoBehaviour
         {
             inputDir += Vector2.left;
         }
-
         if (Input.GetKey(KeyCode.RightArrow))
         {
             inputDir += Vector2.right;
+        }
+
+    }
+
+    private void InputReserveArrow()
+    {
+        inputDir = Vector2.zero;
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            inputDir -= Vector2.up;
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            inputDir -= Vector2.down;
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            inputDir -= Vector2.left;
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            inputDir -= Vector2.right;
         }
     }
 
@@ -372,7 +403,7 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerBooster()
     {
-        if (Input.GetKey(KeyCode.Z))
+        if (Input.GetKey(KeyCode.Z) && !boosterOnPad)
         {
             boosterOnKey = true;
             currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
@@ -491,7 +522,7 @@ public class PlayerController : MonoBehaviour
         if(boosterTimer > 0.0f) animator.SetBool("Booster", true);
         else                    animator.SetBool("Booster", false);
 
-        if((boosterOnKey == true || boosterOnPad == true) && landing)
+        if((boosterOnKey == true || boosterOnPad == true) && landing && !draining &&!stunning && !knockback && !paralysis)
         {
             booster.SetActive(true);
         }
@@ -512,20 +543,20 @@ public class PlayerController : MonoBehaviour
 
     private void HandleHurdleCollision(GameObject hurdle)
     {
-        HurdleObstacle hurdleScript = hurdle.GetComponent<HurdleObstacle>();
-        if (hurdleScript != null && Mathf.Abs(hurdleScript.transform.rotation.eulerAngles.x) <= 0f)
-        {
-            Vector3 playerDirection = transform.forward;
+        Vector3 playerDirection = transform.forward;
 
-            currentSpeed = 0;
-            rigid.velocity = playerDirection * 6f;
+        currentSpeed = 0;
+        rigid.velocity = playerDirection * 5f;
 
-        }
     }
     private void KnockBackCollision()
     {
         knockback = true;
+        landing = false;
+        currentSpeed = 0;
 
+        BoosterOff();
+        
         Vector3 playerDirection = -transform.forward.normalized;
         Vector3 highVector = new Vector3(0, 1.5f, 0);
 
@@ -543,11 +574,6 @@ public class PlayerController : MonoBehaviour
 
         currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
         currentSpeed = currentMaxSpeed;
-
-        if(landingBooster)
-        {
-            landingBooster = false;
-        }
 
     }
 
@@ -610,5 +636,12 @@ public class PlayerController : MonoBehaviour
                 boosterGauge = boosterMaxGauge;
             }
         }
+    }
+
+    void BoosterOff()
+    {
+        boosterOnPad = false;
+        boosterOnKey = false;
+        boosterTimer = 0f;
     }
 }
