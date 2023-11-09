@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public partial class PlayerController : MonoBehaviour
 {
     public GameObject player;
     public GameObject booster;
@@ -78,7 +78,6 @@ public class PlayerController : MonoBehaviour
         {
             PlayerControl();
             StateTimerCheck();
-            LandingBooster();
 
             if (boosterOnPad && !stunning && !knockback& !paralysis)
             {
@@ -97,140 +96,77 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerControl()
     {
-        if (stunning == false)
-        {
-            if(paralysis == false)
-            {
-                if(knockback == false)
-                {
-                    if (draining == false)
-                    {
-                        //착지 대시용 콜라이더 필요
-                        if (freezing == false)
-                        {
-                            if (breaking == false)
-                            {
-                                if (keyReverse)
-                                {
-                                    InputReserveArrow();
-                                }
-                                else
-                                {
-                                    InputArrow();
-                                }
-                                PlayerBooster();
-                            }
-                            PlayerJump();
-                        }
-                        PlayerRotate();
-                        PlayerAddSpeed();
-                    }
-                    PlayerBoosterGauge();
-                }
-            }
-        }
-        AnimatorSet();
-    }
 
+        if (!stunning && !paralysis && !knockback && !draining && !freezing && !breaking && !keyReverse)
+        {
+            if (!keyReverse)
+                InputArrow();
+            else
+                InputReserveArrow(); 
+        }
+
+        if (!stunning && !paralysis && !knockback && !draining && !freezing && !breaking)
+        {
+            PlayerBooster();
+        }
+
+        if (!stunning && !paralysis && !knockback && !draining && !freezing)
+        {
+            PlayerJump();
+        }
+
+        if (!stunning && !paralysis && !knockback && !draining)
+        {
+            PlayerRotate();
+            PlayerAddSpeed();
+        }
+
+        if (!stunning && !paralysis && !knockback)
+        {
+            PlayerBoosterGauge();
+        }
+
+        if (!stunning && !paralysis)
+        {
+            LandingBooster();
+        }
+
+        AnimatorSet();
+
+    }
 
 
     private void StateTimerCheck()
     {
-
         if(landing == false)
         {
             fallCountTimer += Time.deltaTime;
         }
 
-        if (freezing)
-        {
-            freezingTimer -= Time.deltaTime;
-
-            if (freezingTimer <= 0.0f)
-            {
-                freezingTimer = 0.0f;
-                freezing = false;
-            }
-        }
-
-        if (stunning)
-        {
-            stunTimer -= Time.deltaTime;
-
-            if (stunTimer <= 0.0f)
-            {
-                stunTimer = 0.0f;
-                stunning = false;
-            }
-        }
-
-        if (boosterOnPad)
-        {
-            boosterTimer -= Time.deltaTime;
-
-            if (boosterTimer <= 0.0f)
-            {
-                boosterTimer = 0.0f;
-                boosterOnPad = false;
-            }
-        }
-
-        if (immovable)
-        {
-            immovableTimer -= Time.deltaTime;
-
-            if (immovableTimer <= 0.0f)
-            {
-                immovableTimer = 0.0f;
-                immovable = false;
-            }
-        }
-
-        if (breaking)
-        {
-            breakingTimer -= Time.deltaTime;
-
-            if (breakingTimer <= 0.0f)
-            {
-                breakingTimer = 0.0f;
-                breaking = false;
-            }
-        }
-
-        if (keyReverse)
-        {
-            keyReverseTimer -= Time.deltaTime;
-
-            if (keyReverseTimer <= 0.0f)
-            {
-                keyReverseTimer = 0.0f;
-                keyReverse = false;
-            }
-        }
-
-        if (paralysis)
-        {
-            paralysisTimer -= Time.deltaTime;
-
-            if (paralysisTimer <= 0.0f)
-            {
-                paralysisTimer = 0.0f;
-                paralysis = false;
-            }
-        }
-
-        if (draining)
-        {
-            drainingTimer -= Time.deltaTime;
-
-            if (drainingTimer <= 0.0f)
-            {
-                drainingTimer = 0.0f;
-                draining = false;
-            }
-        }
-
+        TimerCheck(ref freezing, ref freezingTimer);
+        TimerCheck(ref stunning, ref stunTimer);
+        TimerCheck(ref boosterOnPad, ref boosterTimer);
+        TimerCheck(ref immovable, ref immovableTimer);
+        TimerCheck(ref breaking, ref breakingTimer);
+        TimerCheck(ref keyReverse, ref keyReverseTimer);
+        TimerCheck(ref paralysis, ref paralysisTimer);
+        TimerCheck(ref draining, ref drainingTimer);
     }
+
+    private void TimerCheck(ref bool tswitch, ref float timer)
+    {
+        if (tswitch)
+        {
+            timer -= Time.deltaTime;
+
+            if (timer <= 0.0f)
+            {
+                timer = 0.0f;
+                tswitch = false;
+            }
+        }
+    }
+
 
     private void FixedUpdate()
     {
@@ -325,6 +261,107 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    private void HandleHurdleCollision(GameObject hurdle)
+    {
+        Vector3 playerDirection = transform.forward;
+
+        currentSpeed = 0;
+        rigid.velocity = playerDirection * 5f;
+
+    }
+    private void KnockBackCollision()
+    {
+        knockback = true;
+        landing = false;
+        currentSpeed = 0;
+
+        BoosterOff();
+        
+        Vector3 playerDirection = -transform.forward.normalized;
+        Vector3 highVector = new Vector3(0, 1.5f, 0);
+
+        rigid.velocity = (playerDirection + highVector) * 4.5f;
+    }
+
+
+    private void Booster()
+    {
+        breaking = false;
+        breakingTimer = 0.0f;
+
+        Vector2 playerDirection = transform.forward;
+        inputDir = playerDirection;
+
+        currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
+        currentSpeed = currentMaxSpeed;
+
+    }
+
+    public void Controlparalysis()
+    {
+        if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            paralysisTimer -= Time.deltaTime;
+        }
+    }
+
+
+    public void PlayerBoosterGauge()
+    {
+        if (drainedGauge >= 2.0f && landing)
+        {
+            drainedGauge = 0.0f;
+            currentSpeed = 0f;
+            draining = true;
+            drainingTimer = 2.0f;
+        }
+
+        if (currentMaxSpeed >= 20 && currentSpeed > 0 && !boosterOnPad)
+        {
+            boosterGauge -= Time.deltaTime;
+            if (boosterGauge <= 0)
+            {
+                boosterGauge = 0;
+
+                if (!draining)
+                {
+                    drainedGauge += (Time.deltaTime * 2);
+                }
+            }
+        }
+        else if (drainedGauge > 0)
+        {
+            drainedGauge -= Time.deltaTime;
+            if (drainedGauge <= 0)
+            {
+                drainedGauge = 0;
+            }
+        }
+        else
+        {
+            boosterGauge += (Time.deltaTime / 5) ;
+            if (boosterGauge >= boosterMaxGauge)
+            {
+                boosterGauge = boosterMaxGauge;
+            }
+        }
+    }
+
+    void BoosterOff()
+    {
+        boosterOnPad = false;
+        boosterOnKey = false;
+        boosterTimer = 0f;
+    }
+}
+
+
+
+
+public partial class PlayerController : MonoBehaviour
+{
+
+    //PlayerControl partial
     private void InputArrow()
     {
         inputDir = Vector2.zero;
@@ -401,6 +438,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void LandingBooster()
+    {
+        if (landingCheck)
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                knockback = false;
+                landingBooster = true;
+            }
+        }
+    }
+
     private void PlayerBooster()
     {
         if (Input.GetKey(KeyCode.Z) && !boosterOnPad)
@@ -435,8 +484,8 @@ public class PlayerController : MonoBehaviour
             inputDegree = Mathf.Round(inputDegree);
 
             float directionCheck = (360.0f + inputDegree - playerDegree) % 360.0f;
- 
-            if(directionCheck < 1.0f || directionCheck > 359.0f)
+
+            if (directionCheck < 1.0f || directionCheck > 359.0f)
             {
 
             }
@@ -444,7 +493,7 @@ public class PlayerController : MonoBehaviour
             {
                 transform.rotation = Quaternion.Euler(0.0f, playerDegree + baseRotSpeed * Time.deltaTime, 0.0f);
             }
-            else if(directionCheck > 190.0f)
+            else if (directionCheck > 190.0f)
             {
                 transform.rotation = Quaternion.Euler(0.0f, playerDegree - baseRotSpeed * Time.deltaTime, 0.0f);
             }
@@ -452,7 +501,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (currentSpeed < 5.0f)
                 {
-                    currentSpeed = 0.0f; 
+                    currentSpeed = 0.0f;
                     transform.rotation = Quaternion.Euler(0.0f, playerDegree - baseRotSpeed * Time.deltaTime, 0.0f);
                 }
                 else
@@ -472,16 +521,16 @@ public class PlayerController : MonoBehaviour
             if (inputDir == Vector2.zero)
             {
                 if (!boosterOnPad)
-                if (breaking == false && currentSpeed > 8.0f)
-                {
-                    breaking = true;
-                    breakingTimer = 0.6f;
-                    StartCoroutine(PlaySmoke(0.2f));
-                }
-                else
-                {
-                    currentSpeed -= currentBraking * Time.deltaTime;
-                }
+                    if (breaking == false && currentSpeed > 8.0f)
+                    {
+                        breaking = true;
+                        breakingTimer = 0.6f;
+                        StartCoroutine(PlaySmoke(0.2f));
+                    }
+                    else
+                    {
+                        currentSpeed -= currentBraking * Time.deltaTime;
+                    }
             }
             else if (immovable == false)
             {
@@ -518,11 +567,11 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("Jumping", singleJump);
         animator.SetBool("DoubleJumping", doubleJump);
         animator.SetBool("Breaking", breaking);
-        
-        if(boosterTimer > 0.0f) animator.SetBool("Booster", true);
-        else                    animator.SetBool("Booster", false);
 
-        if((boosterOnKey == true || boosterOnPad == true) && landing && !draining &&!stunning && !knockback && !paralysis)
+        if (boosterTimer > 0.0f) animator.SetBool("Booster", true);
+        else animator.SetBool("Booster", false);
+
+        if ((boosterOnKey == true || boosterOnPad == true) && landing && !draining && !stunning && !knockback && !paralysis)
         {
             booster.SetActive(true);
         }
@@ -530,7 +579,7 @@ public class PlayerController : MonoBehaviour
         {
             booster.SetActive(false);
         }
-        
+
     }
 
     private IEnumerator PlaySmoke(float sec)
@@ -539,109 +588,5 @@ public class PlayerController : MonoBehaviour
         GameObject buf = Instantiate(smoke);
         buf.transform.position = transform.position + transform.forward * (currentSpeed / 10.0f);
         buf.SetActive(true);
-    }
-
-    private void HandleHurdleCollision(GameObject hurdle)
-    {
-        Vector3 playerDirection = transform.forward;
-
-        currentSpeed = 0;
-        rigid.velocity = playerDirection * 5f;
-
-    }
-    private void KnockBackCollision()
-    {
-        knockback = true;
-        landing = false;
-        currentSpeed = 0;
-
-        BoosterOff();
-        
-        Vector3 playerDirection = -transform.forward.normalized;
-        Vector3 highVector = new Vector3(0, 1.5f, 0);
-
-        rigid.velocity = (playerDirection + highVector) * 4.5f;
-    }
-
-
-    private void Booster()
-    {
-        breaking = false;
-        breakingTimer = 0.0f;
-
-        Vector2 playerDirection = transform.forward;
-        inputDir = playerDirection;
-
-        currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
-        currentSpeed = currentMaxSpeed;
-
-    }
-
-    public void Controlparalysis()
-    {
-        if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            paralysisTimer -= Time.deltaTime;
-        }
-    }
-
-    public void LandingBooster()
-    {
-        if(landingCheck)
-        {
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                knockback = false;
-                landingBooster = true;
-            }
-        }        
-    }
-
-    public void PlayerBoosterGauge()
-    {
-        if (drainedGauge >= 2.0f && landing)
-        {
-            drainedGauge = 0.0f;
-            currentSpeed = 0f;
-            draining = true;
-            drainingTimer = 2.0f;
-        }
-
-        if (currentMaxSpeed >= 20 && currentSpeed > 0 && !boosterOnPad)
-        {
-            boosterGauge -= Time.deltaTime;
-            if (boosterGauge <= 0)
-            {
-                boosterGauge = 0;
-
-                if (!draining)
-                {
-                    drainedGauge += (Time.deltaTime * 2);
-                }
-            }
-        }
-        else if (drainedGauge > 0)
-        {
-            drainedGauge -= Time.deltaTime;
-            if (drainedGauge <= 0)
-            {
-                drainedGauge = 0;
-            }
-        }
-        else
-        {
-            boosterGauge += (Time.deltaTime / 5) ;
-            if (boosterGauge >= boosterMaxGauge)
-            {
-                boosterGauge = boosterMaxGauge;
-            }
-        }
-    }
-
-    void BoosterOff()
-    {
-        boosterOnPad = false;
-        boosterOnKey = false;
-        boosterTimer = 0f;
     }
 }
