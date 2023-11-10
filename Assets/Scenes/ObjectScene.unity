@@ -553,6 +553,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &860841180 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2042132659801608550, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
+  m_PrefabInstance: {fileID: 1104295840}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &875762448
 GameObject:
   m_ObjectHideFlags: 3
@@ -775,11 +780,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &1061662569 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3711393981990797407, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
-  m_PrefabInstance: {fileID: 1104295840}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1104295840
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -799,9 +799,13 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2042132659801608550, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2705296660327171860, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2705296660327171861, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
       propertyPath: m_IsActive
@@ -874,7 +878,7 @@ PrefabInstance:
     - target: {fileID: 7198699275401627236, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
       propertyPath: booster
       value: 
-      objectReference: {fileID: 1061662569}
+      objectReference: {fileID: 860841180}
     - target: {fileID: 7198699275401627236, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
       propertyPath: keyReverse
       value: 0
@@ -934,6 +938,10 @@ PrefabInstance:
     - target: {fileID: 7198699275401627239, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251031252180889721, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8641158119006061134, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
       propertyPath: m_Constraints
@@ -1091,7 +1099,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 212217418}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1513001834
 SphereCollider:
