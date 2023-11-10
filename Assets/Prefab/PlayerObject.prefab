@@ -114,18 +114,19 @@ MonoBehaviour:
   jumpEffect: {fileID: 1273343307542567296, guid: 5516063ea4718374692a10124e341a3a, type: 3}
   landingColider: {fileID: 2112939533666245588}
   living: 0
+  readying: 0
   inputDir: {x: 0, y: 0}
   currentSpeed: 0
   currentMaxSpeed: 0
   currentAccel: 0
   currentBraking: 50
   baseMaxSpeed: 10
-  baseAccel: 7
+  baseAccel: 5
   baseRotSpeed: 600
   baseJumpPower: 600
   boosterOnKey: 0
   boosterOnPad: 0
-  boosterAddAccel: 8
+  boosterAddAccel: 10
   boosterMaxSpeed: 10
   boosterGauge: 0
   boosterMaxGauge: 10
@@ -137,17 +138,19 @@ MonoBehaviour:
   immovable: 0
   breaking: 0
   keyReverse: 0
+  backtrip: 0
+  fronttrip: 0
   stunning: 0
-  paralysis: 0
   draining: 0
   knockback: 0
   landingBooster: 0
   landingCheck: 0
+  landingKey: 0
   freezingTimer: 0
   immovableTimer: 0
   breakingTimer: 0
   keyReverseTimer: 0
-  paralysisTimer: 0
+  tripTimer: 0
   stunTimer: 0
   boosterTimer: 0
   drainingTimer: 0

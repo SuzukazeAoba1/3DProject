@@ -272,8 +272,6 @@ public partial class PlayerController : MonoBehaviour
                 currentSpeed = 0;
                 stunning = true;
                 stunTimer = 5.0f;
-                animator.SetTrigger("Paralysis");
-
             }
         }
 
@@ -354,7 +352,7 @@ public partial class PlayerController : MonoBehaviour
 
                 if (!draining)
                 {
-                    drainedGauge += (Time.deltaTime * 2);
+                    drainedGauge += (Time.deltaTime);
                 }
             }
         }
@@ -605,7 +603,11 @@ public partial class PlayerController : MonoBehaviour
         animator.SetBool("DoubleJumping", doubleJump);
         animator.SetBool("Breaking", breaking);
         animator.SetBool("Knockback", knockback);
+        animator.SetBool("Backtrip", backtrip);
         animator.SetBool("Stunning", stunning);
+       
+        if(drainedGauge > 0.0f && boosterOnKey) animator.SetBool("Draining", true);
+        else animator.SetBool("Draining", false);
 
         if (boosterTimer > 0.0f) animator.SetBool("Booster", true);
         else animator.SetBool("Booster", false);
