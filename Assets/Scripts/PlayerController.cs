@@ -272,6 +272,8 @@ public partial class PlayerController : MonoBehaviour
                 currentSpeed = 0;
                 stunning = true;
                 stunTimer = 5.0f;
+                animator.SetTrigger("Paralysis");
+
             }
         }
 
