@@ -8,8 +8,9 @@ TagManager:
   - Booster
   - KnockBack
   - Hurdle
-  - Para
   - Wall
+  - Reserve
+  - Par
   layers:
   - Default
   - TransparentFX
