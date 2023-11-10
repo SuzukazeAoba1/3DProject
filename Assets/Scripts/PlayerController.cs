@@ -11,7 +11,7 @@ public partial class PlayerController : MonoBehaviour
     public LandingCheck landingColider;
 
     public bool living;
-    public float gameStart;
+    public bool readying;
     
     public Vector2 inputDir;
 
@@ -71,6 +71,7 @@ public partial class PlayerController : MonoBehaviour
     private void Start()
     {
         living = true;
+        readying = true;
 
         rigid = GetComponent<Rigidbody>();
         boosterGauge = boosterMaxGauge;
@@ -80,23 +81,27 @@ public partial class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (living)
+        GameStart();
+
+        if (!readying)
         {
-            
-            PlayerControl();
-            StateTimerCheck();
-
-            if (boosterOnPad && !stunning && !knockback && !backtrip && !fronttrip)
+            if (living)
             {
-                Booster();
-            }
+                PlayerControl();
+                StateTimerCheck();
 
-            if (stunning)
-            {
-                Controlparalysis();
-            }
+                if (boosterOnPad && !stunning && !knockback && !backtrip && !fronttrip)
+                {
+                    Booster();
+                }
 
-            transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
+                if (stunning)
+                {
+                    Controlparalysis();
+                }
+
+                transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
+            }
         }
     }
 
@@ -627,5 +632,13 @@ public partial class PlayerController : MonoBehaviour
         GameObject buf = Instantiate(jumpEffect);
         buf.transform.position = transform.position + transform.forward * (currentSpeed / 15.0f);
         buf.SetActive(true);
+    }
+
+    private void GameStart()
+    {
+        if(GameManager.instance.gameStart == true)
+        {
+            readying = false;
+        }
     }
 }

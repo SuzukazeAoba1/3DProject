@@ -34,18 +34,22 @@ public class GameManager : MonoBehaviour
         if(gameStart)
         {
             playTime += Time.deltaTime;
-        }
+        }     
         else
         {
-            StartTimer();
+            timerCheck();
         }
-        
     }
 
-    void StartTimer()
+    void timerCheck()
     {
+        if (startTimer >= 0)
+            startTimer -= Time.deltaTime;
 
+        if (startTimer <= 0)
+        {
+            startTimer = 0;
+            gameStart = true;
+        }
     }
-
-
 }
