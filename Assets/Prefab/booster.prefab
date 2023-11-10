@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2741490511684527197}
   - component: {fileID: 3517476464039250925}
   m_Layer: 0
-  m_Name: booster
+  m_Name: Booster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,7 +169,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: -2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1423,7 +1423,7 @@ ParticleSystem:
     flipU: 0
     flipV: 0
   VelocityModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -1533,7 +1533,7 @@ ParticleSystem:
     z:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -3
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2

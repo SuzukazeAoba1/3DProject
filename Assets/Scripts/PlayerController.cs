@@ -5,8 +5,9 @@ using UnityEngine;
 public partial class PlayerController : MonoBehaviour
 {
     public GameObject player;
-    public GameObject booster;
-    public GameObject smoke;
+    public GameObject boosterEffect;
+    public GameObject smokeEffect;
+    public GameObject jumpEffect;
     public LandingCheck landingColider;
 
     public bool living;
@@ -69,7 +70,7 @@ public partial class PlayerController : MonoBehaviour
         living = true;
         boosterGauge = boosterMaxGauge;
         animator = player.gameObject.GetComponent<Animator>();
-        particle = smoke.gameObject.GetComponent<ParticleSystem>();
+        particle = smokeEffect.gameObject.GetComponent<ParticleSystem>();
     }
 
     private void Update()
@@ -182,7 +183,7 @@ public partial class PlayerController : MonoBehaviour
         {
             if(knockback)
             {
-                StartCoroutine(PlaySmoke(0f));
+                StartCoroutine(PlaySmoke(0.3f));
                 knockback = false;
                 if(!landingBooster)
                 {
@@ -315,6 +316,8 @@ public partial class PlayerController : MonoBehaviour
             currentSpeed = 0f;
             draining = true;
             drainingTimer = 2.0f;
+            animator.SetTrigger("Drained");
+
         }
 
         if (currentMaxSpeed >= 20 && currentSpeed > 0 && !boosterOnPad)
@@ -419,6 +422,7 @@ public partial class PlayerController : MonoBehaviour
         {
             if (singleJump == false)
             {
+                PlayJumpEffect();
                 rigid.AddForce(Vector3.up * baseJumpPower);
                 landing = false;
                 singleJump = true;
@@ -564,21 +568,22 @@ public partial class PlayerController : MonoBehaviour
         animator.SetFloat("RunAniSpeed", (currentSpeed / 20.0f) + 0.5f);
         animator.SetFloat("Speed", currentSpeed);
         animator.SetBool("Landing", landing);
-        animator.SetBool("Landing2", landingColider.GetBool());
         animator.SetBool("Jumping", singleJump);
         animator.SetBool("DoubleJumping", doubleJump);
         animator.SetBool("Breaking", breaking);
+        animator.SetBool("Knockback", knockback);
+        animator.SetBool("Stunning", stunning);
 
         if (boosterTimer > 0.0f) animator.SetBool("Booster", true);
         else animator.SetBool("Booster", false);
 
         if ((boosterOnKey == true || boosterOnPad == true) && landing && !draining && !stunning && !knockback && !paralysis)
         {
-            booster.SetActive(true);
+            boosterEffect.SetActive(true);
         }
         else
         {
-            booster.SetActive(false);
+            boosterEffect.SetActive(false);
         }
 
     }
@@ -586,8 +591,15 @@ public partial class PlayerController : MonoBehaviour
     private IEnumerator PlaySmoke(float sec)
     {
         yield return new WaitForSeconds(sec);
-        GameObject buf = Instantiate(smoke);
+        GameObject buf = Instantiate(smokeEffect);
         buf.transform.position = transform.position + transform.forward * (currentSpeed / 10.0f);
+        buf.SetActive(true);
+    }
+
+    private void PlayJumpEffect()
+    {
+        GameObject buf = Instantiate(jumpEffect);
+        buf.transform.position = transform.position + transform.forward * (currentSpeed / 15.0f);
         buf.SetActive(true);
     }
 }
