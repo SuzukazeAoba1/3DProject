@@ -261,6 +261,7 @@ public partial class PlayerController : MonoBehaviour
                 currentSpeed = 0;
                 paralysis = true;
                 paralysisTimer = 5.0f;
+                animator.SetTrigger("Paralysis");
             }
         }
 
