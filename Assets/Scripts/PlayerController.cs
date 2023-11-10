@@ -10,6 +10,8 @@ public partial class PlayerController : MonoBehaviour
     public LandingCheck landingColider;
 
     public bool living;
+    public float gameStart;
+    
     public Vector2 inputDir;
 
     private Rigidbody rigid;
@@ -46,8 +48,9 @@ public partial class PlayerController : MonoBehaviour
     public bool immovable;      //회전만 가능
     public bool breaking;        //점프만 가능 (가다 멈추기)
     public bool keyReverse;     //방향 키 입력 반전
+    public bool backtrip;
+    public bool fronttrip;
     public bool stunning;
-    public bool paralysis;
     public bool draining;
 
     public bool knockback;
@@ -59,15 +62,16 @@ public partial class PlayerController : MonoBehaviour
     public float immovableTimer;
     public float breakingTimer;
     public float keyReverseTimer;
-    public float paralysisTimer;
+    public float tripTimer;
     public float stunTimer;
     public float boosterTimer;
     public float drainingTimer;
 
     private void Start()
     {
-        rigid = GetComponent<Rigidbody>();
         living = true;
+
+        rigid = GetComponent<Rigidbody>();
         boosterGauge = boosterMaxGauge;
         animator = player.gameObject.GetComponent<Animator>();
         particle = smoke.gameObject.GetComponent<ParticleSystem>();
@@ -77,15 +81,16 @@ public partial class PlayerController : MonoBehaviour
     {
         if (living)
         {
+            
             PlayerControl();
             StateTimerCheck();
 
-            if (boosterOnPad && !stunning && !knockback& !paralysis)
+            if (boosterOnPad && !stunning && !knockback && !backtrip && !fronttrip)
             {
                 Booster();
             }
 
-            if(paralysis)
+            if (stunning)
             {
                 Controlparalysis();
             }
@@ -98,7 +103,7 @@ public partial class PlayerController : MonoBehaviour
     private void PlayerControl()
     {
 
-        if (!stunning && !paralysis && !knockback && !draining && !freezing && !breaking)
+        if (!stunning && !backtrip && !fronttrip && !knockback && !draining && !freezing && !breaking)
         {
             if (!keyReverse)
                 InputArrow();
@@ -106,28 +111,28 @@ public partial class PlayerController : MonoBehaviour
                 InputReserveArrow(); 
         }
 
-        if (!stunning && !paralysis && !knockback && !draining && !freezing && !breaking)
+        if (!stunning && !backtrip && !fronttrip && !knockback && !draining && !freezing && !breaking)
         {
             PlayerBooster();
         }
 
-        if (!stunning && !paralysis && !knockback && !draining && !freezing)
+        if (!stunning && !backtrip && !fronttrip && !knockback && !draining && !freezing)
         {
             PlayerJump();
         }
 
-        if (!stunning && !paralysis && !knockback && !draining)
+        if (!stunning && !backtrip && !fronttrip && !knockback && !draining)
         {
             PlayerRotate();
             PlayerAddSpeed();
         }
 
-        if (!stunning && !paralysis && !knockback)
+        if (!stunning && !backtrip && !fronttrip && !knockback)
         {
             PlayerBoosterGauge();
         }
 
-        if (!stunning && !paralysis)
+        if (!stunning && !backtrip && !fronttrip)
         {
             LandingBooster();
             LandingKeyChecking();
@@ -151,7 +156,8 @@ public partial class PlayerController : MonoBehaviour
         TimerCheck(ref immovable, ref immovableTimer);
         TimerCheck(ref breaking, ref breakingTimer);
         TimerCheck(ref keyReverse, ref keyReverseTimer);
-        TimerCheck(ref paralysis, ref paralysisTimer);
+        TimerCheck(ref backtrip, ref tripTimer);
+        TimerCheck(ref fronttrip, ref tripTimer);
         TimerCheck(ref draining, ref drainingTimer);
     }
 
@@ -188,8 +194,8 @@ public partial class PlayerController : MonoBehaviour
                 knockback = false;
                 if(!landingBooster)
                 {
-                    stunning = true;
-                    stunTimer = 2.0f;
+                    backtrip = true;
+                    tripTimer = 2.0f;
                     currentSpeed = 0;
                 }
             }
@@ -219,10 +225,10 @@ public partial class PlayerController : MonoBehaviour
         {
             while (true)
             {
-                if (!stunning)
+                if (!fronttrip)
                 {
-                    stunning = true;
-                    stunTimer = 2.0f;
+                    fronttrip = true;
+                    tripTimer = 2.0f;
                     BoosterOff();
 
                     currentSpeed = 0;
@@ -246,7 +252,7 @@ public partial class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Booster"))
         {
-            if (!boosterOnPad && !stunning)
+            if (!boosterOnPad && !stunning && !backtrip && !fronttrip)
             {
                 boosterOnPad = true;
                 boosterTimer = 2.0f;
@@ -255,11 +261,11 @@ public partial class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Par"))
         {
-            if (!paralysis)
+            if (!stunning)
             {
                 currentSpeed = 0;
-                paralysis = true;
-                paralysisTimer = 5.0f;
+                stunning = true;
+                stunTimer = 5.0f;
             }
         }
 
@@ -314,7 +320,7 @@ public partial class PlayerController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            paralysisTimer -= 0.5f;
+            stunTimer -= 0.5f;
         }
     }
 
@@ -592,7 +598,7 @@ public partial class PlayerController : MonoBehaviour
         if (boosterTimer > 0.0f) animator.SetBool("Booster", true);
         else animator.SetBool("Booster", false);
 
-        if ((boosterOnKey == true || boosterOnPad == true) && landing && !draining && !stunning && !knockback && !paralysis)
+        if ((boosterOnKey == true || boosterOnPad == true) && landing && !draining && !stunning && !knockback && !backtrip && !fronttrip)
         {
             booster.SetActive(true);
         }
