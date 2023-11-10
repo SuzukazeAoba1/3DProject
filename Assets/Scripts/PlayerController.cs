@@ -54,6 +54,7 @@ public partial class PlayerController : MonoBehaviour
     public bool knockback;
     public bool landingBooster;
     public bool landingCheck;
+    public bool landingKey;
 
     public float freezingTimer;
     public float immovableTimer;
@@ -98,7 +99,7 @@ public partial class PlayerController : MonoBehaviour
     private void PlayerControl()
     {
 
-        if (!stunning && !paralysis && !knockback && !draining && !freezing && !breaking && !keyReverse)
+        if (!stunning && !paralysis && !knockback && !draining && !freezing && !breaking)
         {
             if (!keyReverse)
                 InputArrow();
@@ -130,6 +131,7 @@ public partial class PlayerController : MonoBehaviour
         if (!stunning && !paralysis)
         {
             LandingBooster();
+            LandingKeyChecking();
         }
 
         AnimatorSet();
@@ -197,6 +199,7 @@ public partial class PlayerController : MonoBehaviour
             singleJump = false;
             doubleJump = false;
             landingCheck = false;
+            landingKey = false;
 
             if (landingBooster)
             {
@@ -251,13 +254,22 @@ public partial class PlayerController : MonoBehaviour
             }
         }
 
-        if (other.gameObject.CompareTag("Para"))
+        if (other.gameObject.CompareTag("Par"))
         {
             if (!paralysis)
             {
                 currentSpeed = 0;
                 paralysis = true;
                 paralysisTimer = 5.0f;
+            }
+        }
+
+        if (other.gameObject.CompareTag("Reserve"))
+        {
+            if (!keyReverse)
+            {
+                keyReverse = true;
+                keyReverseTimer = 5.0f;
             }
         }
     }
@@ -303,7 +315,7 @@ public partial class PlayerController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            paralysisTimer -= Time.deltaTime;
+            paralysisTimer -= 0.5f;
         }
     }
 
@@ -397,22 +409,22 @@ public partial class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            inputDir -= Vector2.up;
+            inputDir += Vector2.down;
         }
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            inputDir -= Vector2.down;
+            inputDir += Vector2.up;
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            inputDir -= Vector2.left;
+            inputDir += Vector2.right;
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            inputDir -= Vector2.right;
+            inputDir += Vector2.left;
         }
     }
 
@@ -449,8 +461,23 @@ public partial class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                knockback = false;
-                landingBooster = true;
+                if(!landingKey)
+                {
+                    knockback = false;
+                    landingBooster = true;
+                    landingKey = false;
+                }
+            }
+        }
+    }
+
+    public void LandingKeyChecking()
+    {
+        if(knockback && !landingCheck)
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                landingKey = true;
             }
         }
     }
@@ -471,13 +498,6 @@ public partial class PlayerController : MonoBehaviour
         }
     }
 
-    private void PlayerKeyReverse()
-    {
-        if (keyReverse == true)
-        {
-            inputDir = -inputDir;
-        }
-    }
 
     private void PlayerRotate()
     {
