@@ -11,7 +11,11 @@ public partial class PlayerController : MonoBehaviour
     public LandingCheck landingColider;
 
     public bool living;
+
     public bool readying;
+    public bool readyKeyInput;
+    public bool readySuccess;
+    public bool readyFailure;
     
     public Vector2 inputDir;
 
@@ -467,6 +471,57 @@ public partial class PlayerController : MonoBehaviour
             }
         }
     }
+    private void GameStart()
+    {
+        if (!readying)
+            return;
+
+        StartKeyInput();
+
+        if (GameManager.instance.gameStart == true)
+        {
+            if(readyFailure)
+            {
+                fronttrip = true;
+                tripTimer = 2.0f;
+            }
+            else if(readySuccess)
+            {
+                boosterOnPad = true;
+                boosterTimer = 2.0f;
+            }
+
+            readyFailure = false;
+            readySuccess = false;
+            readyKeyInput = false;
+            readying = false;
+        }
+    }
+
+    void StartKeyInput()
+    {
+        float startTime = GameManager.instance.startTimer;
+        if (!readyKeyInput)
+        {
+            if(Input.GetKey(KeyCode.UpArrow))
+            {
+                if (startTime <= 0.5 && startTime >= 0.15)
+                {
+                    readyFailure = true;
+                    readySuccess = false;
+
+                    readyKeyInput = true;
+                }
+                else if (startTime <= 0.15)
+                {
+                    readyFailure = false;
+                    readySuccess = true;
+
+                    readyKeyInput = true;
+                }
+            }
+        }
+    }
 
     public void LandingBooster()
     {
@@ -634,13 +689,5 @@ public partial class PlayerController : MonoBehaviour
         GameObject buf = Instantiate(jumpEffect);
         buf.transform.position = transform.position + transform.forward * (currentSpeed / 15.0f);
         buf.SetActive(true);
-    }
-
-    private void GameStart()
-    {
-        if(GameManager.instance.gameStart == true)
-        {
-            readying = false;
-        }
     }
 }
