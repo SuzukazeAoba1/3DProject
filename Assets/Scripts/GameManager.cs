@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
 
     public float playTime;
     public float playerLocation;
-    public float playerLaps;
+
+    public int playerLaps;
+    public int maxLaps;
 
     public bool gameStart;
     public bool gameLose;

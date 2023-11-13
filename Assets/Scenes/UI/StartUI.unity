@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5376089254297799353, guid: 575f64750d92aa34892e02a71a3cdf0c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.6500001
+      value: 0.6500002
       objectReference: {fileID: 0}
     - target: {fileID: 5376089254297799353, guid: 575f64750d92aa34892e02a71a3cdf0c, type: 3}
       propertyPath: m_LocalScale.y
@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5376089254297799353, guid: 575f64750d92aa34892e02a71a3cdf0c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.085
+      value: -1.0849609
       objectReference: {fileID: 0}
     - target: {fileID: 5376089254297799353, guid: 575f64750d92aa34892e02a71a3cdf0c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 477270463}
   - component: {fileID: 477270462}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -512,7 +512,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 477270463}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1336114881}
+        m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
+        m_MethodName: ReturnMainButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &477270463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -563,7 +575,7 @@ GameObject:
   - component: {fileID: 734187519}
   - component: {fileID: 734187518}
   m_Layer: 5
-  m_Name: Image
+  m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -584,10 +596,10 @@ RectTransform:
   m_Father: {fileID: 1336114880}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 1920, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &734187518
 MonoBehaviour:
@@ -707,7 +719,7 @@ GameObject:
   - component: {fileID: 774050599}
   - component: {fileID: 774050598}
   m_Layer: 5
-  m_Name: Image
+  m_Name: MapButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -784,7 +796,7 @@ GameObject:
   - component: {fileID: 782663542}
   - component: {fileID: 782663541}
   m_Layer: 5
-  m_Name: Button
+  m_Name: StartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -854,7 +866,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 782663542}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1336114881}
+        m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
+        m_MethodName: GameStartButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &782663542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -905,7 +929,7 @@ GameObject:
   - component: {fileID: 870559695}
   - component: {fileID: 870559694}
   m_Layer: 5
-  m_Name: Image
+  m_Name: StageImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1116,6 +1140,7 @@ GameObject:
   - component: {fileID: 1336114879}
   - component: {fileID: 1336114878}
   - component: {fileID: 1336114877}
+  - component: {fileID: 1336114881}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1211,6 +1236,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1336114881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336114876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e288eb380f575a049ac04befe03dba99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1538846453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,7 +1395,7 @@ GameObject:
   - component: {fileID: 1638347301}
   - component: {fileID: 1638347300}
   m_Layer: 5
-  m_Name: Image
+  m_Name: StageInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1434,7 +1471,7 @@ GameObject:
   - component: {fileID: 1718372913}
   - component: {fileID: 1718372912}
   m_Layer: 5
-  m_Name: Image
+  m_Name: StageName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
