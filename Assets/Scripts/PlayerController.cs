@@ -228,6 +228,16 @@ public partial class PlayerController : MonoBehaviour
         animator.SetBool("Landing", landing);
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "Restricted")
+        {
+            if (currentSpeed > 5.0f)
+            {
+                currentSpeed = 5.0f;
+            }
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
