@@ -44,7 +44,9 @@ public class GameManager : MonoBehaviour
     void timerCheck()
     {
         if (startTimer >= 0)
+        {
             startTimer -= Time.deltaTime;
+        }
 
         if (startTimer <= 0)
         {
