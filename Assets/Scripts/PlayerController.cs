@@ -514,14 +514,14 @@ public partial class PlayerController : MonoBehaviour
         {
             if(Input.GetKey(KeyCode.UpArrow))
             {
-                if (startTime <= 0.5 && startTime >= 0.15)
+                if (startTime <= 0.3 && startTime >= 0.1)
                 {
                     readyFailure = true;
                     readySuccess = false;
 
                     readyKeyInput = true;
                 }
-                else if (startTime <= 0.15)
+                else if (startTime <= 0.1)
                 {
                     readyFailure = false;
                     readySuccess = true;
