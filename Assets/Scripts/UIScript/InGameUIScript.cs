@@ -6,21 +6,17 @@ using UnityEngine.UI;
 
 public class InGameUIScript : MonoBehaviour
 {
-    public TextMeshProUGUI playTimeText;
+    public TextMeshProUGUI playMinTime;
+    public TextMeshProUGUI playSecTime;
+    public TextMeshProUGUI playMiliSecTime;
 
     public TextMeshProUGUI maxLapText;
     public TextMeshProUGUI currentLapText;
 
-   // public Slider BoosterSlider;
-
+    public Slider BoosterSlider;
+    public Slider AwakenSlider;
     public PlayerController player;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        player = GetComponent<PlayerController>();
- 
-    }
 
     // Update is called once per frame
     void Update()
@@ -32,11 +28,22 @@ public class InGameUIScript : MonoBehaviour
 
     public void ControlBoosterGauge()
     {
-       // BoosterSlider.value = (player.boosterGauge / 10);
+        BoosterSlider.value = (player.boosterGauge / 10);
+        AwakenSlider.value = (player.awakenGauge / 10);
     }
 
     public void PrintPlayTime()
     {
+        float miliSec = Mathf.RoundToInt(GameManager.instance.playTime % 1f * 100);
+        if(miliSec >= 100)
+        {
+            miliSec = 0;
+        }
+        int sec = Mathf.RoundToInt(GameManager.instance.playTime % 60);
+        int min = Mathf.RoundToInt(GameManager.instance.playTime / 60);
+        playMinTime.text = string.Format("{0:00}", min);
+        playSecTime.text = string.Format("{0:00}", sec);
+        playMiliSecTime.text = string.Format("{0:00}", miliSec);
     }
 
     public void PrintCurrentLap()
