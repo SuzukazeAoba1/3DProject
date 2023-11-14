@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject playerPrefab;
+    //public GameObject resultUI;
     public static GameManager instance; 
 
     public float playTime;
@@ -18,6 +19,12 @@ public class GameManager : MonoBehaviour
     public bool gameWin;
 
     public float startTimer;
+
+    private void Awake()
+    {
+        //resultUI.SetActive(false);
+        Time.timeScale = 1;
+    }
 
     private void Start()
     {
@@ -33,6 +40,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (gameLose || gameWin)
+            return;
+
         if(gameStart)
         {
             playTime += Time.deltaTime;
@@ -55,5 +65,13 @@ public class GameManager : MonoBehaviour
             startTimer = 0;
             gameStart = true;
         }
+    }
+
+
+    public void GameClear()
+    {
+        gameWin = true;
+        Time.timeScale = 0;
+        //resultUI.SetActive(true);
     }
 }
