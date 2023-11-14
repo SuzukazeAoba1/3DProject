@@ -256,6 +256,7 @@ public partial class PlayerController : MonoBehaviour
 
                     currentSpeed = 0;
                     animator.SetTrigger("Tripped");
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.Hurdle);
                     StartCoroutine(PlaySmoke(0.1f));
                 }
                 else
@@ -462,6 +463,7 @@ public partial class PlayerController : MonoBehaviour
         {
             if (singleJump == false)
             {
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.FstJump);
                 PlayJumpEffect();
                 rigid.AddForce(Vector3.up * baseJumpPower);
                 landing = false;
@@ -469,6 +471,7 @@ public partial class PlayerController : MonoBehaviour
             }
             else if (doubleJump == false)
             {
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.SndJump);
                 if (rigid.velocity.y < 0)
                 {
                     rigid.velocity = new Vector3(rigid.velocity.x, 0, rigid.velocity.z);

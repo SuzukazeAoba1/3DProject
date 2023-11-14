@@ -29,7 +29,7 @@ public class ButtonScript : MonoBehaviour
 
     public void GameStartButton()
     {
-        SceneManager.LoadScene("ObjectScene");
+        SceneManager.LoadScene("main");
     }
 
     public void ReturnStageButton()

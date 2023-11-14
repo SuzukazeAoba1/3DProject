@@ -34,16 +34,13 @@ public class InGameUIScript : MonoBehaviour
 
     public void PrintPlayTime()
     {
-        //float miliSec = GameManager.instance.playTime % 1f * 100;
-        //if(miliSec >= 100)
-       // {
-        //    miliSec = 0;
-        //}
-        int sec = Mathf.RoundToInt(GameManager.instance.playTime % 60);
-        int min = Mathf.RoundToInt(GameManager.instance.playTime / 60);
+        int miliSec = Mathf.FloorToInt((GameManager.instance.playTime * 1000) % 1000);
+
+        int sec = Mathf.FloorToInt(GameManager.instance.playTime % 60);
+        int min = Mathf.FloorToInt(GameManager.instance.playTime / 60);
         playMinTime.text = string.Format("{0:00}", min);
         playSecTime.text = string.Format("{0:00}", sec);
-        //playMiliSecTime.text = string.Format("{0:00}", miliSec);
+        playMiliSecTime.text = string.Format("{0:000}", miliSec);
     }
 
     public void PrintCurrentLap()

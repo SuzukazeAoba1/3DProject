@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.1802838, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -326,6 +326,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174258947}
   m_CullTransparentMesh: 1
+--- !u!1 &175529518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 175529520}
+  - component: {fileID: 175529519}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &175529519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175529518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c0c4854759995c40b504bdacc644124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgmClip:
+  - {fileID: 8300000, guid: 1a29c8bb70ab86447b67853507d209ac, type: 3}
+  - {fileID: 8300000, guid: 60c5172b7255f8a45bd53bebf15d17e5, type: 3}
+  bgmVolume: 0.5
+  bgmSource: {fileID: 0}
+  sfxClip:
+  - {fileID: 8300000, guid: 96ed77e73c9b60b4fa16994d0186e0c9, type: 3}
+  - {fileID: 8300000, guid: 06116219f27eed0468e357aeb5698704, type: 3}
+  - {fileID: 8300000, guid: 5aec3f84203756a4c9138c99ec706017, type: 3}
+  - {fileID: 8300000, guid: 198a34350bff4c54fae7abae8991785b, type: 3}
+  - {fileID: 8300000, guid: af12c1e9a2670814c8ad1bb600b21a54, type: 3}
+  - {fileID: 8300000, guid: 36789b88f745b3048a237adf06275aa0, type: 3}
+  - {fileID: 8300000, guid: 83248d98508444048b9e09591c45b07b, type: 3}
+  - {fileID: 8300000, guid: 48c70350ebea9a2489bb9614e9a69916, type: 3}
+  - {fileID: 8300000, guid: 0da606caf63dfc442877fc87aa4c791b, type: 3}
+  - {fileID: 8300000, guid: cecb29a91d35cc14ea42115cc313df76, type: 3}
+  - {fileID: 8300000, guid: 26b9680a540c5b643a20a021e2f858fa, type: 3}
+  - {fileID: 8300000, guid: 7a9813fec42dd4949a1c108fa9394539, type: 3}
+  - {fileID: 8300000, guid: 43966e66f89456840951cb2239d9eba0, type: 3}
+  - {fileID: 8300000, guid: 88b9472b01c4b5849adcd1720761d349, type: 3}
+  - {fileID: 8300000, guid: 782ab9a20929c504ab609a91349cb5f2, type: 3}
+  sfxVolume: 0.7
+  sfxChannels: 15
+  sfxSource: []
+--- !u!4 &175529520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175529518}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &250811013
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,6 +553,7 @@ GameObject:
   - component: {fileID: 873660447}
   - component: {fileID: 873660446}
   - component: {fileID: 873660445}
+  - component: {fileID: 873660448}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -558,6 +627,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &873660448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873660444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &969875879
 GameObject:
   m_ObjectHideFlags: 0
