@@ -3,19 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-    public AudioSource audioSource;
     
     public AudioClip[] bgmClip;
     public float bgmVolume;
     public Slider bgmslider;
+    public AudioSource bgmSource;
 
     public AudioClip[] sfxClip;
     public float sfxVolume;
     public Slider sfxslider;
+    public AudioSource sfxSource;
+
+    public enum Bgm
+    {
+        MainBgm,
+        TutorialBgm,
+    }
+
+    public enum Sfx
+    {
+        FirstJump,
+        SecondJump,
+        GameOverVoice,
+        MapSelect,
+        FootSound,
+        ButtonSound,
+        BoosterSound,
+        StartSound,
+        KnockBackSound,
+        OuchSound,
+        HurdleSound,
+    }
 
     // Start is called before the first frame update
     private void Awake()
@@ -31,6 +54,7 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
     void Start()
@@ -50,14 +74,24 @@ public class AudioManager : MonoBehaviour
         sfxslider.value = sfxVolume;
     }
 
-    public void BGMSliderChange()
+    public void PlayBgm()
     {
-        bgmslider.value = bgmVolume;
+
     }
 
-    public void SFXSliderChange()
+    public void PlaySfx()
     {
-        sfxslider.value = sfxVolume;
+
+    }
+
+    public void BgmVolume()
+    {
+
+    }
+
+    public void SFXVolume()
+    {
+
     }
 
 }
