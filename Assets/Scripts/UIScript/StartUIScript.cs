@@ -6,7 +6,6 @@ using TMPro;
 
 public class StartUIScript : MonoBehaviour
 {
-    public List<MapData> maps;
     public Image mapNameImage;
     public Image mapSetImage;
     public TextMeshProUGUI mapInfoText;
@@ -30,17 +29,13 @@ public class StartUIScript : MonoBehaviour
 
     void MapUpdate()
     {
-        maps[0].get(1, "튜토리얼 맵", "게임을 익히기 위한 튜토리얼 맵 (뭐라고 써야함? 알아서 수정좀요)");
-        maps[1].get(2, "???", "업데이트 예정");
     }
 
     public void OnClickTutoMap()
     {
-        mapInfoText.text = maps[0].setInfo();
     }
 
     public void onClickWholeMap()
     {
-        mapInfoText.text = maps[1].setInfo();
     }
 }
