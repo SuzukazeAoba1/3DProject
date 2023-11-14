@@ -6,8 +6,13 @@ using TMPro;
 
 public class StartUIScript : MonoBehaviour
 {
+    public Sprite tutorialImage;
+    public Sprite tutorialMapImage;
+    public Sprite mapImage;
+
     public Image mapNameImage;
     public Image mapSetImage;
+    public GameObject stageImage;
     public TextMeshProUGUI mapInfoText;
     public Button chekcButton;
 
@@ -18,7 +23,7 @@ public class StartUIScript : MonoBehaviour
 
     private void Start()
     {
-        MapUpdate();
+
     }
 
     // Update is called once per frame
@@ -27,15 +32,21 @@ public class StartUIScript : MonoBehaviour
         
     }
 
-    void MapUpdate()
-    {
-    }
-
     public void OnClickTutoMap()
     {
+        mapNameImage.sprite = tutorialImage;
+        string tempText = "초보자를 위한\n튜토리얼 맵";
+        mapInfoText.text = tempText;
+        chekcButton.interactable = true;
+        stageImage.SetActive(true);
     }
 
     public void onClickWholeMap()
     {
+        mapNameImage.sprite = mapImage;
+        string tempText = "개발 중";
+        stageImage.SetActive(false);
+        mapInfoText.text = tempText;
+        chekcButton.interactable = false;
     }
 }

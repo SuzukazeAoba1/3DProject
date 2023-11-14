@@ -86,6 +86,7 @@ public partial class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
         GameStart();
 
         if (!readying)
