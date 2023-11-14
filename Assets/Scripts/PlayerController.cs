@@ -257,6 +257,7 @@ public partial class PlayerController : MonoBehaviour
                     currentSpeed = 0;
                     animator.SetTrigger("Tripped");
                     AudioManager.instance.PlaySfx(AudioManager.Sfx.Hurdle);
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.OuchVoice);
                     StartCoroutine(PlaySmoke(0.1f));
                 }
                 else
@@ -309,11 +310,13 @@ public partial class PlayerController : MonoBehaviour
         Vector3 playerDirection = transform.forward;
 
         currentSpeed = 0;
-        rigid.velocity = playerDirection * 5f;
+        rigid.velocity = playerDirection * 8f;
 
     }
     private void KnockBackCollision()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.KnockBack);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.OuchVoice);
         knockback = true;
         landing = false;
         currentSpeed = 0;
@@ -329,6 +332,7 @@ public partial class PlayerController : MonoBehaviour
 
     private void Booster()
     {
+        //AudioManager.instance.PlaySfx(AudioManager.Sfx.Booster);
         breaking = false;
         breakingTimer = 0.0f;
 

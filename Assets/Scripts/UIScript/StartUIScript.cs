@@ -34,6 +34,7 @@ public class StartUIScript : MonoBehaviour
 
     public void OnClickTutoMap()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.MapSelect);
         mapNameImage.sprite = tutorialImage;
         string tempText = "초보자를 위한\n튜토리얼 맵";
         mapInfoText.text = tempText;
@@ -43,6 +44,7 @@ public class StartUIScript : MonoBehaviour
 
     public void onClickWholeMap()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.MapSelect);
         mapNameImage.sprite = mapImage;
         string tempText = "개발 중";
         stageImage.SetActive(false);

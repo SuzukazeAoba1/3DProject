@@ -27,7 +27,11 @@ public class CountDownUI : MonoBehaviour
     {
         
         if(GameManager.instance.startTimer <= 3f && !isCheck)
+        {
             StartCountDown();
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.CountDown);
+        }
+            
     }
 
     private void StartCountDown()

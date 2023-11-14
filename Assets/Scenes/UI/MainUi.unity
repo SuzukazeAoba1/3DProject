@@ -481,7 +481,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1408382651}
         m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
-        m_MethodName: ReturnStageButton
+        m_MethodName: GameSelectButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

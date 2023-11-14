@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject playerPrefab;
-    //public GameObject resultUI;
-    public static GameManager instance; 
+    public GameObject resultUI;
+    public static GameManager instance;
 
     public float playTime;
     public float playerLocation;
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        //resultUI.SetActive(false);
+        resultUI.SetActive(false);
         Time.timeScale = 1;
     }
 
@@ -71,7 +71,6 @@ public class GameManager : MonoBehaviour
     public void GameClear()
     {
         gameWin = true;
-        Time.timeScale = 0;
-        //resultUI.SetActive(true);
+        resultUI.SetActive(true);
     }
 }

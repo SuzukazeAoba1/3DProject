@@ -6,46 +6,45 @@ using UnityEngine.SceneManagement;
 public class ButtonScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+  
     public void ReturnMainButton()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.ButtonSelect);
         SceneManager.LoadScene("MainUI");
     }
 
     public void GameSelectButton()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.ButtonSelect);
         SceneManager.LoadScene("StartUI");
     }
 
     public void GameStartButton()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.ButtonSelect);
         SceneManager.LoadScene("main");
+        AudioManager.instance.PlayBgm(true, 2);
     }
 
     public void ReturnStageButton()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.ButtonSelect);
         SceneManager.LoadScene("StartUI");
+
+        
+        AudioManager.instance.PlayBgm(true, 1);
     }
 
     public void GoOptionButton()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.ButtonSelect);
         SceneManager.LoadScene("OptionUI");
     }
 
     public void ExitButton()
     {
         #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
+        UnityEditor.EditorApplication.isPlaying = false;
         #else
                 Application.Quit();
         #endif
