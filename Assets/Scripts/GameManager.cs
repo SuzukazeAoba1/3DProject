@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject playerPrefab;
-    public GameObject resultUI;
+    //public GameObject resultUI;
     public static GameManager instance; 
 
     public float playTime;
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        resultUI.SetActive(false);
+        //resultUI.SetActive(false);
         Time.timeScale = 1;
     }
 
@@ -72,6 +72,6 @@ public class GameManager : MonoBehaviour
     {
         gameWin = true;
         Time.timeScale = 0;
-        resultUI.SetActive(true);
+        //resultUI.SetActive(true);
     }
 }
