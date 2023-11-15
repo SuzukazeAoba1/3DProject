@@ -403,11 +403,12 @@ public partial class PlayerController : MonoBehaviour
         }
     }
 
-    void BoosterOff()
+    public void BoosterOff()
     {
         boosterOnPad = false;
         boosterOnKey = false;
         boosterTimer = 0f;
+        boosterEffect.SetActive(false);
     }
 }
 

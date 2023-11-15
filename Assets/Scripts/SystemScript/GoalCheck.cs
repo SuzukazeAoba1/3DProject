@@ -5,6 +5,7 @@ using UnityEngine;
 public class GoalCheck : MonoBehaviour
 {
     public GoalManager goalManager;
+    public PlayerController playerCon;
     public CameraController cameraCon;
     public cameraMode changeCameraMode;
 
@@ -44,7 +45,13 @@ public class GoalCheck : MonoBehaviour
                 {
                     goalManager.goalPoint = true;
                     GameManager.instance.playerLaps++;
-                    cameraCon.currentCameraMode = changeCameraMode;
+                    if(GameManager.instance.playerLaps >= GameManager.instance.maxLaps)
+                    {
+                        cameraCon.currentCameraMode = changeCameraMode;
+                        playerCon.BoosterOff();
+                    }
+                    
+
                 }
                 break;
 
