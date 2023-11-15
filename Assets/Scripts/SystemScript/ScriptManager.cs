@@ -48,19 +48,19 @@ public class ScriptManager : MonoBehaviour
         switch(scriptNum)
         {
             case 2:
-                printScript = "c키를 누르면 점프할 수 있어!";
+                printScript = "Z키를 누르면 부스터를,\nC키를 누르면 점프를 할 수 있어!";
                 break;
 
             case 3:
-                printScript = "c키를 두번 누르면 2단 점프가 가능해!";
+                printScript = "C키를 두번 누르면 2단 점프가 가능해!";
                 break;
 
             case 4:
-                printScript = "이거 뭐라씀? 넉백... 당할때\n착지직전 z쓰면 부스터 가능 알아서 고쳐주셈 이거";
+                printScript = "튕겨나는 장애물에 당했을 때,\n바닥에 닿기 직전 Z를 누르면 착지 부스터가 가능해!";
                 break;
 
             case 5:
-                printScript = "부스터 설명";
+                printScript = "노란 화살 장판을 밟으면\n2초간 최고 속도로 달릴 수 있어!";
                 break;
 
         }

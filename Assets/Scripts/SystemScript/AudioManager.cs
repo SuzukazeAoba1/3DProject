@@ -32,13 +32,15 @@ public class AudioManager : MonoBehaviour
         CountDown,
         FootSound,
         FstJump,
-        GameOverVoice=7,
+        FstJump2,
+        GameOverVoice,
         Hurdle,
         KnockBack,
         MapSelect,
         OuchVoice,
         SndJump,
-        StageStart=14,
+        SndJump2,
+        StageStart,
     }
 
     // Start is called before the first frame update

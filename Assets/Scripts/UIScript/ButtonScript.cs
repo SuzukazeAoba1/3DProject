@@ -21,10 +21,11 @@ public class ButtonScript : MonoBehaviour
 
     public void GameStartButton()
     {
-        AudioManager.instance.PlaySfx(AudioManager.Sfx.ButtonSelect);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.StageStart);
         SceneManager.LoadScene("main");
         AudioManager.instance.PlayBgm(true, 2);
     }
+
 
     public void ReturnStageButton()
     {
