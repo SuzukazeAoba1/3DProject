@@ -30,6 +30,11 @@ public class LandingCollierCheck : MonoBehaviour
             player.GetComponent<PlayerController>().landingCheck = true;
             topCheck = false;
         }
+
+        if(!playerKnockBack)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

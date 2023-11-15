@@ -5,6 +5,7 @@ using UnityEngine;
 public partial class PlayerController : MonoBehaviour
 {
     public GameObject player;
+    public GameObject knockBackCollider;
     public CameraController cameraTarget;
     public GameObject boosterEffect;
     public GameObject smokeEffect;
@@ -273,13 +274,14 @@ public partial class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("KnockBack"))
         {
             //animator.SetTrigger("BackFlip");
+            knockBackCollider.SetActive(true);
             KnockBackCollision();
                 
         }
 
         if (other.gameObject.CompareTag("Booster"))
         {
-            if (!boosterOnPad && !stunning && !backtrip && !fronttrip)
+            if (!stunning && !backtrip && !fronttrip)
             {
                 boosterOnPad = true;
                 boosterTimer = 2.0f;
@@ -317,8 +319,12 @@ public partial class PlayerController : MonoBehaviour
     }
     private void KnockBackCollision()
     {
-        AudioManager.instance.PlaySfx(AudioManager.Sfx.KnockBack);
-        AudioManager.instance.PlaySfx(AudioManager.Sfx.OuchVoice);
+        if(!knockback)
+        {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.KnockBack);
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.OuchVoice);
+        }
+        
         knockback = true;
         landing = false;
         currentSpeed = 0;
@@ -328,7 +334,7 @@ public partial class PlayerController : MonoBehaviour
         Vector3 playerDirection = -transform.forward.normalized;
         Vector3 highVector = new Vector3(0, 1.5f, 0);
 
-        rigid.velocity = (playerDirection + highVector) * 4.5f;
+        rigid.velocity = (playerDirection + highVector) * 6f;
     }
 
 
@@ -559,7 +565,6 @@ public partial class PlayerController : MonoBehaviour
             {
                 if(!landingKey)
                 {
-                    knockback = false;
                     landingBooster = true;
                     landingKey = false;
                 }
