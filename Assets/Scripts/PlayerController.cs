@@ -389,7 +389,7 @@ public partial class PlayerController : MonoBehaviour
         }
         else
         {
-            boosterGauge += (Time.deltaTime / 5) ;
+            boosterGauge += (Time.deltaTime / 3) ;
             if (boosterGauge >= boosterMaxGauge)
             {
                 boosterGauge = boosterMaxGauge;
