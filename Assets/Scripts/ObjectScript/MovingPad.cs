@@ -15,19 +15,19 @@ public class MovingPad : MonoBehaviour
     {
         if (movingX)
         {
-            transform.DOLocalMoveX(direction, time)
+            transform.DOLocalMoveX(direction, time).SetRelative()
                 .SetLoops(-1, LoopType.Yoyo)
                 .SetEase(Ease.InOutSine);
         }
         else if (movingY)
         {
-            transform.DOLocalMoveY(direction, time)
+            transform.DOLocalMoveY(direction, time).SetRelative()
                 .SetLoops(-1, LoopType.Yoyo)
                 .SetEase(Ease.InOutSine);
         }
         else if (movingZ)
         {
-            transform.DOLocalMoveZ(direction, time)
+            transform.DOLocalMoveZ(direction, time).SetRelative()
                 .SetLoops(-1, LoopType.Yoyo)
                 .SetEase(Ease.InOutSine);
         }
