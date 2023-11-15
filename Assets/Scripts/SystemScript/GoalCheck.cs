@@ -5,8 +5,9 @@ using UnityEngine;
 public class GoalCheck : MonoBehaviour
 {
     public GoalManager goalManager;
+    public CameraController cameraCon;
+    public cameraMode changeCameraMode;
 
-    // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -43,6 +44,7 @@ public class GoalCheck : MonoBehaviour
                 {
                     goalManager.goalPoint = true;
                     GameManager.instance.playerLaps++;
+                    cameraCon.currentCameraMode = changeCameraMode;
                 }
                 break;
 
