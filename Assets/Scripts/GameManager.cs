@@ -71,6 +71,12 @@ public class GameManager : MonoBehaviour
     public void GameClear()
     {
         gameWin = true;
+        StartCoroutine(PrintResultUI());
+    }
+
+    IEnumerator PrintResultUI()
+    {
+        yield return new WaitForSeconds(3.0f);
         resultUI.SetActive(true);
     }
 }

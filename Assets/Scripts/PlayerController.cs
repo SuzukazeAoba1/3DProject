@@ -334,7 +334,6 @@ public partial class PlayerController : MonoBehaviour
 
     private void Booster()
     {
-        //AudioManager.instance.PlaySfx(AudioManager.Sfx.Booster);
         breaking = false;
         breakingTimer = 0.0f;
 
@@ -469,7 +468,11 @@ public partial class PlayerController : MonoBehaviour
         {
             if (singleJump == false)
             {
-                AudioManager.instance.PlaySfx(AudioManager.Sfx.FstJump);
+                int ran = Random.Range(0, 2);
+                if (ran == 0)
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.FstJump);
+                else
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.FstJump2);
                 PlayJumpEffect();
                 rigid.AddForce(Vector3.up * baseJumpPower);
                 landing = false;
@@ -477,7 +480,11 @@ public partial class PlayerController : MonoBehaviour
             }
             else if (doubleJump == false)
             {
-                AudioManager.instance.PlaySfx(AudioManager.Sfx.SndJump);
+                int ran = Random.Range(0, 2);
+                if (ran == 0)
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.SndJump);
+                else
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.SndJump2);
                 if (rigid.velocity.y < 0)
                 {
                     rigid.velocity = new Vector3(rigid.velocity.x, 0, rigid.velocity.z);
@@ -507,6 +514,7 @@ public partial class PlayerController : MonoBehaviour
             }
             else if(readySuccess)
             {
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.BrakingSound);
                 boosterOnPad = true;
                 boosterTimer = 2.0f;
             }
