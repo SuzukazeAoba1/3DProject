@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
     public void GameClear()
     {
         gameWin = true;
+        playerPrefab.GetComponent<Animator>().SetTrigger("Win");
         StartCoroutine(PrintResultUI());
     }
 
@@ -79,6 +80,6 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3.0f);
         resultUI.SetActive(true);
-        playerPrefab.GetComponent<Animator>().SetTrigger("Win");
+        
     }
 }
