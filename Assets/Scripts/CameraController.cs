@@ -6,7 +6,8 @@ public enum cameraMode
     baseline,
     leftcurve,
     secondline,
-    rightcurve
+    rightcurve,
+    gamewin
 }
 
 public class CameraController : MonoBehaviour
@@ -21,11 +22,13 @@ public class CameraController : MonoBehaviour
     private CinemachineTransposer subTranspos;
     public Vector3 directionAngle;
     public float cameraAngle;
+    public float winAngle;
 
     private void Start()
     {
         subTranspos = subCamera.GetCinemachineComponent<CinemachineTransposer>();
         directionAngle = Vector3.zero;
+        winAngle = 0.0f;
     }
 
     private void Update()
@@ -46,12 +49,25 @@ public class CameraController : MonoBehaviour
             case cameraMode.leftcurve:
                 directionAngle = rotation * (targetLeft.position - playerTransform.position).normalized;
                 break;
+            case cameraMode.gamewin:
+                winAngle += Time.deltaTime * 20.0f;
+                rotation = Quaternion.Euler(0f, winAngle, 0f);
+                directionAngle = rotation * (targetLeft.position - playerTransform.position).normalized;
+                break;
         }
 
-        directionAngle.y = 0.0f;
-
-        subTranspos.m_FollowOffset = Vector3.up * cameraHeight;
-        subTranspos.m_FollowOffset += directionAngle * -cameraDistance;
+        if (currentCameraMode == cameraMode.gamewin)
+        {
+            directionAngle.y = 0.0f;
+            subTranspos.m_FollowOffset = Vector3.up * cameraHeight * 0.5f;
+            subTranspos.m_FollowOffset += directionAngle * -cameraDistance * 0.5f;
+        }
+        else
+        {
+            directionAngle.y = 0.0f;
+            subTranspos.m_FollowOffset = Vector3.up * cameraHeight;
+            subTranspos.m_FollowOffset += directionAngle * -cameraDistance;
+        }
 
         cameraAngle = (450.01f - (Mathf.Atan2(directionAngle.z, directionAngle.x) * Mathf.Rad2Deg)) % 360.0f - 0.01f;
 
