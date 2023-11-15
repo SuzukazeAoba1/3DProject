@@ -56,11 +56,22 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        
     }
 
     private void Start()
     {
         PlayBgm(true, 1);
+    }
+
+    void initVolume()
+    {
+        bgmSource.volume = bgmVolume;
+        for (int index = 0; index < sfxSource.Length; index++)
+        {
+            sfxSource[index].volume = sfxVolume;
+        }
     }
 
     void Init()
@@ -71,7 +82,7 @@ public class AudioManager : MonoBehaviour
         bgmEffect = Camera.main.GetComponent<AudioHighPassFilter>();
         bgmSource.playOnAwake = false; 
         bgmSource.loop = true; 
-        bgmSource.volume = bgmVolume;
+        
 
         GameObject sfxObject = new GameObject("sfxSource");
         sfxObject.transform.parent = transform;
@@ -81,9 +92,10 @@ public class AudioManager : MonoBehaviour
         {
             sfxSource[index] = sfxObject.AddComponent<AudioSource>();
             sfxSource[index].playOnAwake = false;
-            sfxSource[index].volume = sfxVolume;
             sfxSource[index].bypassListenerEffects = true;
         }
+
+        initVolume();
     }
 
     public void PlayBgm(bool isPlay, int bgmIndex = 1)
@@ -126,14 +138,19 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void BgmVolume()
+    public void SFXVolume(float volume)
     {
-
+        sfxVolume = volume;
+        for (int index = 0; index < sfxSource.Length; index++)
+        {
+            sfxSource[index].volume = sfxVolume;
+        }
     }
 
-    public void SFXVolume()
+    public void BGMVolume(float volume)
     {
-
+        bgmVolume = volume;
+        bgmSource.volume = bgmVolume;
     }
 
 }

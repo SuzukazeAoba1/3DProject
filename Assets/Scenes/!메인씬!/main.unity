@@ -39424,6 +39424,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7198699275401627236, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
+      propertyPath: baseAccel
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7198699275401627236, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -39432,12 +39436,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7198699275401627236, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
+      propertyPath: baseMaxSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7198699275401627236, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
       propertyPath: cameraTarget
       value: 
       objectReference: {fileID: 1825169160}
     - target: {fileID: 7198699275401627236, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
+      propertyPath: boosterAddAccel
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7198699275401627236, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
       propertyPath: boosterMaxGauge
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7198699275401627236, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
+      propertyPath: boosterMaxSpeed
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7198699275401627236, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
       propertyPath: keyReverseTimer
@@ -46304,7 +46320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayTime: 3
-  rotateValue: 90
+  rotateValue: 95
   rotationSpeed: 720
   isCollision: 0
 --- !u!1 &1542034435
