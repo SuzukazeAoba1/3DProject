@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject playerObject;
     public GameObject playerPrefab;
     public GameObject resultUI;
     public static GameManager instance;
@@ -72,5 +73,6 @@ public class GameManager : MonoBehaviour
     {
         gameWin = true;
         resultUI.SetActive(true);
+        playerPrefab.GetComponent<Animator>().SetTrigger("Win");
     }
 }
