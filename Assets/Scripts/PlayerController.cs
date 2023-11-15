@@ -227,7 +227,7 @@ public partial class PlayerController : MonoBehaviour
                 StartCoroutine(PlaySmoke(0f));
                 landingBooster = false;
                 boosterOnPad = true;
-                boosterTimer = 2.0f;
+                boosterTimer = 1.0f;
             }
 
         }
@@ -539,14 +539,7 @@ public partial class PlayerController : MonoBehaviour
         {
             if(Input.GetKey(KeyCode.UpArrow))
             {
-                if (startTime <= 0.3 && startTime >= 0.1)
-                {
-                    readyFailure = true;
-                    readySuccess = false;
-
-                    readyKeyInput = true;
-                }
-                else if (startTime <= 0.1)
+               if (startTime <= 0.3)
                 {
                     readyFailure = false;
                     readySuccess = true;
