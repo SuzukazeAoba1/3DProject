@@ -86,6 +86,8 @@ public partial class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.gameLose || GameManager.instance.gameWin)
+            return;
 
         GameStart();
 
@@ -310,7 +312,7 @@ public partial class PlayerController : MonoBehaviour
         Vector3 playerDirection = transform.forward;
 
         currentSpeed = 0;
-        rigid.velocity = playerDirection * 8f;
+        rigid.velocity = playerDirection * 7f;
 
     }
     private void KnockBackCollision()

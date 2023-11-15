@@ -5,6 +5,7 @@ using UnityEngine;
 public class GoalCheck : MonoBehaviour
 {
     public GoalManager goalManager;
+
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
@@ -39,7 +40,10 @@ public class GoalCheck : MonoBehaviour
 
             case "GoalPoint":
                 if (goalManager.firstPoint && goalManager.secondPoint && goalManager.thirdPoint && goalManager.FinalPoint)
+                {
                     goalManager.goalPoint = true;
+                    GameManager.instance.playerLaps++;
+                }
                 break;
 
         }

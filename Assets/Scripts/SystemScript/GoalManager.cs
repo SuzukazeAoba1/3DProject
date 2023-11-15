@@ -15,7 +15,6 @@ public class GoalManager : MonoBehaviour
     {
         if (goalPoint)
         {
-            GameManager.instance.playerLaps++;
             if(GameManager.instance.playerLaps == GameManager.instance.maxLaps)
                 GameManager.instance.GameClear();
         }
