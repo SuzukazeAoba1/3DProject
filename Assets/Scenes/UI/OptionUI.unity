@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 205447208}
   - component: {fileID: 205447209}
   m_Layer: 5
-  m_Name: BFXSlider
+  m_Name: BGMSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -877,7 +877,7 @@ GameObject:
   - component: {fileID: 487172404}
   - component: {fileID: 487172405}
   m_Layer: 5
-  m_Name: Slider (1)
+  m_Name: SfxSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1982,7 +1982,7 @@ GameObject:
   - component: {fileID: 1115335376}
   - component: {fileID: 1115335375}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: SfxText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3161,7 +3161,7 @@ GameObject:
   - component: {fileID: 1895518202}
   - component: {fileID: 1895518201}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: BgmText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
