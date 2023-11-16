@@ -210,6 +210,7 @@ public partial class PlayerController : MonoBehaviour
                 knockback = false;
                 if(!landingBooster)
                 {
+                    Debug.Log("그라운드 충돌");
                     backtrip = true;
                     tripTimer = 2.0f;
                     currentSpeed = 0;
@@ -274,7 +275,11 @@ public partial class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("KnockBack"))
         {
             //animator.SetTrigger("BackFlip");
+            knockback = false;
+            backtrip = false;
+            
             knockBackCollider.SetActive(true);
+
             KnockBackCollision();
                 
         }
@@ -319,13 +324,15 @@ public partial class PlayerController : MonoBehaviour
     }
     private void KnockBackCollision()
     {
-        if(!knockback)
+        Debug.Log("넉백 함수 실행은 됨");
+        if (!knockback)
         {
             AudioManager.instance.PlaySfx(AudioManager.Sfx.KnockBack);
             AudioManager.instance.PlaySfx(AudioManager.Sfx.OuchVoice);
         }
         
         knockback = true;
+        Debug.Log("knockback" + knockback);
         landing = false;
         currentSpeed = 0;
 
@@ -538,7 +545,7 @@ public partial class PlayerController : MonoBehaviour
         float startTime = GameManager.instance.startTimer;
         if (!readyKeyInput)
         {
-            if(Input.GetKey(KeyCode.UpArrow))
+            if(Input.GetKeyDown(KeyCode.UpArrow))
             {
                if (startTime <= 0.3)
                 {
@@ -722,5 +729,13 @@ public partial class PlayerController : MonoBehaviour
         GameObject buf = Instantiate(jumpEffect);
         buf.transform.position = transform.position + transform.forward * (currentSpeed / 15.0f);
         buf.SetActive(true);
+    }
+
+    private void SoundCheck()
+    {
+        if(inputDir != Vector2.zero)
+        {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.FootSound);
+        }
     }
 }

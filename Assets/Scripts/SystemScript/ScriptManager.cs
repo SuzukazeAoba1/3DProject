@@ -26,13 +26,11 @@ public class ScriptManager : MonoBehaviour
         if(other.tag == "Player")
         {
             isPrint = true;
-            Debug.Log("Ãæµ¹");
         }
     }
 
     void Update()
     {
-        Debug.Log(isPrint);
         if (isPrint)
         {
 

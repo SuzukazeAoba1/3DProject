@@ -50,6 +50,7 @@ public class HurdleObstacle : MonoBehaviour
         if (isCollision)
         {
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            
         }
     }
 
