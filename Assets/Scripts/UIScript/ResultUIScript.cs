@@ -25,6 +25,6 @@ public class ResultUIScript : MonoBehaviour
         int sec = Mathf.FloorToInt(GameManager.instance.playTime % 60);
         int min = Mathf.FloorToInt(GameManager.instance.playTime / 60);
 
-        playTime.text = string.Format("{0:D2} : {1:D2} : {2:D2}", min, sec, miliSec);
+        playTime.text = string.Format("{0:D2} : {1:D2} : {2:D3}", min, sec, miliSec);
     }
 }
