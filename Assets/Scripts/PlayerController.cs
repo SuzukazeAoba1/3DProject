@@ -605,39 +605,42 @@ public partial class PlayerController : MonoBehaviour
     {
         if (inputDir != Vector2.zero)
         {
-            float playerDegree = transform.rotation.eulerAngles.y;
-            float cameraDegree = cameraTarget.cameraAngle;
             float inputDegree = (450.01f - (Mathf.Atan2(inputDir.y, inputDir.x) * Mathf.Rad2Deg)) % 360.0f - 0.01f;
             inputDegree = Mathf.Round(inputDegree);
 
-            float directionCheck = (360.0f + inputDegree - (cameraDegree - playerDegree)) % 360.0f;
+            float cameraDegree = cameraTarget.cameraAngle;
+            float playerDegree = transform.rotation.eulerAngles.y;
+            float addCamDir = (360.0f - (cameraDegree - playerDegree)) % 360.0f;
+            float directionCheck = (360.0f + inputDegree - addCamDir) % 360.0f;
 
             transform.rotation = Quaternion.Euler(0.0f, cameraDegree + inputDegree, 0.0f);
 
-            //if (directionCheck < 1.0f || directionCheck > 359.0f)
-            //{
+            Debug.Log("input" + inputDegree + "///" + "camera" + cameraDegree + "///" + "player" + playerDegree + "///" + directionCheck + "///" );
 
-            //}
-            //else if (directionCheck < 170.0f)
-            //{
-            //    transform.rotation = Quaternion.Euler(0.0f, playerDegree + baseRotSpeed * Time.deltaTime, 0.0f);
-            //}
-            //else if (directionCheck > 190.0f)
-            //{
-            //    transform.rotation = Quaternion.Euler(0.0f, playerDegree - baseRotSpeed * Time.deltaTime, 0.0f);
-            //}
-            //else
-            //{
-            //    if (currentSpeed < 5.0f)
-            //    {
-            //        currentSpeed = 0.0f;
-            //        transform.rotation = Quaternion.Euler(0.0f, playerDegree - baseRotSpeed * Time.deltaTime, 0.0f);
-            //    }
-            //    else
-            //    {
-            //        inputDir = Vector2.zero; //정지
-            //    }
-            //}
+            if (directionCheck < 1.0f || directionCheck > 359.0f)
+            {
+
+            }
+            else if (directionCheck < 170.0f)
+            {
+                transform.rotation = Quaternion.Euler(0.0f, playerDegree + baseRotSpeed * Time.deltaTime, 0.0f);
+            }
+            else if (directionCheck > 190.0f)
+            {
+                transform.rotation = Quaternion.Euler(0.0f, playerDegree - baseRotSpeed * Time.deltaTime, 0.0f);
+            }
+            else
+            {
+                if (currentSpeed < 5.0f)
+                {
+                    currentSpeed = 0.0f;
+                    transform.rotation = Quaternion.Euler(0.0f, playerDegree - baseRotSpeed * Time.deltaTime, 0.0f);
+                }
+                else
+                {
+                    inputDir = Vector2.zero; //정지
+                }
+            }
         }
     }
 
