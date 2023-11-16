@@ -643,7 +643,7 @@ public partial class PlayerController : MonoBehaviour
 
     private void PlayerAddSpeed()
     {
-        if (landing == true)
+        if (landing == true || (singleJump == true && doubleJump == false))
         {
             fallCountTimer = 0.0f;
 
