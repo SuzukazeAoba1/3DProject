@@ -74,6 +74,9 @@ public partial class PlayerController : MonoBehaviour
     public float boosterTimer;
     public float drainingTimer;
 
+    private bool boosterSoundCheck;
+    private bool footSoundCheck;
+
     private void Start()
     {
         living = true;
@@ -98,6 +101,7 @@ public partial class PlayerController : MonoBehaviour
             {
                 PlayerControl();
                 StateTimerCheck();
+                SoundCheck();
 
                 if (boosterOnPad && !stunning && !knockback && !backtrip && !fronttrip)
                 {
@@ -225,6 +229,7 @@ public partial class PlayerController : MonoBehaviour
 
             if (landingBooster)
             {
+                AudioManager.instance.PlayBooster();
                 StartCoroutine(PlaySmoke(0f));
                 landingBooster = false;
                 boosterOnPad = true;
@@ -275,19 +280,29 @@ public partial class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("KnockBack"))
         {
             //animator.SetTrigger("BackFlip");
-            knockback = false;
             backtrip = false;
-            
-            knockBackCollider.SetActive(true);
 
+            if (!knockback)
+            {
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.KnockBack);
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.OuchVoice);
+            }
+            else
+            {
+                knockback = false;
+            }
+           
             KnockBackCollision();
-                
+
+            knockBackCollider.SetActive(true);
+     
         }
 
         if (other.gameObject.CompareTag("Booster"))
         {
             if (!stunning && !backtrip && !fronttrip)
             {
+                AudioManager.instance.PlayBooster();
                 boosterOnPad = true;
                 boosterTimer = 2.0f;
             }
@@ -324,15 +339,7 @@ public partial class PlayerController : MonoBehaviour
     }
     private void KnockBackCollision()
     {
-        Debug.Log("넉백 함수 실행은 됨");
-        if (!knockback)
-        {
-            AudioManager.instance.PlaySfx(AudioManager.Sfx.KnockBack);
-            AudioManager.instance.PlaySfx(AudioManager.Sfx.OuchVoice);
-        }
-        
         knockback = true;
-        Debug.Log("knockback" + knockback);
         landing = false;
         currentSpeed = 0;
 
@@ -416,6 +423,7 @@ public partial class PlayerController : MonoBehaviour
         boosterOnKey = false;
         boosterTimer = 0f;
         boosterEffect.SetActive(false);
+        AudioManager.instance.StopBooster();
     }
 }
 
@@ -528,7 +536,7 @@ public partial class PlayerController : MonoBehaviour
             }
             else if(readySuccess)
             {
-                AudioManager.instance.PlaySfx(AudioManager.Sfx.BrakingSound);
+                AudioManager.instance.PlayBooster();
                 boosterOnPad = true;
                 boosterTimer = 2.0f;
             }
@@ -591,6 +599,11 @@ public partial class PlayerController : MonoBehaviour
             boosterOnKey = true;
             currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
             currentAccel = baseAccel + boosterAddAccel;
+            if(!boosterSoundCheck)
+            {
+                boosterSoundCheck = true;
+                AudioManager.instance.PlayBooster();
+            }
         }
         else
         {
@@ -615,7 +628,7 @@ public partial class PlayerController : MonoBehaviour
 
             transform.rotation = Quaternion.Euler(0.0f, cameraDegree + inputDegree, 0.0f);
 
-            Debug.Log("input" + inputDegree + "///" + "camera" + cameraDegree + "///" + "player" + playerDegree + "///" + directionCheck + "///" );
+            //Debug.Log("input" + inputDegree + "///" + "camera" + cameraDegree + "///" + "player" + playerDegree + "///" + directionCheck + "///" );
 
             if (directionCheck < 1.0f || directionCheck > 359.0f)
             {
@@ -658,6 +671,7 @@ public partial class PlayerController : MonoBehaviour
                         breaking = true;
                         breakingTimer = 0.6f;
                         StartCoroutine(PlaySmoke(0.2f));
+                        AudioManager.instance.PlaySfx(AudioManager.Sfx.BrakingSound);
                     }
                     else
                     {
@@ -736,9 +750,32 @@ public partial class PlayerController : MonoBehaviour
 
     private void SoundCheck()
     {
-        if(inputDir != Vector2.zero)
+        if(boosterOnPad && boosterTimer <= 0.1)
         {
-            AudioManager.instance.PlaySfx(AudioManager.Sfx.FootSound);
+            AudioManager.instance.StopBooster();
+        }
+
+        if(!boosterOnPad && !boosterOnKey)
+        {
+            boosterSoundCheck = false;
+            AudioManager.instance.StopBooster();
+        }
+
+        if(landing && !draining && !stunning && !knockback && !backtrip && !fronttrip)
+        {
+            if(inputDir != Vector2.zero && currentSpeed > 0.1f && !footSoundCheck)
+            {
+                AudioManager.instance.PlayFoot();
+                footSoundCheck = true;
+                Debug.Log("실행");
+            }
+        }
+        else
+        {
+            AudioManager.instance.StopFoot();
+            footSoundCheck = false;
+
+            Debug.Log("중지");
         }
     }
 }

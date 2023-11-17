@@ -19,18 +19,19 @@ public class AudioManager : MonoBehaviour
     public int sfxChannels;
     public AudioSource[] sfxSource;
 
-    private Dictionary<Sfx, float> lastPlayTimeDictionary = new Dictionary<Sfx, float>();
-    public float defaultCooldown = 0.5f;
+    public AudioClip boosterClip;
+    public AudioSource boosterSource;
+
+    public AudioClip footClip;
+    public AudioSource footSource;
 
     int channelIndex;
 
     public enum Sfx
     {
-        Booster,
         BrakingSound,
         ButtonSelect,
         CountDown,
-        FootSound,
         FstJump,
         FstJump2,
         GameOverVoice,
@@ -42,6 +43,7 @@ public class AudioManager : MonoBehaviour
         SndJump2,
         StageStart,
     }
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -68,6 +70,8 @@ public class AudioManager : MonoBehaviour
     void initVolume()
     {
         bgmSource.volume = bgmVolume;
+        boosterSource.volume = sfxVolume;
+        footSource.volume = sfxVolume;
         for (int index = 0; index < sfxSource.Length; index++)
         {
             sfxSource[index].volume = sfxVolume;
@@ -81,8 +85,19 @@ public class AudioManager : MonoBehaviour
         bgmSource = bgmObject.AddComponent<AudioSource>();
         bgmEffect = Camera.main.GetComponent<AudioHighPassFilter>();
         bgmSource.playOnAwake = false; 
-        bgmSource.loop = true; 
-        
+        bgmSource.loop = true;
+
+        GameObject boosterSound = new GameObject("BoosterPlayer");
+        boosterSound.transform.parent = transform;
+        boosterSource = boosterSound.AddComponent<AudioSource>();
+        boosterSource.loop = true;
+        boosterSource.playOnAwake = false;
+
+        GameObject footSound = new GameObject("FootPlayer");
+        footSound.transform.parent = transform;
+        footSource = footSound.AddComponent<AudioSource>();
+        footSource.loop = true;
+        footSource.playOnAwake = false;
 
         GameObject sfxObject = new GameObject("sfxSource");
         sfxObject.transform.parent = transform;
@@ -102,7 +117,7 @@ public class AudioManager : MonoBehaviour
     {
         if (isPlay)
         {
-            if (bgmSource != null)  // null 체크 추가
+            if (bgmSource != null)  
             {
                 if (bgmIndex == 1)
                     bgmSource.clip = bgmClip[0];
@@ -138,6 +153,32 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlayBooster()
+    {
+        if (boosterSource != null)
+            boosterSource.clip = boosterClip;
+
+        boosterSource.Play();
+    }
+
+    public void StopBooster()
+    {
+        boosterSource.Stop();
+    }
+
+    public void PlayFoot()
+    {
+        if (footSource != null)
+            footSource.clip = footClip;
+
+        footSource.Play();
+    }
+
+    public void StopFoot()
+    {
+        footSource.Stop();
+    }
+
     public void SFXVolume(float volume)
     {
         sfxVolume = volume;
@@ -145,6 +186,8 @@ public class AudioManager : MonoBehaviour
         {
             sfxSource[index].volume = sfxVolume;
         }
+        boosterSource.volume = sfxVolume;
+        footSource.volume = sfxVolume;
     }
 
     public void BGMVolume(float volume)
