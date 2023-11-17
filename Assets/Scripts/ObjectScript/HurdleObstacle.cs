@@ -20,7 +20,7 @@ public class HurdleObstacle : MonoBehaviour
     void Start()
     {
         isCollision = false;
-        playerDirection = Vector3.forward; // 초기 방향 설정
+        playerDirection = Vector3.forward; 
         originalRotation = transform.rotation;
         originalPosition = transform.position;
     }
@@ -30,7 +30,6 @@ public class HurdleObstacle : MonoBehaviour
         if (other.CompareTag("Player") && !isCollision)
         {
             isCollision = true;
-
             playerDirection = other.transform.forward;
 
             if (playerDirection.z > 0)

@@ -2359,11 +2359,9 @@ MonoBehaviour:
   bgmVolume: 0.5
   bgmSource: {fileID: 0}
   sfxClip:
-  - {fileID: 8300000, guid: 96ed77e73c9b60b4fa16994d0186e0c9, type: 3}
   - {fileID: 8300000, guid: 06116219f27eed0468e357aeb5698704, type: 3}
   - {fileID: 8300000, guid: 5aec3f84203756a4c9138c99ec706017, type: 3}
   - {fileID: 8300000, guid: 198a34350bff4c54fae7abae8991785b, type: 3}
-  - {fileID: 8300000, guid: af12c1e9a2670814c8ad1bb600b21a54, type: 3}
   - {fileID: 8300000, guid: 36789b88f745b3048a237adf06275aa0, type: 3}
   - {fileID: 8300000, guid: 83248d98508444048b9e09591c45b07b, type: 3}
   - {fileID: 8300000, guid: 48c70350ebea9a2489bb9614e9a69916, type: 3}
@@ -2377,7 +2375,10 @@ MonoBehaviour:
   sfxVolume: 0.7
   sfxChannels: 15
   sfxSource: []
-  defaultCooldown: 0.5
+  boosterClip: {fileID: 0}
+  boosterSource: {fileID: 0}
+  footClip: {fileID: 0}
+  footSource: {fileID: 0}
 --- !u!4 &1180714316
 Transform:
   m_ObjectHideFlags: 0
