@@ -49,7 +49,6 @@ public partial class PlayerController : MonoBehaviour
 
     private bool singleJump;
     private bool doubleJump;
-    private bool superJump;
 
     public bool freezing;       //모든 키 입력 불가
     public bool immovable;      //회전만 가능
@@ -644,7 +643,7 @@ public partial class PlayerController : MonoBehaviour
             }
             else
             {
-                if (currentSpeed < 5.0f)
+                if (currentSpeed < 5.0f && !breaking)
                 {
                     currentSpeed = 0.0f;
                     transform.rotation = Quaternion.Euler(0.0f, playerDegree - baseRotSpeed * Time.deltaTime, 0.0f);
@@ -666,7 +665,7 @@ public partial class PlayerController : MonoBehaviour
             if (inputDir == Vector2.zero)
             {
                 if (!boosterOnPad)
-                    if (breaking == false && currentSpeed > 8.0f)
+                    if (breaking == false && currentSpeed > 8.0f && !singleJump)
                     {
                         breaking = true;
                         breakingTimer = 0.6f;
