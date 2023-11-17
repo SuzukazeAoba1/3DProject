@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Package/player2.prefab.meta
 guid: 1eaac873904ec4f4a9fb4c7c52b3c5b9
 PrefabImporter:
+========
+guid: 89158cf721fc48840b1c1675c15751c6
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> de3591a0baa34296a783569f94caab9699becc3f:Assets/Treasure chest closed.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
