@@ -130,9 +130,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -250,7 +258,56 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &30557840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 30557841}
+  m_Layer: 0
+  m_Name: KnockBacks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &30557841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30557840}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 332970440}
+  - {fileID: 1519435724}
+  - {fileID: 1665435229}
+  - {fileID: 1886656888}
+  - {fileID: 1025386880}
+  - {fileID: 2039690790}
+  - {fileID: 365754344}
+  - {fileID: 1973617522}
+  - {fileID: 257403032}
+  - {fileID: 1903409180}
+  - {fileID: 1860296136}
+  - {fileID: 623633577}
+  - {fileID: 368932071}
+  - {fileID: 165858790}
+  - {fileID: 2078678247}
+  - {fileID: 262139027}
+  - {fileID: 1028989810}
+  - {fileID: 1666333767}
+  m_Father: {fileID: 1666663569}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &30588324
 GameObject:
@@ -337,9 +394,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -452,7 +517,7 @@ Transform:
   - {fileID: 504790553}
   - {fileID: 1771586492}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &52152722
 GameObject:
@@ -691,6 +756,71 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5243677047386623230, guid: 2eb1b1876581a2746a96ad8a3b234fa5, type: 3}
   m_PrefabInstance: {fileID: 1821710346}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &117564708
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1610183233969500, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_Name
+      value: BrazRedD (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 478.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199276636542837548, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199734973501983234, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
 --- !u!1 &126157460
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,7 +914,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 50, y: 29.986, z: 0}
 --- !u!114 &126157463
 MonoBehaviour:
@@ -813,9 +943,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -962,15 +1100,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1261582993}
+    m_TransformParent: {fileID: 30557841}
     m_Modifications:
     - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_Name
       value: SpikeTrapD (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
+      propertyPath: m_TagString
+      value: KnockBack
+      objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalScale.x
@@ -994,7 +1136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 382.6
+      value: 412.6
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1079,7 +1221,7 @@ Transform:
   - {fileID: 1440690678}
   - {fileID: 662001578}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &178975424 stripped
 Transform:
@@ -1244,9 +1386,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -1318,9 +1468,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -1390,15 +1548,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 644288525}
+    m_TransformParent: {fileID: 30557841}
     m_Modifications:
     - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_Name
       value: SpikeTrapD (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
+      propertyPath: m_TagString
+      value: KnockBack
+      objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalScale.x
@@ -1422,7 +1584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 382.6
+      value: 397.6
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1458,6 +1620,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
   m_PrefabInstance: {fileID: 257403031}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &262139027 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+  m_PrefabInstance: {fileID: 1471228558}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &308944559
 GameObject:
@@ -1662,7 +1829,7 @@ Transform:
   m_Children:
   - {fileID: 912858636}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &322675276
 GameObject:
@@ -1740,7 +1907,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &332970440 stripped
 Transform:
@@ -1957,15 +2124,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 644288525}
+    m_TransformParent: {fileID: 30557841}
     m_Modifications:
     - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_Name
       value: SpikeTrapD (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
+      propertyPath: m_TagString
+      value: KnockBack
+      objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalScale.x
@@ -1989,7 +2160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 382.6
+      value: 397.6
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2128,15 +2299,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1261582993}
+    m_TransformParent: {fileID: 30557841}
     m_Modifications:
     - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_Name
       value: SpikeTrapD (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
+      propertyPath: m_TagString
+      value: KnockBack
+      objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalScale.x
@@ -2160,7 +2335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 382.6
+      value: 412.6
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2204,9 +2379,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -2347,6 +2530,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 396953716}
   m_CullTransparentMesh: 1
+--- !u!1001 &413538266
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1610183233969500, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_Name
+      value: BrazRedD (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 341.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199276636542837548, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199734973501983234, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
 --- !u!1001 &437105525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2484,6 +2732,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 486051501, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 125001720580035555, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
       propertyPath: m_LocalPosition.z
       value: 6.74
@@ -2502,7 +2754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2705296660327171860, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2705296660327171861, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
       propertyPath: m_IsActive
@@ -2622,7 +2874,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7198699275401627239, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7198699275401627239, guid: 7584e0a5bed937a4a984fd5c7e37f630, type: 3}
       propertyPath: m_LocalScale.x
@@ -2851,20 +3103,89 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1001 &603089234
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1610183233969500, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_Name
+      value: BrazRedD
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.121251106
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 220.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199276636542837548, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199734973501983234, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
 --- !u!1001 &623633576
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1261582993}
+    m_TransformParent: {fileID: 30557841}
     m_Modifications:
     - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_Name
       value: SpikeTrapD (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
+      propertyPath: m_TagString
+      value: KnockBack
+      objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalScale.x
@@ -2888,7 +3209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 382.6
+      value: 412.6
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2925,42 +3246,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
   m_PrefabInstance: {fileID: 623633576}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &644288524
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 644288525}
-  m_Layer: 0
-  m_Name: SpikeLine (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &644288525
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 644288524}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 15}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2039690790}
-  - {fileID: 365754344}
-  - {fileID: 1973617522}
-  - {fileID: 257403032}
-  - {fileID: 1903409180}
-  m_Father: {fileID: 1666663569}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &646206972
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3128,9 +3413,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -3474,9 +3767,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -3782,9 +4083,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -3856,9 +4165,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -3972,7 +4289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4261713858480184797, guid: d2bf04392cba6d342966e2ba665bd797, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4261713858480184797, guid: d2bf04392cba6d342966e2ba665bd797, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4334,9 +4651,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -4550,6 +4875,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
   m_PrefabInstance: {fileID: 2004156456}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1028989810 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+  m_PrefabInstance: {fileID: 2054552063}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1031939632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2849414794000349791, guid: 72f395f68f50c1e43b045a3ea31e74de, type: 3}
@@ -4730,6 +5060,87 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4747018190753414, guid: 628ca882a5b7c144799112fa3339945c, type: 3}
   m_PrefabInstance: {fileID: 2106747663}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1137379967
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 30557841}
+    m_Modifications:
+    - target: {fileID: 1661269787379778, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_Name
+      value: SwingTrapD (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661269787379778, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_TagString
+      value: KnockBack
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 590
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062129401091732, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062129401091732, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
 --- !u!1 &1151439667
 GameObject:
   m_ObjectHideFlags: 0
@@ -4848,7 +5259,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1196885519
 GameObject:
@@ -5025,6 +5436,71 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dc9dfcada85d4341a5924d4147a4473, type: 3}
+--- !u!1001 &1201734564
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1610183233969500, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_Name
+      value: BrazRedD (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 280.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051606177632086, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199276636542837548, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199734973501983234, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d793708be4ee5be40af341a5bdfc90dd, type: 3}
 --- !u!1 &1224723960
 GameObject:
   m_ObjectHideFlags: 0
@@ -5129,9 +5605,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -5357,42 +5841,6 @@ Terrain:
   m_GroupingID: 0
   m_RenderingLayerMask: 1
   m_AllowAutoConnect: 1
---- !u!1 &1261582992
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1261582993}
-  m_Layer: 0
-  m_Name: SpikeLine (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1261582993
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261582992}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 30}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1860296136}
-  - {fileID: 623633577}
-  - {fileID: 368932071}
-  - {fileID: 165858790}
-  - {fileID: 2078678247}
-  m_Father: {fileID: 1666663569}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1276077153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5775,8 +6223,8 @@ Transform:
   - {fileID: 1734591920}
   - {fileID: 1449288183}
   - {fileID: 1390932593}
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_Father: {fileID: 1666663569}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1312848889 stripped
 Transform:
@@ -5790,9 +6238,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -5864,9 +6320,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -5938,9 +6402,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -6017,9 +6489,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -6091,9 +6571,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -6265,43 +6753,7 @@ Transform:
   - {fileID: 1514773092}
   - {fileID: 1768755263}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1424402664
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1424402665}
-  m_Layer: 0
-  m_Name: SpikeLine
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1424402665
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1424402664}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 332970440}
-  - {fileID: 1519435724}
-  - {fileID: 1665435229}
-  - {fileID: 1886656888}
-  - {fileID: 1025386880}
-  m_Father: {fileID: 1666663569}
-  m_RootOrder: 0
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1431469856
 PrefabInstance:
@@ -6457,9 +6909,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -6524,6 +6984,87 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
   m_PrefabInstance: {fileID: 1449288182}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1471228558
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 30557841}
+    m_Modifications:
+    - target: {fileID: 1661269787379778, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_Name
+      value: SwingTrapD
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661269787379778, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_TagString
+      value: KnockBack
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 550
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062129401091732, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062129401091732, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
 --- !u!1001 &1473851786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6608,9 +7149,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -6784,9 +7333,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -6953,11 +7510,15 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1424402665}
+    m_TransformParent: {fileID: 30557841}
     m_Modifications:
     - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_Name
       value: SpikeTrapD (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
+      propertyPath: m_TagString
+      value: KnockBack
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_RootOrder
@@ -7024,9 +7585,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -7098,9 +7667,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -7385,9 +7962,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -7457,6 +8042,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
   m_PrefabInstance: {fileID: 1928335780}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1666333767 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+  m_PrefabInstance: {fileID: 1137379967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1666663568
 GameObject:
   m_ObjectHideFlags: 0
@@ -7485,11 +8075,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1424402665}
-  - {fileID: 644288525}
-  - {fileID: 1261582993}
+  - {fileID: 1312491641}
+  - {fileID: 30557841}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1678109010
 PrefabInstance:
@@ -7498,9 +8087,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -7575,11 +8172,15 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1424402665}
+    m_TransformParent: {fileID: 30557841}
     m_Modifications:
     - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_Name
       value: SpikeTrapD
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
+      propertyPath: m_TagString
+      value: KnockBack
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_RootOrder
@@ -7646,9 +8247,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -7720,9 +8329,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -7794,9 +8411,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -7965,9 +8590,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -8276,9 +8909,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -8350,9 +8991,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -8422,15 +9071,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1261582993}
+    m_TransformParent: {fileID: 30557841}
     m_Modifications:
     - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_Name
       value: SpikeTrapD
       objectReference: {fileID: 0}
+    - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
+      propertyPath: m_TagString
+      value: KnockBack
+      objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalScale.x
@@ -8454,7 +9107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 382.6
+      value: 412.6
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8498,9 +9151,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -8648,15 +9309,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 644288525}
+    m_TransformParent: {fileID: 30557841}
     m_Modifications:
     - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_Name
       value: SpikeTrapD (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
+      propertyPath: m_TagString
+      value: KnockBack
+      objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalScale.x
@@ -8680,7 +9345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 382.6
+      value: 397.6
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8722,11 +9387,15 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1424402665}
+    m_TransformParent: {fileID: 30557841}
     m_Modifications:
     - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_Name
       value: SpikeTrapD (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
+      propertyPath: m_TagString
+      value: KnockBack
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_RootOrder
@@ -8870,9 +9539,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -9077,15 +9754,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 644288525}
+    m_TransformParent: {fileID: 30557841}
     m_Modifications:
     - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_Name
       value: SpikeTrapD (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
+      propertyPath: m_TagString
+      value: KnockBack
+      objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalScale.x
@@ -9109,7 +9790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 382.6
+      value: 397.6
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9153,9 +9834,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -9225,11 +9914,15 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1424402665}
+    m_TransformParent: {fileID: 30557841}
     m_Modifications:
     - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_Name
       value: SpikeTrapD (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
+      propertyPath: m_TagString
+      value: KnockBack
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_RootOrder
@@ -9296,9 +9989,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -9370,9 +10071,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
@@ -9442,15 +10151,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 644288525}
+    m_TransformParent: {fileID: 30557841}
     m_Modifications:
     - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_Name
       value: SpikeTrapD
       objectReference: {fileID: 0}
+    - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
+      propertyPath: m_TagString
+      value: KnockBack
+      objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalScale.x
@@ -9474,7 +10187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 382.6
+      value: 397.6
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9511,20 +10224,105 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
   m_PrefabInstance: {fileID: 2039690789}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2054552063
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 30557841}
+    m_Modifications:
+    - target: {fileID: 1661269787379778, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_Name
+      value: SwingTrapD (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661269787379778, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_TagString
+      value: KnockBack
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 570
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058104849361498, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062129401091732, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062129401091732, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea052a89f68cccb4bb2bac3cdd6ac57c, type: 3}
 --- !u!1001 &2078678246
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1261582993}
+    m_TransformParent: {fileID: 30557841}
     m_Modifications:
     - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_Name
       value: SpikeTrapD (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
+      propertyPath: m_TagString
+      value: KnockBack
+      objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalScale.x
@@ -9548,7 +10346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 382.6
+      value: 412.6
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9687,11 +10485,15 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1424402665}
+    m_TransformParent: {fileID: 30557841}
     m_Modifications:
     - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_Name
       value: SpikeTrapD (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498791207746926, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
+      propertyPath: m_TagString
+      value: KnockBack
       objectReference: {fileID: 0}
     - target: {fileID: 4753028538822310, guid: b58fdf950bf832348af4bfaa2fd9f743, type: 3}
       propertyPath: m_RootOrder
@@ -9872,7 +10674,7 @@ RectTransform:
   m_Children:
   - {fileID: 1151439668}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -10041,9 +10843,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1312491641}
     m_Modifications:
+    - target: {fileID: 7638486873059551219, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_Name
       value: WeaponRack.002 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607224713070732376, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
+      propertyPath: m_TagString
+      value: Hurdle
       objectReference: {fileID: 0}
     - target: {fileID: 8951135065006096098, guid: a80a1006d6a9e2b46a8e867f5cff6c21, type: 3}
       propertyPath: m_RootOrder
