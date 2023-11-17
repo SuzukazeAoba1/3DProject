@@ -763,11 +763,19 @@ public partial class PlayerController : MonoBehaviour
 
         if(landing && !draining && !stunning && !knockback && !backtrip && !fronttrip)
         {
-            if(inputDir != Vector2.zero && currentSpeed > 0.1f && !footSoundCheck)
+            if(currentSpeed > 1f)
             {
-                AudioManager.instance.PlayFoot();
-                footSoundCheck = true;
-                Debug.Log("실행");
+                if (!footSoundCheck)
+                {
+                    AudioManager.instance.PlayFoot();
+                    footSoundCheck = true;
+                    Debug.Log("실행");
+                }
+            }
+            else
+            {
+                AudioManager.instance.StopFoot();
+                footSoundCheck = false;
             }
         }
         else
