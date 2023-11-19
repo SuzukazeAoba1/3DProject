@@ -7,6 +7,7 @@ public class HurdleObstacle : MonoBehaviour
     public float delayTime;
     public float rotateValue;
     public float rotationSpeed;
+    public float rotationZValue;
     public bool isCollision;
 
     private Vector3 playerDirection;
@@ -34,11 +35,11 @@ public class HurdleObstacle : MonoBehaviour
 
             if (playerDirection.z > 0)
             {
-                targetRotation = transform.rotation * Quaternion.Euler(rotateValue, 0, 0);
+                targetRotation = transform.rotation * Quaternion.Euler(rotateValue, rotationZValue, 0);
             }
             else
             {
-                targetRotation = transform.rotation * Quaternion.Euler(-rotateValue, 0, 0);
+                targetRotation = transform.rotation * Quaternion.Euler(-rotateValue, rotationZValue, 0);
             }
             StartCoroutine(ResetRotation(delayTime));
         }

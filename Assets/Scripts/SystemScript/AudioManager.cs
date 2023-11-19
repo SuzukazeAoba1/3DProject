@@ -25,6 +25,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip footClip;
     public AudioSource footSource;
 
+    public AudioClip knockbackClip;
+    public AudioSource knockbackSource;
+
     int channelIndex;
 
     public enum Sfx
@@ -36,7 +39,6 @@ public class AudioManager : MonoBehaviour
         FstJump2,
         GameOverVoice,
         Hurdle,
-        KnockBack,
         MapSelect,
         OuchVoice,
         SndJump,
@@ -72,6 +74,7 @@ public class AudioManager : MonoBehaviour
         bgmSource.volume = bgmVolume;
         boosterSource.volume = sfxVolume;
         footSource.volume = sfxVolume;
+        knockbackSource.volume = sfxVolume;
         for (int index = 0; index < sfxSource.Length; index++)
         {
             sfxSource[index].volume = sfxVolume;
@@ -98,6 +101,12 @@ public class AudioManager : MonoBehaviour
         footSource = footSound.AddComponent<AudioSource>();
         footSource.loop = true;
         footSource.playOnAwake = false;
+
+        GameObject KnockBackSound = new GameObject("KnockBackSound");
+        KnockBackSound.transform.parent = transform;
+        knockbackSource = KnockBackSound.AddComponent<AudioSource>();
+        knockbackSource.loop = false;
+        knockbackSource.playOnAwake = false;
 
         GameObject sfxObject = new GameObject("sfxSource");
         sfxObject.transform.parent = transform;
@@ -179,6 +188,14 @@ public class AudioManager : MonoBehaviour
         footSource.Stop();
     }
 
+    public void PlayKnockBack()
+    {
+        if (knockbackSource != null)
+            knockbackSource.clip = knockbackClip;
+
+        knockbackSource.Play();
+    }
+
     public void SFXVolume(float volume)
     {
         sfxVolume = volume;
@@ -188,6 +205,7 @@ public class AudioManager : MonoBehaviour
         }
         boosterSource.volume = sfxVolume;
         footSource.volume = sfxVolume;
+        knockbackSource.volume = sfxVolume;
     }
 
     public void BGMVolume(float volume)

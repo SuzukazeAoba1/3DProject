@@ -280,21 +280,16 @@ public partial class PlayerController : MonoBehaviour
         {
             //animator.SetTrigger("BackFlip");
             backtrip = false;
+            knockback = false;
 
-            if (!knockback)
+            if(!knockback)
             {
-                AudioManager.instance.PlaySfx(AudioManager.Sfx.KnockBack);
+                AudioManager.instance.PlayKnockBack();
                 AudioManager.instance.PlaySfx(AudioManager.Sfx.OuchVoice);
             }
-            else
-            {
-                knockback = false;
-            }
-           
-            KnockBackCollision();
 
             knockBackCollider.SetActive(true);
-     
+            KnockBackCollision();
         }
 
         if (other.gameObject.CompareTag("Booster"))
@@ -760,15 +755,16 @@ public partial class PlayerController : MonoBehaviour
             AudioManager.instance.StopBooster();
         }
 
-        if(landing && !draining && !stunning && !knockback && !backtrip && !fronttrip)
+        if(draining) AudioManager.instance.StopBooster();
+
+        if (landing && !draining && !stunning && !knockback && !backtrip && !fronttrip)
         {
-            if(currentSpeed > 1f)
+            if(currentSpeed > 2.0f)
             {
                 if (!footSoundCheck)
                 {
                     AudioManager.instance.PlayFoot();
                     footSoundCheck = true;
-                    Debug.Log("실행");
                 }
             }
             else
@@ -781,8 +777,6 @@ public partial class PlayerController : MonoBehaviour
         {
             AudioManager.instance.StopFoot();
             footSoundCheck = false;
-
-            Debug.Log("중지");
         }
     }
 }

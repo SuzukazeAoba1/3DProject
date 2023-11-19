@@ -14,7 +14,7 @@ public class DisposableObject : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            gameObject.SetActive(false);
+            Debug.Log(other);
         }
     }
 

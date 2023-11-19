@@ -5,7 +5,12 @@ using UnityEngine;
 public class OneStepPad : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject KnockPad;
+    private GameObject KnockPad;
+
+    private void Awake()
+    {
+        KnockPad = transform.parent.gameObject;
+    }
 
     void Start()
     {

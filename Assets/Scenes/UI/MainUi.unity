@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.1802838, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -368,7 +368,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 83248d98508444048b9e09591c45b07b, type: 3}
   - {fileID: 8300000, guid: 48c70350ebea9a2489bb9614e9a69916, type: 3}
   - {fileID: 8300000, guid: 0da606caf63dfc442877fc87aa4c791b, type: 3}
-  - {fileID: 8300000, guid: cecb29a91d35cc14ea42115cc313df76, type: 3}
   - {fileID: 8300000, guid: 26b9680a540c5b643a20a021e2f858fa, type: 3}
   - {fileID: 8300000, guid: 7a9813fec42dd4949a1c108fa9394539, type: 3}
   - {fileID: 8300000, guid: 43966e66f89456840951cb2239d9eba0, type: 3}
@@ -381,6 +380,8 @@ MonoBehaviour:
   boosterSource: {fileID: 0}
   footClip: {fileID: 8300000, guid: af12c1e9a2670814c8ad1bb600b21a54, type: 3}
   footSource: {fileID: 0}
+  knockbackClip: {fileID: 8300000, guid: cecb29a91d35cc14ea42115cc313df76, type: 3}
+  knockbackSource: {fileID: 0}
 --- !u!4 &175529520
 Transform:
   m_ObjectHideFlags: 0
