@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1802838, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1167,7 +1167,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 640x480 60hz
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 81525644078798f4c82b3ecd248892c7, type: 2}
   m_sharedMaterial: {fileID: -2359640920510133717, guid: 81525644078798f4c82b3ecd248892c7, type: 2}
@@ -2874,7 +2874,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resolutionDropdown: {fileID: 2088941718}
-  resolutionNum: 0
 --- !u!114 &1662545332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3566,29 +3565,13 @@ MonoBehaviour:
   m_ItemImage: {fileID: 0}
   m_Value: 0
   m_Options:
-    m_Options:
-    - m_Text: 640x480 60hz
-      m_Image: {fileID: 0}
-    - m_Text: 720x480 60hz
-      m_Image: {fileID: 0}
-    - m_Text: 800x600 60hz
-      m_Image: {fileID: 0}
-    - m_Text: 1024x768 60hz
-      m_Image: {fileID: 0}
-    - m_Text: 1152x864 60hz
-      m_Image: {fileID: 0}
-    - m_Text: 1176x664 60hz
-      m_Image: {fileID: 0}
-    - m_Text: 1280x720 60hz
-      m_Image: {fileID: 0}
-    - m_Text: 2560x1440 60hz
-      m_Image: {fileID: 0}
+    m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1662545331}
         m_TargetAssemblyTypeName: VideoOption, Assembly-CSharp
-        m_MethodName: DropboxOptionChange
+        m_MethodName: SetResolution
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

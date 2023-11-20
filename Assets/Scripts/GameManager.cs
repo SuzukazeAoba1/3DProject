@@ -72,6 +72,10 @@ public class GameManager : MonoBehaviour
     public void GameClear()
     {
         gameWin = true;
+
+        AudioManager.instance.StopFoot();
+        AudioManager.instance.StopBooster();
+
         playerPrefab.GetComponent<Animator>().SetTrigger("Win");
         StartCoroutine(PrintResultUI());
     }

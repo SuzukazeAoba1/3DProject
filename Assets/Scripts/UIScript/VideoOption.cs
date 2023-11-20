@@ -9,44 +9,54 @@ public class VideoOption : MonoBehaviour
 {
 
     public TMP_Dropdown resolutionDropdown;
-    List<Resolution> resolutions = new List<Resolution>();
-    public int resolutionNum;
 
-    // Start is called before the first frame update
-    void InitUI()
+    private Resolution[] resolutions;
+    private List<Resolution> filteredResolutions = new List<Resolution>(); 
+
+    private float currentRefreshRate;
+    private int currentResolutionIndex = 0;
+
+    private void Start()
     {
-        for(int i = 0; i<Screen.resolutions.Length; i++)
+        resolutions = Screen.resolutions;
+        filteredResolutions = new List<Resolution>();
+
+        resolutionDropdown.ClearOptions();
+        currentRefreshRate = Screen.currentResolution.refreshRate;
+
+        for(int i = 0; i < resolutions.Length; i++)
         {
-            if (Screen.resolutions[i].refreshRate == 60)
-                resolutions.Add(Screen.resolutions[i]);
+            if(resolutions[i].refreshRate == currentRefreshRate)
+            {
+                filteredResolutions.Add(resolutions[i]);
+            }
         }
 
-        resolutionDropdown.options.Clear();
-
-        int optionNum = 0;
-
-        foreach (Resolution item in resolutions)
+        List<string> options = new List<string>();
+        for(int i = 0; i<filteredResolutions.Count; i++)
         {
-            TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
-            option.text = item.width + "x" + item.height + " " + item.refreshRate + "hz";
-            resolutionDropdown.options.Add(option);
-
-            if (item.width == Screen.width && item.height == Screen.height)
-                resolutionDropdown.value = optionNum;
-            optionNum++;
+            string resolutionOption = filteredResolutions[i].width + "x" + filteredResolutions[i].height +
+                " " + filteredResolutions[i].refreshRate + "Hz";
+            options.Add(resolutionOption);
+            if(filteredResolutions[i].width == Screen.width && filteredResolutions[i].height == Screen.height)
+            {
+                currentResolutionIndex = i;
+            }
         }
+
+        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
     }
 
-    public void DropboxOptionChange(int x)
+    public void SetResolution(int resolutionIndex)
     {
-        resolutionNum = x;
+        Resolution resolution = filteredResolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, true);
     }
 
-    public void OkBtnClick()
+    public void OkBtnClick(Resolution resolution)
     {
-        Screen.SetResolution(resolutions[resolutionNum].width,
-            resolutions[resolutionNum].height, FullScreenMode.Windowed);
-
+        Screen.SetResolution(resolution.width, resolution.height, true);
     }
 }

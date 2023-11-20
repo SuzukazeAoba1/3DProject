@@ -58,6 +58,7 @@ public partial class PlayerController : MonoBehaviour
     public bool fronttrip;
     public bool stunning;
     public bool draining;
+    public bool invincibility;
 
     public bool knockback;
     public bool landingBooster;
@@ -72,9 +73,12 @@ public partial class PlayerController : MonoBehaviour
     public float stunTimer;
     public float boosterTimer;
     public float drainingTimer;
+    public float invincibilityTimer;
 
     private bool boosterSoundCheck;
     private bool footSoundCheck;
+
+    private bool restricted;
 
     private void Start()
     {
@@ -90,7 +94,10 @@ public partial class PlayerController : MonoBehaviour
     private void Update()
     {
         if (GameManager.instance.gameLose || GameManager.instance.gameWin)
+        {
+            currentSpeed = 0;
             return;
+        }
 
         GameStart();
 
@@ -178,6 +185,7 @@ public partial class PlayerController : MonoBehaviour
         TimerCheck(ref backtrip, ref tripTimer);
         TimerCheck(ref fronttrip, ref tripTimer);
         TimerCheck(ref draining, ref drainingTimer);
+        TimerCheck(ref invincibility, ref invincibilityTimer);
     }
 
     private void TimerCheck(ref bool tswitch, ref float timer)
@@ -205,6 +213,7 @@ public partial class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision);
         if (collision.gameObject.tag == "Ground")
         {
             if(knockback)
@@ -213,7 +222,6 @@ public partial class PlayerController : MonoBehaviour
                 knockback = false;
                 if(!landingBooster)
                 {
-                    Debug.Log("그라운드 충돌");
                     backtrip = true;
                     tripTimer = 2.0f;
                     currentSpeed = 0;
@@ -228,15 +236,27 @@ public partial class PlayerController : MonoBehaviour
 
             if (landingBooster)
             {
-                AudioManager.instance.PlayBooster();
-                StartCoroutine(PlaySmoke(0f));
-                landingBooster = false;
-                boosterOnPad = true;
-                boosterTimer = 1.0f;
+                invincibility = true;
+                invincibilityTimer = 0.5f;
+
+                LandBooster();
             }
 
         }
         animator.SetBool("Landing", landing);
+
+        if (collision.gameObject.tag == "Restricted")
+        {
+            if(knockback)
+            {
+                knockback = false;
+                backtrip = true;
+                tripTimer = 2.0f;
+                landing = true;
+            }
+
+            restricted = true;
+        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -250,21 +270,36 @@ public partial class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Restricted")
+        {
+            restricted = false;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other);
+
         if (other.gameObject.CompareTag("Hurdle"))
         {
+            if (invincibility)
+                return;
+
             while (true)
             {
                 if (!fronttrip)
                 {
+                    invincibility = true;
+                    invincibilityTimer = 2.5f;
+
                     fronttrip = true;
                     tripTimer = 2.0f;
                     BoosterOff();
 
                     currentSpeed = 0;
                     animator.SetTrigger("Tripped");
-                    AudioManager.instance.PlaySfx(AudioManager.Sfx.Hurdle);
                     AudioManager.instance.PlaySfx(AudioManager.Sfx.OuchVoice);
                     StartCoroutine(PlaySmoke(0.1f));
                 }
@@ -278,11 +313,28 @@ public partial class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("KnockBack"))
         {
-            //animator.SetTrigger("BackFlip");
-            backtrip = false;
-            knockback = false;
+            if(landingBooster)
+            {
+                knockback = false;
+                landingBooster = false;
+                landingCheck = false;
+                landingKey = false;
 
-            if(!knockback)
+                invincibility = true;
+                invincibilityTimer = 0.5f;
+
+                LandBooster();
+
+                landing = true;
+            }
+
+            if (invincibility)
+                return;
+
+            knockback = false;
+            backtrip = false;
+
+            if (!knockback)
             {
                 AudioManager.instance.PlayKnockBack();
                 AudioManager.instance.PlaySfx(AudioManager.Sfx.OuchVoice);
@@ -304,6 +356,9 @@ public partial class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Par"))
         {
+            if (invincibility)
+                return;
+
             if (!stunning)
             {
                 currentSpeed = 0;
@@ -314,6 +369,9 @@ public partial class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Reserve"))
         {
+            if (invincibility)
+                return;
+
             if (!keyReverse)
             {
                 keyReverse = true;
@@ -333,6 +391,9 @@ public partial class PlayerController : MonoBehaviour
     }
     private void KnockBackCollision()
     {
+        invincibility = true;
+        invincibilityTimer = 2.0f;
+
         knockback = true;
         landing = false;
         currentSpeed = 0;
@@ -355,8 +416,14 @@ public partial class PlayerController : MonoBehaviour
         inputDir = playerDirection;
 
         currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
-        currentSpeed = currentMaxSpeed;
-
+        if(restricted)
+        {
+            currentSpeed = 5.0f;
+        }
+        else
+        {
+            currentSpeed = currentMaxSpeed;
+        }
     }
 
     public void Controlparalysis()
@@ -523,12 +590,12 @@ public partial class PlayerController : MonoBehaviour
 
         if (GameManager.instance.gameStart == true)
         {
-            if(readyFailure)
+            if (readyFailure)
             {
                 fronttrip = true;
                 tripTimer = 2.0f;
             }
-            else if(readySuccess)
+            else if (readySuccess)
             {
                 AudioManager.instance.PlayBooster();
                 boosterOnPad = true;
@@ -547,9 +614,9 @@ public partial class PlayerController : MonoBehaviour
         float startTime = GameManager.instance.startTimer;
         if (!readyKeyInput)
         {
-            if(Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-               if (startTime <= 0.3)
+                if (startTime <= 0.3)
                 {
                     readyFailure = false;
                     readySuccess = true;
@@ -566,7 +633,7 @@ public partial class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                if(!landingKey)
+                if (!landingKey)
                 {
                     landingBooster = true;
                     landingKey = false;
@@ -577,7 +644,7 @@ public partial class PlayerController : MonoBehaviour
 
     public void LandingKeyChecking()
     {
-        if(knockback && !landingCheck)
+        if (knockback && !landingCheck)
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
@@ -593,7 +660,7 @@ public partial class PlayerController : MonoBehaviour
             boosterOnKey = true;
             currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
             currentAccel = baseAccel + boosterAddAccel;
-            if(!boosterSoundCheck)
+            if (!boosterSoundCheck)
             {
                 boosterSoundCheck = true;
                 AudioManager.instance.PlayBooster();
@@ -709,8 +776,8 @@ public partial class PlayerController : MonoBehaviour
         animator.SetBool("Knockback", knockback);
         animator.SetBool("Backtrip", backtrip);
         animator.SetBool("Stunning", stunning);
-       
-        if(drainedGauge > 0.0f && boosterOnKey) animator.SetBool("Draining", true);
+
+        if (drainedGauge > 0.0f && boosterOnKey) animator.SetBool("Draining", true);
         else animator.SetBool("Draining", false);
 
         if (boosterTimer > 0.0f) animator.SetBool("Booster", true);
@@ -751,27 +818,28 @@ public partial class PlayerController : MonoBehaviour
 
     private void SoundCheck()
     {
-        if(boosterOnPad && boosterTimer <= 0.1)
+        if (boosterOnPad && boosterTimer <= 0.1)
         {
             AudioManager.instance.StopBooster();
         }
 
-        if(!boosterOnPad && !boosterOnKey)
+        if (!boosterOnPad && !boosterOnKey)
         {
             boosterSoundCheck = false;
             AudioManager.instance.StopBooster();
         }
 
-        if(draining) AudioManager.instance.StopBooster();
+        if (draining) AudioManager.instance.StopBooster();
 
         if (landing && !draining && !stunning && !knockback && !backtrip && !fronttrip)
         {
-            if(currentSpeed > 2.0f)
+            if (currentSpeed > 3.0f)
             {
                 if (!footSoundCheck)
                 {
                     AudioManager.instance.PlayFoot();
                     footSoundCheck = true;
+                    Debug.Log("저주받은 발소리");
                 }
             }
             else
@@ -785,5 +853,16 @@ public partial class PlayerController : MonoBehaviour
             AudioManager.instance.StopFoot();
             footSoundCheck = false;
         }
+
+    }
+
+    public void LandBooster()
+    {
+        AudioManager.instance.PlayBooster();
+
+        StartCoroutine(PlaySmoke(0f));
+        landingBooster = false;
+        boosterOnPad = true;
+        boosterTimer = 1.0f;
     }
 }

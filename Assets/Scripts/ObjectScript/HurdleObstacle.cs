@@ -30,6 +30,9 @@ public class HurdleObstacle : MonoBehaviour
     {
         if (other.CompareTag("Player") && !isCollision)
         {
+
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Hurdle);
+
             isCollision = true;
             playerDirection = other.transform.forward;
 
