@@ -9,11 +9,8 @@ public class StartUIScript : MonoBehaviour
 {
     public int stageId;
 
-    public Sprite tutorialImage;
     public Sprite tutorialMapImage;
-    public Sprite mapImage;
 
-    public Image mapNameImage;
     public Image mapSetImage;
     public GameObject stageImage;
     public TextMeshProUGUI mapInfoText;
@@ -40,7 +37,6 @@ public class StartUIScript : MonoBehaviour
     {
         stageId = 1;
         AudioManager.instance.PlaySfx(AudioManager.Sfx.MapSelect);
-        mapNameImage.sprite = tutorialImage;
         string tempText = "초보자를 위한\n튜토리얼 맵";
         mapInfoText.text = tempText;
         chekcButton.interactable = true;
@@ -51,7 +47,6 @@ public class StartUIScript : MonoBehaviour
     {
         stageId = 2;
         AudioManager.instance.PlaySfx(AudioManager.Sfx.MapSelect);
-        mapNameImage.sprite = mapImage;
         string tempText = "개발 중";
         stageImage.SetActive(false);
         mapInfoText.text = tempText;
