@@ -94,7 +94,10 @@ public partial class PlayerController : MonoBehaviour
     private void Update()
     {
         if (GameManager.instance.gameLose || GameManager.instance.gameWin)
+        {
+            currentSpeed = 0;
             return;
+        }
 
         GameStart();
 
@@ -798,12 +801,13 @@ public partial class PlayerController : MonoBehaviour
 
         if (landing && !draining && !stunning && !knockback && !backtrip && !fronttrip)
         {
-            if (currentSpeed > 2.0f)
+            if (currentSpeed > 3.0f)
             {
                 if (!footSoundCheck)
                 {
                     AudioManager.instance.PlayFoot();
                     footSoundCheck = true;
+                    Debug.Log("历林罐篮 惯家府");
                 }
             }
             else
@@ -818,11 +822,6 @@ public partial class PlayerController : MonoBehaviour
             footSoundCheck = false;
         }
 
-        if (GameManager.instance.gameWin || GameManager.instance.gameLose)
-        {
-            AudioManager.instance.StopFoot();
-            AudioManager.instance.StopBooster();
-        }
     }
 
     public void InvincibilityTime()
