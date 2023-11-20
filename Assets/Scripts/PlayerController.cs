@@ -164,7 +164,6 @@ public partial class PlayerController : MonoBehaviour
             LandingKeyChecking();
         }
 
-        InvincibilityTime();
         AnimatorSet();
 
     }
@@ -214,6 +213,7 @@ public partial class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision);
         if (collision.gameObject.tag == "Ground")
         {
             if(knockback)
@@ -236,11 +236,10 @@ public partial class PlayerController : MonoBehaviour
 
             if (landingBooster)
             {
-                AudioManager.instance.PlayBooster();
-                StartCoroutine(PlaySmoke(0f));
-                landingBooster = false;
-                boosterOnPad = true;
-                boosterTimer = 1.0f;
+                invincibility = true;
+                invincibilityTimer = 0.5f;
+
+                LandBooster();
             }
 
         }
@@ -248,6 +247,14 @@ public partial class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "Restricted")
         {
+            if(knockback)
+            {
+                knockback = false;
+                backtrip = true;
+                tripTimer = 2.0f;
+                landing = true;
+            }
+
             restricted = true;
         }
     }
@@ -273,6 +280,7 @@ public partial class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other);
 
         if (other.gameObject.CompareTag("Hurdle"))
         {
@@ -283,6 +291,9 @@ public partial class PlayerController : MonoBehaviour
             {
                 if (!fronttrip)
                 {
+                    invincibility = true;
+                    invincibilityTimer = 2.5f;
+
                     fronttrip = true;
                     tripTimer = 2.0f;
                     BoosterOff();
@@ -302,10 +313,28 @@ public partial class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("KnockBack"))
         {
-            backtrip = false;
-            knockback = false;
+            if(landingBooster)
+            {
+                knockback = false;
+                landingBooster = false;
+                landingCheck = false;
+                landingKey = false;
 
-            if(!knockback)
+                invincibility = true;
+                invincibilityTimer = 0.5f;
+
+                LandBooster();
+
+                landing = true;
+            }
+
+            if (invincibility)
+                return;
+
+            knockback = false;
+            backtrip = false;
+
+            if (!knockback)
             {
                 AudioManager.instance.PlayKnockBack();
                 AudioManager.instance.PlaySfx(AudioManager.Sfx.OuchVoice);
@@ -362,6 +391,9 @@ public partial class PlayerController : MonoBehaviour
     }
     private void KnockBackCollision()
     {
+        invincibility = true;
+        invincibilityTimer = 2.0f;
+
         knockback = true;
         landing = false;
         currentSpeed = 0;
@@ -824,15 +856,13 @@ public partial class PlayerController : MonoBehaviour
 
     }
 
-    public void InvincibilityTime()
+    public void LandBooster()
     {
-        if (backtrip || fronttrip)
-        {
-            if (tripTimer <= 0.1f)
-            {
-                invincibility = true;
-                invincibilityTimer = 0.5f;
-            }
-        }
+        AudioManager.instance.PlayBooster();
+
+        StartCoroutine(PlaySmoke(0f));
+        landingBooster = false;
+        boosterOnPad = true;
+        boosterTimer = 1.0f;
     }
 }
