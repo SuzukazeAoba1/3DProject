@@ -270,11 +270,12 @@ public partial class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (invincibility)
-            return;
 
         if (other.gameObject.CompareTag("Hurdle"))
         {
+            if (invincibility)
+                return;
+
             while (true)
             {
                 if (!fronttrip)
@@ -298,7 +299,6 @@ public partial class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("KnockBack"))
         {
-            //animator.SetTrigger("BackFlip");
             backtrip = false;
             knockback = false;
 
@@ -324,6 +324,9 @@ public partial class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Par"))
         {
+            if (invincibility)
+                return;
+
             if (!stunning)
             {
                 currentSpeed = 0;
@@ -334,6 +337,9 @@ public partial class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Reserve"))
         {
+            if (invincibility)
+                return;
+
             if (!keyReverse)
             {
                 keyReverse = true;
@@ -815,7 +821,7 @@ public partial class PlayerController : MonoBehaviour
         if (GameManager.instance.gameWin || GameManager.instance.gameLose)
         {
             AudioManager.instance.StopFoot();
-            AudioManager.instance.PlayFoot();
+            AudioManager.instance.StopBooster();
         }
     }
 
