@@ -811,12 +811,13 @@ MonoBehaviour:
   subCamera: {fileID: 0}
   currentCameraMode: 0
   playerTransform: {fileID: 0}
-  targetLeft: {fileID: 4261713858083376852}
-  targetRight: {fileID: 4261713857832402970}
+  targetFirst: {fileID: 0}
+  targetSecond: {fileID: 0}
   cameraDistance: 7
   cameraHeight: 5
   directionAngle: {x: 0, y: 0, z: 0}
   cameraAngle: 0
+  winAngle: 0
 --- !u!1 &4261713858520567563
 GameObject:
   m_ObjectHideFlags: 0

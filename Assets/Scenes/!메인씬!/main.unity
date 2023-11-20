@@ -8024,7 +8024,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226942967}
-  m_LocalRotation: {x: 0.2566679, y: -0.000000029001464, z: 0.000000007701757, w: 0.9664997}
+  m_LocalRotation: {x: 0.25666794, y: 0.0000000033791123, z: -8.973711e-10, w: 0.9664997}
   m_LocalPosition: {x: -29.5, y: 5, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9879,7 +9879,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301119225}
-  m_LocalRotation: {x: 0.2566679, y: -0.000000029001464, z: 0.000000007701757, w: 0.9664997}
+  m_LocalRotation: {x: 0.25666794, y: 0.0000000033791123, z: -8.973711e-10, w: 0.9664997}
   m_LocalPosition: {x: -29.5, y: 5, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10563,6 +10563,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08839dbaff4903347b8d8e04bc5e08f6, type: 3}
+--- !u!4 &332841143 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4261713857832402970, guid: d2bf04392cba6d342966e2ba665bd797, type: 3}
+  m_PrefabInstance: {fileID: 4261713858828944090}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &334958313
 GameObject:
   m_ObjectHideFlags: 0
@@ -35438,6 +35443,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142963589}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1143924514 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4261713858083376852, guid: d2bf04392cba6d342966e2ba665bd797, type: 3}
+  m_PrefabInstance: {fileID: 4261713858828944090}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1148215148
 GameObject:
   m_ObjectHideFlags: 0
@@ -66160,6 +66170,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4261713857957435417, guid: d2bf04392cba6d342966e2ba665bd797, type: 3}
+      propertyPath: changeCameraMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4261713857957435419, guid: d2bf04392cba6d342966e2ba665bd797, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -66172,6 +66186,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4261713858400905605, guid: d2bf04392cba6d342966e2ba665bd797, type: 3}
+      propertyPath: changeCameraMode
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4261713858400905607, guid: d2bf04392cba6d342966e2ba665bd797, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -66180,6 +66198,14 @@ PrefabInstance:
       propertyPath: subCamera
       value: 
       objectReference: {fileID: 301119226}
+    - target: {fileID: 4261713858480184786, guid: d2bf04392cba6d342966e2ba665bd797, type: 3}
+      propertyPath: targetFirst
+      value: 
+      objectReference: {fileID: 332841143}
+    - target: {fileID: 4261713858480184786, guid: d2bf04392cba6d342966e2ba665bd797, type: 3}
+      propertyPath: targetSecond
+      value: 
+      objectReference: {fileID: 1143924514}
     - target: {fileID: 4261713858480184786, guid: d2bf04392cba6d342966e2ba665bd797, type: 3}
       propertyPath: playerTransform
       value: 
@@ -66236,9 +66262,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4261713858710230044, guid: d2bf04392cba6d342966e2ba665bd797, type: 3}
+      propertyPath: changeCameraMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4261713858710230046, guid: d2bf04392cba6d342966e2ba665bd797, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4261713859461637872, guid: d2bf04392cba6d342966e2ba665bd797, type: 3}
+      propertyPath: changeCameraMode
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4261713859461637874, guid: d2bf04392cba6d342966e2ba665bd797, type: 3}
       propertyPath: m_Enabled
