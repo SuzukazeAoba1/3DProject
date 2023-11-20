@@ -1,13 +1,15 @@
-using Cinemachine;
+ using Cinemachine;
 using UnityEngine;
 
 public enum cameraMode
 {
     baseline,
-    leftcurve,
+    firstcurve,
     secondline,
-    rightcurve,
-    gamewin
+    secondcurve,
+    gamewin,
+    firstcurve2,
+    rightline2
 }
 
 public class CameraController : MonoBehaviour
@@ -15,8 +17,8 @@ public class CameraController : MonoBehaviour
     public CinemachineVirtualCamera subCamera;
     public cameraMode currentCameraMode;
     public Transform playerTransform;
-    public Transform targetLeft;
-    public Transform targetRight;
+    public Transform targetFirst;
+    public Transform targetSecond;
     public float cameraDistance;
     public float cameraHeight;
     private CinemachineTransposer subTranspos;
@@ -40,19 +42,25 @@ public class CameraController : MonoBehaviour
             case cameraMode.baseline:
                 directionAngle = rotation * Vector3.left;
                 break;
-            case cameraMode.rightcurve:
-                directionAngle = rotation * (targetRight.position - playerTransform.position).normalized;
+            case cameraMode.firstcurve:
+                directionAngle = rotation * (targetFirst.position - playerTransform.position).normalized;
                 break;
             case cameraMode.secondline:
                 directionAngle = rotation * Vector3.right;
                 break;
-            case cameraMode.leftcurve:
-                directionAngle = rotation * (targetLeft.position - playerTransform.position).normalized;
+            case cameraMode.secondcurve:
+                directionAngle = rotation * (targetSecond.position - playerTransform.position).normalized;
                 break;
             case cameraMode.gamewin:
                 winAngle += Time.deltaTime * 20.0f;
                 rotation = Quaternion.Euler(0f, winAngle, 0f);
-                directionAngle = rotation * (targetLeft.position - playerTransform.position).normalized;
+                directionAngle = rotation * (targetSecond.position - playerTransform.position).normalized;
+                break;
+            case cameraMode.firstcurve2:
+                directionAngle = rotation * (playerTransform.position - targetFirst.position).normalized;
+                break;
+            case cameraMode.rightline2:
+                directionAngle = rotation * Vector3.forward;
                 break;
         }
 
@@ -69,7 +77,8 @@ public class CameraController : MonoBehaviour
             subTranspos.m_FollowOffset += directionAngle * -cameraDistance;
         }
 
-        cameraAngle = (450.01f - (Mathf.Atan2(directionAngle.z, directionAngle.x) * Mathf.Rad2Deg)) % 360.0f - 0.01f;
+
+         cameraAngle = (450.01f - (Mathf.Atan2(directionAngle.z, directionAngle.x) * Mathf.Rad2Deg)) % 360.0f - 0.01f;
 
     }
 }
