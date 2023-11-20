@@ -766,6 +766,13 @@ public partial class PlayerController : MonoBehaviour
         GameObject buf = Instantiate(jumpEffect);
         buf.transform.position = transform.position + transform.forward * (currentSpeed / 15.0f);
         buf.SetActive(true);
+        StartCoroutine(DestroyJump(buf));
+    }
+
+    private IEnumerator DestroyJump(GameObject buf)
+    {
+        yield return new WaitForSeconds(1.0f);
+        Destroy(buf);
     }
 
     private void SoundCheck()
