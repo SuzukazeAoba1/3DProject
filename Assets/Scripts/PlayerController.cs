@@ -58,6 +58,7 @@ public partial class PlayerController : MonoBehaviour
     public bool fronttrip;
     public bool stunning;
     public bool draining;
+    public bool invincibility;
 
     public bool knockback;
     public bool landingBooster;
@@ -72,9 +73,12 @@ public partial class PlayerController : MonoBehaviour
     public float stunTimer;
     public float boosterTimer;
     public float drainingTimer;
+    public float invincibilityTimer;
 
     private bool boosterSoundCheck;
     private bool footSoundCheck;
+
+    private bool restricted;
 
     private void Start()
     {
@@ -157,6 +161,7 @@ public partial class PlayerController : MonoBehaviour
             LandingKeyChecking();
         }
 
+        InvincibilityTime();
         AnimatorSet();
 
     }
@@ -178,6 +183,7 @@ public partial class PlayerController : MonoBehaviour
         TimerCheck(ref backtrip, ref tripTimer);
         TimerCheck(ref fronttrip, ref tripTimer);
         TimerCheck(ref draining, ref drainingTimer);
+        TimerCheck(ref invincibility, ref invincibilityTimer);
     }
 
     private void TimerCheck(ref bool tswitch, ref float timer)
@@ -213,7 +219,6 @@ public partial class PlayerController : MonoBehaviour
                 knockback = false;
                 if(!landingBooster)
                 {
-                    Debug.Log("그라운드 충돌");
                     backtrip = true;
                     tripTimer = 2.0f;
                     currentSpeed = 0;
@@ -237,6 +242,11 @@ public partial class PlayerController : MonoBehaviour
 
         }
         animator.SetBool("Landing", landing);
+
+        if (collision.gameObject.tag == "Restricted")
+        {
+            restricted = true;
+        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -250,8 +260,19 @@ public partial class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Restricted")
+        {
+            restricted = false;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+        if (invincibility)
+            return;
+
         if (other.gameObject.CompareTag("Hurdle"))
         {
             while (true)
@@ -264,7 +285,6 @@ public partial class PlayerController : MonoBehaviour
 
                     currentSpeed = 0;
                     animator.SetTrigger("Tripped");
-                    AudioManager.instance.PlaySfx(AudioManager.Sfx.Hurdle);
                     AudioManager.instance.PlaySfx(AudioManager.Sfx.OuchVoice);
                     StartCoroutine(PlaySmoke(0.1f));
                 }
@@ -355,8 +375,14 @@ public partial class PlayerController : MonoBehaviour
         inputDir = playerDirection;
 
         currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
-        currentSpeed = currentMaxSpeed;
-
+        if(restricted)
+        {
+            currentSpeed = 5.0f;
+        }
+        else
+        {
+            currentSpeed = currentMaxSpeed;
+        }
     }
 
     public void Controlparalysis()
@@ -523,12 +549,12 @@ public partial class PlayerController : MonoBehaviour
 
         if (GameManager.instance.gameStart == true)
         {
-            if(readyFailure)
+            if (readyFailure)
             {
                 fronttrip = true;
                 tripTimer = 2.0f;
             }
-            else if(readySuccess)
+            else if (readySuccess)
             {
                 AudioManager.instance.PlayBooster();
                 boosterOnPad = true;
@@ -547,9 +573,9 @@ public partial class PlayerController : MonoBehaviour
         float startTime = GameManager.instance.startTimer;
         if (!readyKeyInput)
         {
-            if(Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-               if (startTime <= 0.3)
+                if (startTime <= 0.3)
                 {
                     readyFailure = false;
                     readySuccess = true;
@@ -566,7 +592,7 @@ public partial class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                if(!landingKey)
+                if (!landingKey)
                 {
                     landingBooster = true;
                     landingKey = false;
@@ -577,7 +603,7 @@ public partial class PlayerController : MonoBehaviour
 
     public void LandingKeyChecking()
     {
-        if(knockback && !landingCheck)
+        if (knockback && !landingCheck)
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
@@ -593,7 +619,7 @@ public partial class PlayerController : MonoBehaviour
             boosterOnKey = true;
             currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
             currentAccel = baseAccel + boosterAddAccel;
-            if(!boosterSoundCheck)
+            if (!boosterSoundCheck)
             {
                 boosterSoundCheck = true;
                 AudioManager.instance.PlayBooster();
@@ -709,8 +735,8 @@ public partial class PlayerController : MonoBehaviour
         animator.SetBool("Knockback", knockback);
         animator.SetBool("Backtrip", backtrip);
         animator.SetBool("Stunning", stunning);
-       
-        if(drainedGauge > 0.0f && boosterOnKey) animator.SetBool("Draining", true);
+
+        if (drainedGauge > 0.0f && boosterOnKey) animator.SetBool("Draining", true);
         else animator.SetBool("Draining", false);
 
         if (boosterTimer > 0.0f) animator.SetBool("Booster", true);
@@ -744,22 +770,22 @@ public partial class PlayerController : MonoBehaviour
 
     private void SoundCheck()
     {
-        if(boosterOnPad && boosterTimer <= 0.1)
+        if (boosterOnPad && boosterTimer <= 0.1)
         {
             AudioManager.instance.StopBooster();
         }
 
-        if(!boosterOnPad && !boosterOnKey)
+        if (!boosterOnPad && !boosterOnKey)
         {
             boosterSoundCheck = false;
             AudioManager.instance.StopBooster();
         }
 
-        if(draining) AudioManager.instance.StopBooster();
+        if (draining) AudioManager.instance.StopBooster();
 
         if (landing && !draining && !stunning && !knockback && !backtrip && !fronttrip)
         {
-            if(currentSpeed > 2.0f)
+            if (currentSpeed > 2.0f)
             {
                 if (!footSoundCheck)
                 {
@@ -777,6 +803,24 @@ public partial class PlayerController : MonoBehaviour
         {
             AudioManager.instance.StopFoot();
             footSoundCheck = false;
+        }
+
+        if (GameManager.instance.gameWin || GameManager.instance.gameLose)
+        {
+            AudioManager.instance.StopFoot();
+            AudioManager.instance.PlayFoot();
+        }
+    }
+
+    public void InvincibilityTime()
+    {
+        if (backtrip || fronttrip)
+        {
+            if (tripTimer <= 0.1f)
+            {
+                invincibility = true;
+                invincibilityTimer = 0.5f;
+            }
         }
     }
 }

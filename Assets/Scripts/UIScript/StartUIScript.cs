@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class StartUIScript : MonoBehaviour
 {
+    public int stageId;
+
     public Sprite tutorialImage;
     public Sprite tutorialMapImage;
     public Sprite mapImage;
@@ -19,6 +22,7 @@ public class StartUIScript : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        stageId = 0;
     }
 
     private void Start()
@@ -34,6 +38,7 @@ public class StartUIScript : MonoBehaviour
 
     public void OnClickTutoMap()
     {
+        stageId = 1;
         AudioManager.instance.PlaySfx(AudioManager.Sfx.MapSelect);
         mapNameImage.sprite = tutorialImage;
         string tempText = "초보자를 위한\n튜토리얼 맵";
@@ -44,11 +49,27 @@ public class StartUIScript : MonoBehaviour
 
     public void onClickWholeMap()
     {
+        stageId = 2;
         AudioManager.instance.PlaySfx(AudioManager.Sfx.MapSelect);
         mapNameImage.sprite = mapImage;
         string tempText = "개발 중";
         stageImage.SetActive(false);
         mapInfoText.text = tempText;
-        chekcButton.interactable = false;
+        chekcButton.interactable = true;
+    }
+
+    public void onClickStartButton()
+    {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.StageStart);
+        switch (stageId)
+        {
+            case 1:
+                AudioManager.instance.PlayBgm(true, 2);
+                SceneManager.LoadScene("main");
+                break;
+            case 2:
+                SceneManager.LoadScene("2Stage");
+                break;
+        }
     }
 }

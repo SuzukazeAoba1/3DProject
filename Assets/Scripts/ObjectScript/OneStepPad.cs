@@ -21,7 +21,7 @@ public class OneStepPad : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            KnockPad.SetActive(false);
+            if(other.gameObject.GetComponent<PlayerController>().invincibility == false) KnockPad.SetActive(false);
         }
     }
 
