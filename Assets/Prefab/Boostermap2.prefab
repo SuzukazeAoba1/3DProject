@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bef590b5f83718440bddad527c144253, type: 2}
+  - {fileID: 2100000, guid: fa46e566684ff3e40b1d6648012459d8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,7 +97,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.9976127, y: 1.6, z: 1.9976126}
-  m_Center: {x: -0.001827389, y: 1, z: -0.0036516786}
+  m_Center: {x: -0.001827389, y: 0.2, z: -0.0036516786}
 --- !u!1001 &1794510946532141090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -152,66 +152,6 @@ PrefabInstance:
     - target: {fileID: 5556832034232533586, guid: ac4da5b092d0c154cbf0cf26e7506c92, type: 3}
       propertyPath: m_Name
       value: FireD
-      objectReference: {fileID: 0}
-    - target: {fileID: 5753604035034946442, guid: ac4da5b092d0c154cbf0cf26e7506c92, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5753604035034946442, guid: ac4da5b092d0c154cbf0cf26e7506c92, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: fdebe8f9090761f44a629442b2b5cf57, type: 2}
-    - target: {fileID: 5753743411049346618, guid: ac4da5b092d0c154cbf0cf26e7506c92, type: 3}
-      propertyPath: lengthInSec
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5753743411049346618, guid: ac4da5b092d0c154cbf0cf26e7506c92, type: 3}
-      propertyPath: ShapeModule.type
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5753743411049346618, guid: ac4da5b092d0c154cbf0cf26e7506c92, type: 3}
-      propertyPath: startDelay.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5753743411049346618, guid: ac4da5b092d0c154cbf0cf26e7506c92, type: 3}
-      propertyPath: ShapeModule.m_Scale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5753743411049346618, guid: ac4da5b092d0c154cbf0cf26e7506c92, type: 3}
-      propertyPath: ShapeModule.m_Scale.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5753743411049346618, guid: ac4da5b092d0c154cbf0cf26e7506c92, type: 3}
-      propertyPath: ShapeModule.m_Scale.z
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5753743411049346618, guid: ac4da5b092d0c154cbf0cf26e7506c92, type: 3}
-      propertyPath: ShapeModule.radiusThickness
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5753743411049346618, guid: ac4da5b092d0c154cbf0cf26e7506c92, type: 3}
-      propertyPath: InitialModule.maxNumParticles
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5753743411049346618, guid: ac4da5b092d0c154cbf0cf26e7506c92, type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5753743411049346618, guid: ac4da5b092d0c154cbf0cf26e7506c92, type: 3}
-      propertyPath: InitialModule.startSize.minScalar
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5753743411049346618, guid: ac4da5b092d0c154cbf0cf26e7506c92, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5753743411049346618, guid: ac4da5b092d0c154cbf0cf26e7506c92, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5753743411049346618, guid: ac4da5b092d0c154cbf0cf26e7506c92, type: 3}
-      propertyPath: InitialModule.startRotation.scalar
-      value: 4.712389
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac4da5b092d0c154cbf0cf26e7506c92, type: 3}
