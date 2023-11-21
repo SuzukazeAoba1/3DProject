@@ -257,6 +257,39 @@ public partial class PlayerController : MonoBehaviour
 
             restricted = true;
         }
+
+        if (collision.gameObject.CompareTag("KnockBack"))
+        {
+            if (landingBooster)
+            {
+                knockback = false;
+                landingBooster = false;
+                landingCheck = false;
+                landingKey = false;
+
+                invincibility = true;
+                invincibilityTimer = 0.5f;
+
+                LandBooster();
+
+                landing = true;
+            }
+
+            if (invincibility)
+                return;
+
+            knockback = false;
+            backtrip = false;
+
+            if (!knockback)
+            {
+                AudioManager.instance.PlayKnockBack();
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.OuchVoice);
+            }
+
+            knockBackCollider.SetActive(true);
+            KnockBackCollision();
+        }
     }
 
     private void OnCollisionStay(Collision collision)
