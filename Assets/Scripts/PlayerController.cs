@@ -75,7 +75,6 @@ public partial class PlayerController : MonoBehaviour
     public float drainingTimer;
     public float invincibilityTimer;
 
-    private bool boosterSoundCheck;
     private bool footSoundCheck;
 
     private bool restricted;
@@ -853,7 +852,6 @@ public partial class PlayerController : MonoBehaviour
 
         if (!boosterOnPad && !boosterOnKey)
         {
-            boosterSoundCheck = false;
             AudioManager.instance.StopBooster();
         }
 

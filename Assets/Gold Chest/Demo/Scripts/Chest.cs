@@ -5,22 +5,14 @@ using UnityEngine;
 public class Chest : MonoBehaviour
 {
     public Animator animator;
-    public ParticleSystem openfx;
     void Start()
     {
-        openfx.Stop();
+        Close();
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
+        if (GameManager.instance.gameWin)
             Open();
-        }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            Close();
-        }
     }
     public void Open()
     {
@@ -29,9 +21,5 @@ public class Chest : MonoBehaviour
     public void Close()
     {
         animator.SetBool("Open", false);
-    }
-    void OpenFX()
-    {
-        openfx.Play();
     }
 }

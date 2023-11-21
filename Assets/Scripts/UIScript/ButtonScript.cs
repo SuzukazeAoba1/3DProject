@@ -31,7 +31,7 @@ public class ButtonScript : MonoBehaviour
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfx.StageStart);
         SceneManager.LoadScene("Stage2");
-        AudioManager.instance.PlayBgm(true, 2);
+        AudioManager.instance.PlayBgm(true, 3);
     }
 
 

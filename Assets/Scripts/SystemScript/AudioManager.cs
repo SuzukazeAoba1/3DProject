@@ -93,7 +93,7 @@ public class AudioManager : MonoBehaviour
         GameObject boosterSound = new GameObject("BoosterPlayer");
         boosterSound.transform.parent = transform;
         boosterSource = boosterSound.AddComponent<AudioSource>();
-        boosterSource.loop = true;
+        boosterSource.loop = false;
         boosterSource.playOnAwake = false;
 
         GameObject footSound = new GameObject("FootPlayer");
@@ -132,6 +132,8 @@ public class AudioManager : MonoBehaviour
                     bgmSource.clip = bgmClip[0];
                 else if (bgmIndex == 2)
                     bgmSource.clip = bgmClip[1];
+                else if (bgmIndex == 3)
+                    bgmSource.clip = bgmClip[2];
 
                 bgmSource.Play();
             }
