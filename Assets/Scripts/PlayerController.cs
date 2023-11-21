@@ -660,11 +660,6 @@ public partial class PlayerController : MonoBehaviour
             boosterOnKey = true;
             currentMaxSpeed = baseMaxSpeed + boosterMaxSpeed;
             currentAccel = baseAccel + boosterAddAccel;
-            if (!boosterSoundCheck)
-            {
-                boosterSoundCheck = true;
-                AudioManager.instance.PlayBooster();
-            }
         }
         else
         {

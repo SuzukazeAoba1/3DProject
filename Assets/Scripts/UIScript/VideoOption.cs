@@ -16,6 +16,10 @@ public class VideoOption : MonoBehaviour
     private float currentRefreshRate;
     private int currentResolutionIndex = 0;
 
+    private Resolution resolution;
+
+    private bool fullScreenValue;
+
     private void Start()
     {
         resolutions = Screen.resolutions;
@@ -51,11 +55,10 @@ public class VideoOption : MonoBehaviour
 
     public void SetResolution(int resolutionIndex)
     {
-        Resolution resolution = filteredResolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, true);
+        resolution = filteredResolutions[resolutionIndex];
     }
 
-    public void OkBtnClick(Resolution resolution)
+    public void OkBtnClick()
     {
         Screen.SetResolution(resolution.width, resolution.height, true);
     }
