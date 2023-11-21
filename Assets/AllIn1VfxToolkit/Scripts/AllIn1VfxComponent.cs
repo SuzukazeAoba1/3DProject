@@ -64,7 +64,7 @@ namespace AllIn1VfxToolkit
         private void MakeNewMaterial(string shaderName = "AllIn1Vfx", bool notifyWhenDone = false)
         {
             bool operationSuccessful = SetMaterial(AfterSetAction.Clear, shaderName);
-            if(notifyWhenDone && operationSuccessful) AllIn1VfxWindow.ShowSceneViewNotification("AllIn1Vfx: Material Created and Added");
+            //if(notifyWhenDone && operationSuccessful) AllIn1VfxWindow.ShowSceneViewNotification("AllIn1Vfx: Material Created and Added");
         }
 
         public bool MakeCopy()
@@ -155,7 +155,7 @@ namespace AllIn1VfxToolkit
             {
                 string logErrorMessage = "Make sure the AllIn1Vfx shader variants are inside the Resource folder! You looked for " + shaderName;
                 Debug.LogError(logErrorMessage);
-                AllIn1VfxWindow.ShowSceneViewNotification(logErrorMessage);
+                //AllIn1VfxWindow.ShowSceneViewNotification(logErrorMessage);
 
                 return false;
             }
@@ -372,6 +372,8 @@ namespace AllIn1VfxToolkit
             else DoSaving(fullPath);
 
             SetSceneDirty();
+            return true;
+#else
             return true;
 #endif
         }
