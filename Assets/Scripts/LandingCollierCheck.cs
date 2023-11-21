@@ -37,6 +37,13 @@ public class LandingCollierCheck : MonoBehaviour
         if(other.tag == "Ground")
         {
             landingBooster = true;
+            Debug.Log("ÄÑÁü");
+        }
+
+        if (other.tag == "Knockback")
+        {
+            landingBooster = true;
+            Debug.Log("ÄÑÁü");
         }
     }
 
@@ -45,6 +52,14 @@ public class LandingCollierCheck : MonoBehaviour
         if (other.tag == "Ground")
         {
             landingBooster = false;
+            Debug.Log("²¨Áü");
+            gameObject.SetActive(false);
+        }
+
+        if (other.tag == "Knockback")
+        {
+            landingBooster = false;
+            Debug.Log("²¨Áü");
             gameObject.SetActive(false);
         }
     }
