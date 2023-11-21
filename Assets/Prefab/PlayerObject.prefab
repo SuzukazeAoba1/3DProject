@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &486051501
 Transform:
   m_ObjectHideFlags: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
   currentBraking: 50
   baseMaxSpeed: 15
   baseAccel: 7
-  baseRotSpeed: 600
+  baseRotSpeed: 300
   baseJumpPower: 600
   boosterOnKey: 0
   boosterOnPad: 0
@@ -211,6 +211,7 @@ MonoBehaviour:
   fronttrip: 0
   stunning: 0
   draining: 0
+  invincibility: 0
   knockback: 0
   landingBooster: 0
   landingCheck: 0
@@ -223,6 +224,7 @@ MonoBehaviour:
   stunTimer: 0
   boosterTimer: 0
   drainingTimer: 0
+  invincibilityTimer: 0
 --- !u!136 &7198699275401627233
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -719,7 +719,7 @@ public partial class PlayerController : MonoBehaviour
 
             //Debug.Log("input" + inputDegree + "///" + "camera" + cameraDegree + "///" + "player" + playerDegree + "///" + directionCheck + "///" );
 
-            if (directionCheck < 1.0f || directionCheck > 359.0f)
+            if (directionCheck < 2.0f || directionCheck > 358.0f)
             {
 
             }
