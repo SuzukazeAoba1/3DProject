@@ -8024,7 +8024,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226942967}
-  m_LocalRotation: {x: 0.25666794, y: 0.0000000033791123, z: -8.973711e-10, w: 0.9664997}
+  m_LocalRotation: {x: 0.2566679, y: -0.000000029001464, z: 0.000000007701757, w: 0.9664997}
   m_LocalPosition: {x: -29.5, y: 5, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9879,7 +9879,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301119225}
-  m_LocalRotation: {x: 0.25666794, y: 0.0000000033791123, z: -8.973711e-10, w: 0.9664997}
+  m_LocalRotation: {x: 0.2566679, y: -0.000000029001464, z: 0.000000007701757, w: 0.9664997}
   m_LocalPosition: {x: -29.5, y: 5, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13405,7 +13405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &430254815
 RectTransform:
   m_ObjectHideFlags: 0
@@ -46400,7 +46400,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -638.3137, y: 155.78967}
+  m_AnchoredPosition: {x: -403.67, y: 153}
   m_SizeDelta: {x: 776.7234, y: 268.5283}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1544372602
@@ -51579,10 +51579,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3137\u3137... \uB098 \uADF8\uB9BC \uAC1C\uADC0\uC5FD\uAC8C \uADF8\uB9B0\uB4EF\n\uD5C8\uC804\uD560\uAE4C\uBD10
-    \uADF8\uB838\uB294\uB370 \uC5C6\uB294\uAC8C \uB098\uC740\uAC83\uAC19\uC74C\n\uB0B4
-    \uB178\uB825\uC774 \uD5DB\uC218\uACE0\uAC00 \uB418\uC9C0 \uC54A\uB3C4\uB85D\n\uC790\uB791\uD558\uB824\uACE0
-    \uB123\uC5B4\uB460 "
+  m_text: "\uB300\uC0AC "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 81525644078798f4c82b3ecd248892c7, type: 2}
   m_sharedMaterial: {fileID: -2359640920510133717, guid: 81525644078798f4c82b3ecd248892c7, type: 2}
