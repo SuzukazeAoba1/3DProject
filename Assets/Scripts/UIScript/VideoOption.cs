@@ -60,6 +60,6 @@ public class VideoOption : MonoBehaviour
 
     public void OkBtnClick()
     {
-        Screen.SetResolution(resolution.width, resolution.height, true);
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 }
