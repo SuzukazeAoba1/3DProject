@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ChestOpen : MonoBehaviour
 {
-    public Animator animator;
+    private Animator animator;
     void Start()
     {
+        animator = GetComponent<Animator>();
         Close();
     }
     void Update()
