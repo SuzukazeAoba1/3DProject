@@ -15459,8 +15459,6 @@ MonoBehaviour:
   playMinTime: {fileID: 902219246}
   playSecTime: {fileID: 959254458}
   playMiliSecTime: {fileID: 1149694166}
-  maxLapText: {fileID: 0}
-  currentLapText: {fileID: 0}
   BoosterSlider: {fileID: 999868894}
   AwakenSlider: {fileID: 2089210569}
   player: {fileID: 1294092695}
