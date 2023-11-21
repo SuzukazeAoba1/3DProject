@@ -10,9 +10,6 @@ public class InGameUIScript : MonoBehaviour
     public TextMeshProUGUI playSecTime;
     public TextMeshProUGUI playMiliSecTime;
 
-    public TextMeshProUGUI maxLapText;
-    public TextMeshProUGUI currentLapText;
-
     public Slider BoosterSlider;
     public Slider AwakenSlider;
     public PlayerController player;
@@ -23,7 +20,6 @@ public class InGameUIScript : MonoBehaviour
     {
         ControlBoosterGauge();
         PrintPlayTime();
-        PrintCurrentLap();
     }
 
     public void ControlBoosterGauge()
@@ -43,9 +39,4 @@ public class InGameUIScript : MonoBehaviour
         playMiliSecTime.text = string.Format("{0:000}", miliSec);
     }
 
-    public void PrintCurrentLap()
-    {
-        maxLapText.text = GameManager.instance.maxLaps.ToString();
-        currentLapText.text = GameManager.instance.playerLaps.ToString();
-    }
 }
