@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject resultUI;
     public static GameManager instance;
 
+    public float playStageNum;
     public float playTime;
     public float playerLocation;
 

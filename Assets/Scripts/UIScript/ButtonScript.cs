@@ -23,7 +23,7 @@ public class ButtonScript : MonoBehaviour
     public void GameStartButton()
     {
         AudioManager.instance.PlaySfx(AudioManager.Sfx.StageStart);
-        SceneManager.LoadScene("main");
+        SceneManager.LoadScene("Stage1");
         AudioManager.instance.PlayBgm(true, 2);
     }
 

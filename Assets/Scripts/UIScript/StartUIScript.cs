@@ -60,10 +60,10 @@ public class StartUIScript : MonoBehaviour
         {
             case 1:
                 AudioManager.instance.PlayBgm(true, 2);
-                SceneManager.LoadScene("main");
+                SceneManager.LoadScene("Stage1");
                 break;
             case 2:
-                SceneManager.LoadScene("2Stage");
+                SceneManager.LoadScene("Stage2");
                 break;
         }
     }
