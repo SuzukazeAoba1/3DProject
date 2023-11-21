@@ -44,6 +44,7 @@ public class AudioManager : MonoBehaviour
         SndJump,
         SndJump2,
         StageStart,
+        Stunning,
     }
 
 

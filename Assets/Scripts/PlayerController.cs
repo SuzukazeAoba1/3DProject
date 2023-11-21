@@ -163,6 +163,7 @@ public partial class PlayerController : MonoBehaviour
             LandingKeyChecking();
         }
 
+        StunTime(); 
         AnimatorSet();
 
     }
@@ -393,6 +394,7 @@ public partial class PlayerController : MonoBehaviour
 
             if (!stunning)
             {
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Stunning);
                 currentSpeed = 0;
                 stunning = true;
                 stunTimer = 5.0f;
@@ -890,5 +892,14 @@ public partial class PlayerController : MonoBehaviour
         landingBooster = false;
         boosterOnPad = true;
         boosterTimer = 1.0f;
+    }
+
+    public void StunTime()
+    {
+        if(stunning && stunTimer <= 0.1f)
+        {
+            invincibility = true;
+            invincibilityTimer = 0.5f;
+        }
     }
 }
