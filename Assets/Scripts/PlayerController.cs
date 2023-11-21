@@ -258,38 +258,35 @@ public partial class PlayerController : MonoBehaviour
             restricted = true;
         }
 
-        if (collision.gameObject.CompareTag("KnockBack"))
+        if (collision.gameObject.CompareTag("Hurdle"))
         {
-            if (landingBooster)
-            {
-                knockback = false;
-                landingBooster = false;
-                landingCheck = false;
-                landingKey = false;
-
-                invincibility = true;
-                invincibilityTimer = 0.5f;
-
-                LandBooster();
-
-                landing = true;
-            }
-
             if (invincibility)
                 return;
 
-            knockback = false;
-            backtrip = false;
-
-            if (!knockback)
+            while (true)
             {
-                AudioManager.instance.PlayKnockBack();
-                AudioManager.instance.PlaySfx(AudioManager.Sfx.OuchVoice);
-            }
+                if (!fronttrip)
+                {
+                    invincibility = true;
+                    invincibilityTimer = 2.5f;
 
-            knockBackCollider.SetActive(true);
-            KnockBackCollision();
+                    fronttrip = true;
+                    tripTimer = 2.0f;
+                    BoosterOff();
+
+                    currentSpeed = 0;
+                    animator.SetTrigger("Tripped");
+                    AudioManager.instance.PlaySfx(AudioManager.Sfx.OuchVoice);
+                    StartCoroutine(PlaySmoke(0.1f));
+                }
+                else
+                {
+                    HandleHurdleCollision(collision.gameObject);
+                    return;
+                }
+            }
         }
+
     }
 
     private void OnCollisionStay(Collision collision)
