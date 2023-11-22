@@ -364,6 +364,8 @@ public partial class PlayerController : MonoBehaviour
             knockback = false;
             backtrip = false;
 
+
+
             if (!knockback)
             {
                 AudioManager.instance.PlayKnockBack();
