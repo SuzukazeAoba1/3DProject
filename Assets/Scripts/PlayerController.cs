@@ -653,7 +653,7 @@ public partial class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                if (startTime <= 0.3)
+                if (startTime <= 0.5)
                 {
                     readyFailure = false;
                     readySuccess = true;
