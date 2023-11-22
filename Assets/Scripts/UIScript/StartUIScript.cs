@@ -9,10 +9,11 @@ public class StartUIScript : MonoBehaviour
 {
     public int stageId;
 
-    public Sprite tutorialMapImage;
+    public GameObject tutorialMapImage;
+    public GameObject SecondMapImage;
 
     public Image mapSetImage;
-    public GameObject stageImage;
+   
     public TextMeshProUGUI mapInfoText;
     public Button chekcButton;
 
@@ -40,7 +41,9 @@ public class StartUIScript : MonoBehaviour
         string tempText = "초보자를 위한\n튜토리얼 맵";
         mapInfoText.text = tempText;
         chekcButton.interactable = true;
-        stageImage.SetActive(true);
+
+        tutorialMapImage.SetActive(true);
+        SecondMapImage.SetActive(false);
     }
 
     public void onClickWholeMap()
@@ -48,7 +51,10 @@ public class StartUIScript : MonoBehaviour
         stageId = 2;
         AudioManager.instance.PlaySfx(AudioManager.Sfx.MapSelect);
         string tempText = "개발 중";
-        stageImage.SetActive(false);
+
+        SecondMapImage.SetActive(true);
+        tutorialMapImage.SetActive(false);
+
         mapInfoText.text = tempText;
         chekcButton.interactable = true;
     }
