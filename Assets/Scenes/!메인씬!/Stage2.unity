@@ -40951,7 +40951,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1519862369}
         m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
-        m_MethodName: GameStartButton
+        m_MethodName: SecondGameStartButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
