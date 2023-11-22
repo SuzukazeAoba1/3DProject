@@ -11,7 +11,6 @@ public class InGameUIScript : MonoBehaviour
     public TextMeshProUGUI playMiliSecTime;
 
     public Slider BoosterSlider;
-    public Slider AwakenSlider;
     public PlayerController player;
 
 
@@ -25,7 +24,6 @@ public class InGameUIScript : MonoBehaviour
     public void ControlBoosterGauge()
     {
         BoosterSlider.value = (player.boosterGauge / 10);
-        AwakenSlider.value = (player.awakenGauge / 10);
     }
 
     public void PrintPlayTime()

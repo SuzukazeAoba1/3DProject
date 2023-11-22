@@ -20,12 +20,10 @@ public class ArrowUIScript : MonoBehaviour
         {
             image1.SetActive(true);
             image2.SetActive(false);
-            Debug.Log("¹¹Áö?");
             yield return new WaitForSeconds(switchInterval);
 
             image1.SetActive(false);
             image2.SetActive(true);
-            Debug.Log("¿ÖÁö?");
             yield return new WaitForSeconds(switchInterval);
         }
     }
