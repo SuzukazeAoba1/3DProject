@@ -5,6 +5,8 @@ using UnityEngine;
 public partial class PlayerController : MonoBehaviour
 {
     public GameObject player;
+
+    public GameObject StunUI;
     public GameObject knockBackCollider;
     public CameraController cameraTarget;
     public GameObject boosterEffect;
@@ -393,6 +395,8 @@ public partial class PlayerController : MonoBehaviour
 
             if (!stunning)
             {
+                StunUI.SetActive(true);
+
                 AudioManager.instance.PlaySfx(AudioManager.Sfx.Stunning);
                 currentSpeed = 0;
                 stunning = true;
@@ -897,6 +901,8 @@ public partial class PlayerController : MonoBehaviour
     {
         if(stunning && stunTimer <= 0.1f)
         {
+            StunUI.SetActive(false);
+
             invincibility = true;
             invincibilityTimer = 0.5f;
         }
