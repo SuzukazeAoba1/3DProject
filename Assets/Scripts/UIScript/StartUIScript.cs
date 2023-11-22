@@ -50,7 +50,7 @@ public class StartUIScript : MonoBehaviour
     {
         stageId = 2;
         AudioManager.instance.PlaySfx(AudioManager.Sfx.MapSelect);
-        string tempText = "개발 중";
+        string tempText = "사막의 진귀한\n보물을 찾아라";
 
         SecondMapImage.SetActive(true);
         tutorialMapImage.SetActive(false);

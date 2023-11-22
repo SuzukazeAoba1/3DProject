@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ArrowUIScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public GameObject image1;
-    public GameObject image2;
-    public float switchInterval;
+    public Sprite image1;
+    public Sprite image2;
+    public float switchInterval = 0.1f;
+
+    private Image spriteImage;
+
 
     private void OnEnable()
     {
+        spriteImage = GetComponent<Image>();
+
         StartCoroutine(SwitchImages());
     }
 
@@ -18,12 +23,10 @@ public class ArrowUIScript : MonoBehaviour
     {
         while (true)
         {
-            image1.SetActive(true);
-            image2.SetActive(false);
+            spriteImage.sprite = image1;
             yield return new WaitForSeconds(switchInterval);
 
-            image1.SetActive(false);
-            image2.SetActive(true);
+            spriteImage.sprite = image2;
             yield return new WaitForSeconds(switchInterval);
         }
     }
